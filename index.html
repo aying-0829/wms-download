@@ -470,7 +470,7 @@
       <div class="download-steps">
         <h3>三步上线</h3>
         <ol>
-          <li><b>下载安装</b>：解压安装包，管理员运行 install.bat，全自动完成。</li>
+          <li><b>下载安装</b>：双击 WMS-Setup.exe，按提示选择安装路径，一路「下一步」即可自动完成安装（自动注册服务并打开浏览器登录页）。</li>
           <li><b>自设账号</b>：浏览器打开 <code>http://本机IP:8000</code>，首次启动会引导您<strong>自己设置</strong>管理员用户名+密码（无需联系任何人，账号密码只在您本地机器里，不上传）。</li>
           <li><b>自动试用</b>：设完账号即登录，自动进入 30 天全功能试用，到期不付费自动转只读。</li>
           <li><b>付费升级</b>：软件内「系统管理 → 授权信息」点「复制申请码」发给我们，付款后粘贴授权文件即可激活，数据不丢失。</li>
@@ -524,8 +524,8 @@
          有多条就多写几行，第一条设 primary: true。
          ============================================================ */
       var DOWNLOAD_LINKS = [
-        { label: '⬇ 一键下载安装包（zip · 35MB）', url: 'https://aying-0829.github.io/wms-download/WMS-Setup.zip', primary: true },
-        { label: '备用下载（GitHub）', url: 'https://github.com/aying-0829/wms-download/releases/download/v1.0/WMS-Setup.zip' }
+        { label: '⬇ 一键下载安装包（exe · 约25MB · 双击即装）', url: 'https://aying-0829.github.io/wms-download/WMS-Setup.exe', primary: true },
+        { label: '备用下载（zip 压缩包）', url: 'https://aying-0829.github.io/wms-download/WMS-Setup.zip' }
       ];
       var CONTACT = { wechat: 'Cy_refuel', email: 'hangzhoukaiwei@163.com' };
 
@@ -542,7 +542,7 @@
         html += '</div>';
         box.innerHTML = html;
         if (note) {
-          note.innerHTML = '安装包约 35MB，已内置运行环境与数据库，点上方按钮直接下载。解压后右键以「管理员身份」运行 install.bat 即可。若下载慢可试备用链接，或加微信 <b>' + CONTACT.wechat + '</b> 直接获取。';
+          note.innerHTML = '安装包约 25MB（exe 自解压安装向导），点上方按钮直接下载，双击后按提示选路径安装，装完自动打开浏览器登录页。若下载慢可试备用 zip 链接，或加微信 <b>' + CONTACT.wechat + '</b> 直接获取。';
         }
       })();
     </script>
@@ -591,7 +591,7 @@
   <div class="wrap">
     <h2 class="section-title">常见问题</h2>
     <div class="faq">
-      <div class="faq-item"><h4>怎么开始免费试用？</h4><p>从官网下载安装包，解压后管理员运行 install.bat，首次启动自动进入 30 天全功能试用，无需注册、无需留联系方式。到期不付费自动转只读，数据完整保留，续费即恢复。</p></div>
+      <div class="faq-item"><h4>怎么开始免费试用？</h4><p>从官网下载安装包（WMS-Setup.exe），双击按提示安装，首次启动自动进入 30 天全功能试用，无需注册、无需留联系方式。到期不付费自动转只读，数据完整保留，续费即恢复。</p></div>
       <div class="faq-item"><h4>试用到期后怎么升级？</h4><p>打开软件「系统管理 → 授权信息」，点「复制申请码」发给我们（邮箱/微信），付款后我们会把授权文件发回，你在同一页面「粘贴激活」即可，全程几分钟，数据不丢失。</p></div>
       <div class="faq-item"><h4>订阅版和私有化版有什么区别？</h4><p>订阅版按月/年付费、由我方按客户独立开通，适合想低门槛先用的客户；私有化版一次性买断、装在您自己机房，适合要买断和数据强私有化的客户。</p></div>
       <div class="faq-item"><h4>需要自己买服务器吗？</h4><p>私有化版需要一台普通电脑/服务器（内网即可）；安装包已内置数据库与运行环境，无需额外配置。</p></div>
@@ -658,7 +658,7 @@
 (function () {
   var CONTACT = '微信 Cy_refuel ／ 邮箱 hangzhoukaiwei@163.com';
   var QA = [
-    { k: ['下载', '安装', '试用', 'install', '部署'], a: '从本页「下载安装」区下载安装包 → 解压后右键「install.bat」以管理员身份运行 → 首次启动自动进入 30 天全功能试用，无需注册、无需留联系方式。' },
+    { k: ['下载', '安装', '试用', 'install', '部署'], a: '从本页「下载安装」区下载 WMS-Setup.exe → 双击按提示选路径安装（自动注册服务）→ 首次启动自动进入 30 天全功能试用，无需注册、无需留联系方式。' },
     { k: ['价格', '多少钱', '费用', '报价', '收费'], a: '订阅版 ¥98/月起（付10用12），私有化买断 ¥9,800 起，价格全透明，详见本页「四个版本到底差在哪？」。' },
     { k: ['订阅', '买断', '区别', '私有化', '按月'], a: '订阅版按月/年付费、我方托管；私有化版一次性买断、装在您自己机房。功能完全一样，详见「订阅 vs 私有化」对比表。' },
     { k: ['到期', '续费', '升级', '激活', '只读', '恢复'], a: '试用 30 天到期自动转只读、数据保留。付费后到软件「系统管理→授权信息」复制申请码发给我们，粘贴授权文件即可恢复。' },
