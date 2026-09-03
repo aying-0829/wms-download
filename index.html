@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WMS 仓储管理系统 - 订阅版 · 免费试用 1 个月</title>
+<style>
+  :root {
+    --primary: #2F6FED;
+    --primary-dark: #1F4FBF;
+    --bg: #F5F7FB;
+    --text: #1F2329;
+    --text-2: #4E5969;
+    --text-3: #86909C;
+    --border: #E5E8EF;
+    --card: #FFFFFF;
+    --success: #17B26A;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    color: var(--text); background: var(--bg); line-height: 1.6;
+  }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+  header {
+    background: #fff; border-bottom: 1px solid var(--border);
+    padding: 16px 0; position: sticky; top: 0; z-index: 10;
+  }
+  .nav { display: flex; align-items: center; justify-content: space-between; }
+  .logo { font-size: 18px; font-weight: 700; color: var(--primary); display: flex; align-items: center; gap: 8px; }
+  .logo .dot { width: 26px; height: 26px; background: var(--primary); border-radius: 6px; display: inline-block; }
+  .nav-links { display: flex; gap: 24px; align-items: center; }
+  .nav-links a { color: var(--text-2); text-decoration: none; font-size: 14px; }
+  .btn {
+    display: inline-block; background: var(--primary); color: #fff; text-decoration: none;
+    padding: 10px 22px; border-radius: 6px; font-size: 14px; font-weight: 600;
+    transition: background .2s; border: none; cursor: pointer;
+  }
+  .btn:hover { background: var(--primary-dark); }
+  .btn.ghost { background: #fff; color: var(--primary); border: 1px solid var(--primary); }
+  .hero { text-align: center; padding: 64px 0 40px; }
+  .hero h1 { font-size: 34px; font-weight: 700; margin-bottom: 16px; }
+  .hero h1 .hl { color: var(--primary); }
+  .hero p { color: var(--text-2); font-size: 16px; max-width: 640px; margin: 0 auto 28px; }
+  .hero .cta { display: flex; gap: 14px; justify-content: center; }
+  .trust { display: flex; gap: 28px; justify-content: center; margin-top: 28px; color: var(--text-3); font-size: 13px; }
+  .section { padding: 40px 0; }
+  .section-title { text-align: center; font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+  .section-sub { text-align: center; color: var(--text-3); font-size: 14px; margin-bottom: 32px; }
+  .pricing-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .price-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+    padding: 26px 20px; text-align: center; transition: box-shadow .2s, transform .2s;
+  }
+  .price-card:hover { box-shadow: 0 8px 24px rgba(47,111,237,.12); transform: translateY(-2px); }
+  .price-card.hot { border: 2px solid var(--primary); position: relative; }
+  .price-card.hot .badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--primary); color: #fff; font-size: 12px; padding: 2px 12px; border-radius: 12px; }
+  .price-card .ver { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+  .price-card .desc { color: var(--text-3); font-size: 12px; margin-bottom: 16px; }
+  .price-card .price { font-size: 30px; font-weight: 700; color: var(--primary); }
+  .price-card .price small { font-size: 14px; color: var(--text-2); font-weight: 400; }
+  .price-card .unit { color: var(--text-3); font-size: 12px; margin: 6px 0 18px; }
+  .price-card ul { list-style: none; text-align: left; font-size: 13px; color: var(--text-2); margin-bottom: 20px; }
+  .price-card ul li { padding: 4px 0; }
+  .price-card ul li::before { content: "✓"; color: var(--success); margin-right: 8px; font-weight: 700; }
+  .mode-badge { text-align: center; margin: 40px 0 20px; font-size: 14px; color: var(--text-2); }
+  .mode-badge span { display: inline-block; background: #EEF3FF; color: var(--primary); padding: 6px 16px; border-radius: 20px; font-weight: 600; }
+  .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .feature { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 22px; }
+  .feature h4 { font-size: 15px; margin-bottom: 8px; }
+  .feature p { font-size: 13px; color: var(--text-2); }
+  .faq { max-width: 760px; margin: 0 auto; }
+  .faq-item { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 18px 20px; margin-bottom: 12px; }
+  .faq-item h4 { font-size: 14px; margin-bottom: 6px; }
+  .faq-item p { font-size: 13px; color: var(--text-2); }
+  .trial-cta { background: linear-gradient(135deg, #1F2A3D 0%, #2F6FED 100%); border-radius: 14px; padding: 48px 32px; text-align: center; color: #fff; }
+  .trial-cta h2 { font-size: 26px; margin-bottom: 12px; }
+  .trial-cta p { color: #C9D8F5; margin-bottom: 24px; }
+  .trial-cta .btn { background: #fff; color: var(--primary); font-size: 16px; padding: 12px 32px; }
+  /* 下载安装区块 */
+  .download-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: stretch; }
+  .download-main, .download-steps { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 26px; }
+  .download-main h3, .download-steps h3 { font-size: 16px; margin-bottom: 14px; }
+  .dl-meta { list-style: none; font-size: 13px; color: var(--text-2); margin-bottom: 18px; }
+  .dl-meta li { padding: 4px 0; }
+  .dl-meta li::before { content: "✓"; color: var(--success); margin-right: 8px; font-weight: 700; }
+  .btn-dl { font-size: 16px; padding: 13px 30px; }
+  .dl-btns { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  .btn-dl-ghost { background: #fff; color: var(--primary); border: 1px solid var(--primary); }
+  .btn-dl-ghost:hover { background: #EEF3FF; }
+  .dl-note { font-size: 12px; color: var(--text-3); margin-top: 14px; line-height: 1.7; }
+  .download-steps ol { padding-left: 18px; font-size: 13px; color: var(--text-2); line-height: 1.8; }
+  .download-steps ol li { margin-bottom: 10px; }
+  .dl-flow { margin-top: 24px; background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 26px; }
+  .dl-flow h3 { font-size: 16px; margin-bottom: 16px; text-align: center; }
+  .dl-flow-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .dl-flow-item { text-align: center; }
+  .dl-flow-item .ico { font-size: 30px; }
+  .dl-flow-item b { display: block; font-size: 14px; margin: 8px 0 4px; }
+  .dl-flow-item p { font-size: 12px; color: var(--text-2); line-height: 1.6; }
+  footer { background: #1F2A3D; color: #86909C; text-align: center; padding: 28px 0; font-size: 13px; margin-top: 48px; }
+  @media (max-width: 900px) {
+    .pricing-grid, .features, .dl-flow-grid { grid-template-columns: 1fr 1fr; }
+    .download-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 26px; }
+  }
+  @media (max-width: 560px) {
+    .pricing-grid, .features, .dl-flow-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo"><span class="dot"></span> WMS 仓储管理系统</div>
+    <div class="nav-links">
+      <a href="#pricing">价格</a>
+      <a href="#download">下载安装</a>
+      <a href="#features">功能</a>
+      <a href="#faq">常见问题</a>
+      <a href="#trial" class="btn">免费试用</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero wrap">
+  <h1>不用装环境，<span class="hl">30 分钟上线</span>的仓储管理系统</h1>
+  <p>为电商仓、实体工厂、中小制造企业打造。私有化部署、纯内网运行、数据完全在您自己手里。订阅版免费试用 1 个月，价格全透明。</p>
+  <div class="cta">
+    <a href="#trial" class="btn">免费试用 1 个月</a>
+    <a href="#pricing" class="btn ghost">查看透明价格</a>
+  </div>
+  <div class="trust">
+    <span>✓ 免费试用</span><span>✓ 价格透明</span><span>✓ 数据私有化</span><span>✓ 私有化买断可选</span>
+  </div>
+</section>
+
+<section class="section wrap" id="pricing">
+  <h2 class="section-title">透明价格</h2>
+  <p class="section-sub">两种交付模式，价格一目了然，无隐藏费用</p>
+
+  <div class="mode-badge"><span>订阅版 · 免费试用 1 个月</span></div>
+  <div class="pricing-grid">
+    <div class="price-card">
+      <div class="ver">基础版</div>
+      <div class="desc">单仓 · 基础出入库/盘点</div>
+      <div class="price">¥98<small>/月</small></div>
+      <div class="unit">或 ¥980/年（付10用12）</div>
+      <ul><li>采购入库 / 销售出库</li><li>库存台账 / 流水</li><li>盘点</li><li>库存预警</li></ul>
+      <a href="#trial" class="btn ghost">免费试用</a>
+    </div>
+    <div class="price-card hot">
+      <span class="badge">最受欢迎</span>
+      <div class="ver">电商版</div>
+      <div class="desc">多仓 · 波次 · 批次效期</div>
+      <div class="price">¥198<small>/月</small></div>
+      <div class="unit">或 ¥1,980/年（付10用12）</div>
+      <ul><li>基础版全部功能</li><li>多仓 / 调拨</li><li>波次拣货</li><li>批次与效期</li></ul>
+      <a href="#trial" class="btn">免费试用</a>
+    </div>
+    <div class="price-card">
+      <div class="ver">工贸版</div>
+      <div class="desc">调拨 · 生产领料 · 质检</div>
+      <div class="price">¥368<small>/月</small></div>
+      <div class="unit">或 ¥3,680/年（付10用12）</div>
+      <ul><li>电商版全部功能</li><li>生产领料</li><li>退货质检</li><li>报废管理</li></ul>
+      <a href="#trial" class="btn ghost">免费试用</a>
+    </div>
+    <div class="price-card">
+      <div class="ver">企业版</div>
+      <div class="desc">全功能 · 批次追溯 · 优先支持</div>
+      <div class="price">¥680<small>/月</small></div>
+      <div class="unit">或 ¥6,800/年（付10用12）</div>
+      <ul><li>工贸版全部功能</li><li>批次追溯</li><li>数据权限细化</li><li>优先技术支持</li></ul>
+      <a href="#trial" class="btn ghost">免费试用</a>
+    </div>
+  </div>
+
+  <div class="mode-badge"><span>私有化版 · 一次性买断（含首年更新，之后可选维护）</span></div>
+  <div class="pricing-grid">
+    <div class="price-card">
+      <div class="ver">基础版</div>
+      <div class="desc">单仓 · 基础出入库/盘点</div>
+      <div class="price">¥9,800<small>/套</small></div>
+      <div class="unit">含首年更新，之后可选维护 ¥980/年</div>
+      <ul><li>永久使用权</li><li>数据完全本地</li><li>可选维护服务（不强制）</li></ul>
+      <a href="#trial" class="btn ghost">预约演示</a>
+    </div>
+    <div class="price-card">
+      <div class="ver">电商版</div>
+      <div class="desc">多仓 · 波次 · 批次效期</div>
+      <div class="price">¥19,800<small>/套</small></div>
+      <div class="unit">含首年更新，之后可选维护 ¥1,980/年</div>
+      <ul><li>永久使用权</li><li>数据完全本地</li><li>可选维护服务（不强制）</li></ul>
+      <a href="#trial" class="btn ghost">预约演示</a>
+    </div>
+    <div class="price-card">
+      <div class="ver">工贸版</div>
+      <div class="desc">调拨 · 生产领料 · 质检</div>
+      <div class="price">¥36,800<small>/套</small></div>
+      <div class="unit">含首年更新，之后可选维护 ¥3,680/年</div>
+      <ul><li>永久使用权</li><li>数据完全本地</li><li>可选维护服务（不强制）</li></ul>
+      <a href="#trial" class="btn ghost">预约演示</a>
+    </div>
+    <div class="price-card">
+      <div class="ver">企业版</div>
+      <div class="desc">全功能 · 批次追溯 · 优先支持</div>
+      <div class="price">¥68,000<small>/套</small></div>
+      <div class="unit">含首年更新，之后可选维护 ¥6,800/年</div>
+      <ul><li>永久使用权</li><li>数据完全本地</li><li>优先支持</li></ul>
+      <a href="#trial" class="btn ghost">预约演示</a>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap" id="compare" style="padding-top: 0;">
+  <h2 class="section-title">订阅版 vs 私有化版，怎么选？</h2>
+  <p class="section-sub">两者功能完全一样，区别只在「租用 vs 买断、托管 vs 自持、数据托管 vs 数据本地」</p>
+  <div style="overflow-x: auto;">
+    <table style="width: 100%; border-collapse: collapse; background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; font-size: 14px;">
+      <thead>
+        <tr style="background: #EEF3FF;">
+          <th style="padding: 14px; text-align: left; width: 22%;">对比项</th>
+          <th style="padding: 14px; text-align: left;">订阅版（托管服务）</th>
+          <th style="padding: 14px; text-align: left;">私有化版（软件买断）</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td style="padding: 12px 14px; border-top: 1px solid var(--border); font-weight: 600;">本质</td><td style="padding: 12px 14px; border-top: 1px solid var(--border);">租软件，按年付费</td><td style="padding: 12px 14px; border-top: 1px solid var(--border);">买软件，永久授权</td></tr>
+        <tr style="background: #FAFBFE;"><td style="padding: 12px 14px; font-weight: 600;">收费</td><td style="padding: 12px 14px;">¥980/年起，停付即停用</td><td style="padding: 12px 14px;">¥9,800 一次性买断，永久可用</td></tr>
+        <tr><td style="padding: 12px 14px; font-weight: 600;">服务器/运维</td><td style="padding: 12px 14px;">我方托管，零操心</td><td style="padding: 12px 14px;">客户自己机房、自己运维</td></tr>
+        <tr style="background: #FAFBFE;"><td style="padding: 12px 14px; font-weight: 600;">数据归属</td><td style="padding: 12px 14px;">数据独立隔离（我方代管）</td><td style="padding: 12px 14px;"><b style="color: var(--primary);">数据 100% 本地、纯内网</b></td></tr>
+        <tr><td style="padding: 12px 14px; font-weight: 600;">更新支持</td><td style="padding: 12px 14px;">持续自动更新（含在订阅费里）</td><td style="padding: 12px 14px;">含首年更新，之后可选维护</td></tr>
+        <tr style="background: #FAFBFE;"><td style="padding: 12px 14px; font-weight: 600;">停付后</td><td style="padding: 12px 14px;">转只读（数据保留，续费恢复）</td><td style="padding: 12px 14px;">软件照常可用，只是无新版本</td></tr>
+        <tr><td style="padding: 12px 14px; font-weight: 600;">适合</td><td style="padding: 12px 14px;">不想管 IT、低门槛先用的客户</td><td style="padding: 12px 14px;">数据敏感、要内网隔离、长期自持的客户</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section wrap" id="features">
+  <h2 class="section-title">为什么选我们</h2>
+  <p class="section-sub">为中小型仓储与工厂量身打造</p>
+  <div class="features">
+    <div class="feature"><h4>私有化 · 纯内网</h4><p>系统装在您自己机房，数据不出门，无需担心数据安全和断网风险。</p></div>
+    <div class="feature"><h4>30 分钟上线</h4><p>免安装环境，一键部署，扫码枪插上即用，无需专职 IT。</p></div>
+    <div class="feature"><h4>防超卖 · 防错账</h4><p>三重防线防超卖，库存变动全程留痕，账实永远对得上。</p></div>
+    <div class="feature"><h4>价格透明</h4><p>订阅版 / 买断版明码标价，免费试用 1 个月，无隐藏费用。</p></div>
+    <div class="feature"><h4>扫码作业</h4><p>收货、拣货、盘点支持扫码枪，效率翻倍，少出错。</p></div>
+    <div class="feature"><h4>持续更新</h4><p>按年订阅持续获得新功能与技术支持。</p></div>
+  </div>
+</section>
+
+<section class="section wrap" id="download">
+  <h2 class="section-title">下载安装 · 免费试用 1 个月</h2>
+  <p class="section-sub">下载安装包 → 双击安装 → 首次启动自动进入 30 天全功能试用，无需注册、无需留联系方式</p>
+
+  <div class="download-grid">
+    <div class="download-main">
+      <h3>WMS 仓储管理系统（私有化版）</h3>
+      <ul class="dl-meta">
+        <li>支持 Windows 10/11、Server 2016+</li>
+        <li>私有化部署 · 纯内网运行 · 数据 100% 本地</li>
+        <li>30 天全功能试用，到期转只读，数据完整保留</li>
+        <li>内置数据库与运行环境，无需额外安装</li>
+      </ul>
+      <div id="dl-buttons"></div>
+      <p class="dl-note" id="dl-note"></p>
+    </div>
+    <div class="download-steps">
+      <h3>三步上线</h3>
+      <ol>
+        <li><b>下载安装</b>：解压安装包，管理员运行 install.bat，全自动完成。</li>
+        <li><b>自动试用</b>：浏览器打开 <code>http://本机IP:8000</code>，账号 admin / Admin@123456（首次登录请改密），自动进入 30 天试用。</li>
+        <li><b>付费升级</b>：软件内「系统管理 → 授权信息」点「复制申请码」发给我们，付款后粘贴授权文件即可激活，数据不丢失。</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="dl-flow">
+    <h3>软件内「免费试用 → 付费升级」全自动流程</h3>
+    <div class="dl-flow-grid">
+      <div class="dl-flow-item"><span class="ico">🎁</span><b>自动试用</b><p>安装后首次启动自动进入 30 天全功能试用，无需申请。</p></div>
+      <div class="dl-flow-item"><span class="ico">⏰</span><b>到期提醒</b><p>授权页实时显示剩余天数，到期自动转只读。</p></div>
+      <div class="dl-flow-item"><span class="ico">📋</span><b>一键申请码</b><p>点「复制申请码」发给客服，无需手抄。</p></div>
+      <div class="dl-flow-item"><span class="ico">🔑</span><b>粘贴即激活</b><p>把授权文件内容粘贴进「激活」框，立即恢复，数据保留。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap" id="demo" style="padding-top: 0;">
+  <h2 class="section-title">30 分钟上线 · 产品演示</h2>
+  <p class="section-sub">扫码收货、拣货防超卖、盘点差异，自动播放演示</p>
+
+  <style>
+    .demo-player { position: relative; background: #1F2A3D; border-radius: 12px; overflow: hidden; min-height: 340px; }
+    .demo-slide { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: #fff; padding: 30px; opacity: 0; transition: opacity .6s; }
+    .demo-slide.active { opacity: 1; }
+    .demo-slide .ico { font-size: 54px; margin-bottom: 16px; }
+    .demo-slide .ttl { font-size: 25px; font-weight: 700; margin-bottom: 8px; }
+    .demo-slide .sub { font-size: 15px; color: #C9D8F5; }
+    .demo-bar { position: absolute; left: 0; bottom: 0; height: 4px; width: 0; background: #2F6FED; }
+    .demo-dots { position: absolute; right: 16px; bottom: 10px; display: flex; gap: 6px; }
+    .demo-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,.3); cursor: pointer; }
+    .demo-dot.active { background: #fff; }
+    .demo-play { position: absolute; left: 16px; bottom: 8px; background: rgba(255,255,255,.15); border: none; color: #fff; font-size: 16px; cursor: pointer; border-radius: 50%; width: 32px; height: 32px; line-height: 32px; text-align: center; }
+  </style>
+
+  <div style="display: grid; grid-template-columns: 1.6fr 1fr; gap: 20px; align-items: stretch;">
+    <div class="demo-player" id="demoPlayer">
+      <div class="demo-slide active"><div class="ico">📦</div><div class="ttl">发错货 · 库存对不上 · 盘点累</div><div class="sub">WMS 帮你一次解决</div></div>
+      <div class="demo-slide"><div class="ico">⚡</div><div class="ttl">30 分钟上线</div><div class="sub">免装环境，双击就装，扫码枪插上即用</div></div>
+      <div class="demo-slide"><div class="ico">📊</div><div class="ttl">工作台一屏看清</div><div class="sub">今日进出、待办、库存预警，实时掌握</div></div>
+      <div class="demo-slide"><div class="ico">📷</div><div class="ttl">扫码收货</div><div class="sub">扫一下自动入库，不用手敲</div></div>
+      <div class="demo-slide"><div class="ico">🛡️</div><div class="ttl">防超卖</div><div class="sub">库存不足自动拦截，再也不超卖</div></div>
+      <div class="demo-slide"><div class="ico">🔍</div><div class="ttl">盘点差异自动标色</div><div class="sub">盘盈绿、盘亏红，一眼看清</div></div>
+      <div class="demo-slide"><div class="ico">🔒</div><div class="ttl">私有化 · 纯内网</div><div class="sub">数据 100% 在你自己机房</div></div>
+      <div class="demo-slide"><div class="ico">💰</div><div class="ttl">价格透明</div><div class="sub">订阅 ¥98/月 · 买断 ¥9,800</div></div>
+      <div class="demo-slide"><div class="ico">🎁</div><div class="ttl">免费试用 1 个月</div><div class="sub">30 天全功能，试了再决定</div></div>
+      <div class="demo-bar" id="demoBar"></div>
+      <div class="demo-dots" id="demoDots"></div>
+      <button class="demo-play" id="demoPlay" aria-label="播放/暂停">⏸</button>
+    </div>
+    <div style="background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 24px; display: flex; flex-direction: column; justify-content: center;">
+      <h4 style="font-size: 15px; margin-bottom: 10px;">📄 产品手册与报价单</h4>
+      <p style="font-size: 13px; color: var(--text-2); margin-bottom: 16px;">完整功能清单 + 透明报价，可直接下载发给决策人。</p>
+      <a href="产品手册与报价单.pdf" download class="btn" style="text-align: center;">下载 PDF 报价单</a>
+    </div>
+  </div>
+
+  <script>
+    /* ============================================================
+       下载链接配置区 —— 以后只改这一块
+       拿到安装包直链后：解开下面第一行的注释，把 URL 换成你的直链。
+       官网会自动变成「点一下直接下载」，邮件申请按钮自动降级为兜底。
+       有多条就多写几行，第一条设 primary: true 即可。
+       ============================================================ */
+    var DOWNLOAD_LINKS = [
+      { label: '⬇ 一键下载安装包（zip · 35MB）', url: 'https://aying-0829.github.io/wms-download/WMS-Setup.zip', primary: true },
+      { label: '备用下载（GitHub）', url: 'https://github.com/aying-0829/wms-download/releases/download/v1.0/WMS-Setup.zip' }
+    ];
+    var CONTACT = { wechat: 'Cy_refuel', email: 'hangzhoukaiwei@163.com' };
+
+    (function renderDownloads() {
+      var box = document.getElementById('dl-buttons');
+      var note = document.getElementById('dl-note');
+      if (!box) return;
+      var has = DOWNLOAD_LINKS.length > 0;
+      var html = '<div class="dl-btns">';
+      DOWNLOAD_LINKS.forEach(function (d) {
+        var cls = d.primary ? 'btn btn-dl' : 'btn btn-dl btn-dl-ghost';
+        html += '<a href="' + d.url + '" class="' + cls + '" download>' + d.label + '</a>';
+      });
+      html += '<a href="mailto:' + CONTACT.email + '?subject=' + encodeURIComponent('申请 WMS 仓储系统安装包') +
+              '" class="btn btn-dl ' + (has ? 'btn-dl-ghost' : '') + '">📧 ' +
+              (has ? '邮件申请（备用）' : '邮件申请安装包（zip · 35MB）') + '</a>';
+      html += '</div>';
+      box.innerHTML = html;
+      if (note) {
+        note.innerHTML = has
+          ? '安装包约 35MB，已内置运行环境与数据库，点上方按钮直接下载。解压后右键以「管理员身份」运行 install.bat 即可。若下载慢可试备用链接，或加微信 <b>' + CONTACT.wechat + '</b> 直接获取。'
+          : '安装包约 35MB，已内置运行环境与数据库。点击上方按钮发邮件申请，我们立即回复下载链接；或加微信 <b>' + CONTACT.wechat + '</b> 直接获取。解压后右键以「管理员身份」运行 install.bat 即可。';
+      }
+    })();
+  </script>
+  <script>
+    (function () {
+      var slides = document.querySelectorAll('#demoPlayer .demo-slide');
+      var bar = document.getElementById('demoBar');
+      var dotsBox = document.getElementById('demoDots');
+      var playBtn = document.getElementById('demoPlay');
+      var i = 0, timer = null, playing = true;
+      var DUR = 3500;
+      slides.forEach(function (_, idx) {
+        var d = document.createElement('span');
+        d.className = 'demo-dot' + (idx === 0 ? ' active' : '');
+        d.onclick = function () { i = idx; show(); restart(); };
+        dotsBox.appendChild(d);
+      });
+      function show() {
+        slides.forEach(function (s, idx) { s.classList.toggle('active', idx === i); });
+        dotsBox.querySelectorAll('.demo-dot').forEach(function (d, idx) { d.classList.toggle('active', idx === i); });
+      }
+      function tick() {
+        bar.style.transition = 'none';
+        bar.style.width = '0%';
+        requestAnimationFrame(function () {
+          bar.style.transition = 'width ' + DUR + 'ms linear';
+          bar.style.width = '100%';
+        });
+      }
+      function next() { i = (i + 1) % slides.length; show(); tick(); }
+      function start() { timer = setInterval(next, DUR); tick(); }
+      function stop() { clearInterval(timer); }
+      function restart() { stop(); start(); }
+      playBtn.onclick = function () {
+        if (playing) { stop(); playBtn.textContent = '▶'; playing = false; }
+        else { start(); playBtn.textContent = '⏸'; playing = true; }
+      };
+      start();
+    })();
+  </script>
+</section>
+
+<section class="section wrap" id="faq">
+  <h2 class="section-title">常见问题</h2>
+  <div class="faq">
+    <div class="faq-item"><h4>怎么开始免费试用？</h4><p>从官网下载安装包，解压后管理员运行 install.bat，首次启动自动进入 30 天全功能试用，无需注册、无需留联系方式。到期不付费自动转只读，数据完整保留，续费即恢复。</p></div>
+    <div class="faq-item"><h4>试用到期后怎么升级？</h4><p>打开软件「系统管理 → 授权信息」，点「复制申请码」发给我们（邮箱/微信），付款后我们会把授权文件发回，你在同一页面「粘贴激活」即可，全程几分钟，数据不丢失。</p></div>
+    <div class="faq-item"><h4>订阅版和私有化版有什么区别？</h4><p>订阅版按月/年付费、由我方按客户独立开通，适合想低门槛先用的客户；私有化版一次性买断、装在您自己机房，适合要买断和数据强私有化的客户。</p></div>
+    <div class="faq-item"><h4>需要自己买服务器吗？</h4><p>私有化版需要一台普通电脑/服务器（内网即可）；安装包已内置数据库与运行环境，无需额外配置。</p></div>
+    <div class="faq-item"><h4>支持扫码枪和打印机吗？</h4><p>支持。扫码枪即插即用，支持标签/A4 打印机，电子秤可扩展。</p></div>
+    <div class="faq-item"><h4>数据安全吗？</h4><p>私有化部署、纯内网运行，数据 100% 在您本地，不经过任何第三方。</p></div>
+  </div>
+</section>
+
+<section class="wrap" id="trial" style="padding-bottom: 0;">
+  <div class="trial-cta">
+    <h2>下载即可免费试用 1 个月，30 分钟上线</h2>
+    <p>下载安装包自行安装，首次启动自动进入 30 天试用；到期在软件内自助付费升级，无需人工干预</p>
+    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; align-items: center;">
+      <a href="#download" class="btn">⬇ 下载安装包</a>
+      <a href="mailto:hangzhoukaiwei@163.com" class="btn" style="background: rgba(255,255,255,.15);">📧 邮件咨询</a>
+      <span style="color: #C9D8F5; font-size: 14px;">微信：<b style="color: #fff;">Cy_refuel</b></span>
+    </div>
+    <p style="margin-top: 18px; font-size: 13px;">📧 hangzhoukaiwei@163.com　·　💬 微信 Cy_refuel　·　仅付费升级时才需要联系，试用全程自助</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">WMS 仓储管理系统 · 价格透明 · 私有化部署 · 纯内网运行 · 联系：hangzhoukaiwei@163.com / 微信 Cy_refuel</div>
+</footer>
+
+<!-- ============ 智能客服悬浮窗（规则匹配 FAQ，自动回复常见问题） ============ -->
+<style>
+  .chat-fab {
+    position: fixed; right: 22px; bottom: 22px; z-index: 999;
+    width: 54px; height: 54px; border-radius: 50%; background: var(--primary);
+    color: #fff; border: none; cursor: pointer; font-size: 24px;
+    box-shadow: 0 6px 20px rgba(47,111,237,.35); display: flex; align-items: center; justify-content: center;
+    transition: transform .2s;
+  }
+  .chat-fab:hover { transform: scale(1.06); }
+  .chat-panel {
+    position: fixed; right: 22px; bottom: 88px; z-index: 999;
+    width: 340px; max-width: calc(100vw - 32px); height: 480px; max-height: calc(100vh - 120px);
+    background: #fff; border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,.18);
+    display: none; flex-direction: column; overflow: hidden; border: 1px solid var(--border);
+  }
+  .chat-panel.open { display: flex; }
+  .chat-head { background: var(--primary); color: #fff; padding: 14px 16px; display: flex; align-items: center; gap: 8px; }
+  .chat-head .dot { width: 8px; height: 8px; border-radius: 50%; background: #4ADE80; display: inline-block; }
+  .chat-head b { font-size: 14px; }
+  .chat-head .close { margin-left: auto; background: none; border: none; color: #fff; font-size: 18px; cursor: pointer; }
+  .chat-body { flex: 1; overflow-y: auto; padding: 14px; background: #F5F7FB; }
+  .msg { max-width: 82%; margin-bottom: 10px; padding: 9px 12px; border-radius: 10px; font-size: 13px; line-height: 1.6; white-space: pre-wrap; word-break: break-word; }
+  .msg.bot { background: #fff; border: 1px solid var(--border); color: var(--text); align-self: flex-start; border-bottom-left-radius: 2px; }
+  .msg.user { background: var(--primary); color: #fff; margin-left: auto; border-bottom-right-radius: 2px; }
+  .chat-quick { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 14px 10px; background: #F5F7FB; }
+  .chat-quick button {
+    background: #fff; border: 1px solid var(--primary); color: var(--primary); border-radius: 16px;
+    padding: 5px 12px; font-size: 12px; cursor: pointer; transition: background .2s;
+  }
+  .chat-quick button:hover { background: #EEF3FF; }
+  .chat-input { display: flex; gap: 8px; padding: 10px 12px; border-top: 1px solid var(--border); background: #fff; }
+  .chat-input input { flex: 1; border: 1px solid var(--border); border-radius: 18px; padding: 8px 14px; font-size: 13px; outline: none; }
+  .chat-input input:focus { border-color: var(--primary); }
+  .chat-input button { background: var(--primary); color: #fff; border: none; border-radius: 18px; padding: 0 16px; font-size: 13px; cursor: pointer; }
+</style>
+
+<button class="chat-fab" id="chatFab" aria-label="在线客服">💬</button>
+<div class="chat-panel" id="chatPanel">
+  <div class="chat-head">
+    <span class="dot"></span><b>在线客服（自动回复）</b>
+    <button class="close" id="chatClose" aria-label="关闭">×</button>
+  </div>
+  <div class="chat-body" id="chatBody"></div>
+  <div class="chat-quick" id="chatQuick">
+    <button data-q="怎么下载试用？">怎么下载试用？</button>
+    <button data-q="价格多少？">价格多少？</button>
+    <button data-q="数据安全吗？">数据安全吗？</button>
+    <button data-q="怎么购买？">怎么购买？</button>
+  </div>
+  <div class="chat-input">
+    <input id="chatInput" placeholder="输入问题…" />
+    <button id="chatSend">发送</button>
+  </div>
+</div>
+
+<script>
+(function () {
+  var CONTACT = '微信 Cy_refuel ／ 邮箱 hangzhoukaiwei@163.com';
+  var QA = [
+    { k: ['下载', '安装', '试用', 'install', '部署'], a: '从本页「下载安装」区下载安装包 → 解压后右键「install.bat」以管理员身份运行 → 首次启动自动进入 30 天全功能试用，无需注册、无需留联系方式。' },
+    { k: ['价格', '多少钱', '费用', '报价', '收费'], a: '订阅版 ¥98/月起（付10用12），私有化买断 ¥9,800 起，价格全透明，详见本页「透明价格」。' },
+    { k: ['订阅', '买断', '区别', '私有化', '按月'], a: '订阅版按月/年付费、我方托管；私有化版一次性买断、装在您自己机房。功能完全一样，详见「订阅 vs 私有化」对比表。' },
+    { k: ['到期', '续费', '升级', '激活', '只读', '恢复'], a: '试用 30 天到期自动转只读、数据保留。付费后到软件「系统管理→授权信息」复制申请码发给我们，粘贴授权文件即可恢复。' },
+    { k: ['数据', '安全', '内网', '隐私'], a: '私有化部署、纯内网运行，数据 100% 在您本地机房，不经过任何第三方，断网也能用。' },
+    { k: ['扫码枪', '打印机', '电子秤', '标签', 'pda', 'PDA'], a: '支持扫码枪即插即用、标签/A4 打印机，电子秤可扩展，扫码收货/拣货/盘点效率翻倍。' },
+    { k: ['服务器', '电脑', '硬件', '配置', '机器'], a: '私有化版只需一台普通电脑/服务器（内网即可），安装包已内置数据库与运行环境，无需专职 IT。' },
+    { k: ['购买', '付款', '联系', '微信', '邮箱', '客服', '买'], a: '购买或需要人工服务，请加 ' + CONTACT + '。付款后当天为您签发正式授权。' }
+  ];
+  function answer(q) {
+    for (var i = 0; i < QA.length; i++) {
+      for (var j = 0; j < QA[i].k.length; j++) {
+        if (q.indexOf(QA[i].k[j]) >= 0) return QA[i].a;
+      }
+    }
+    return '这个问题我暂时答不上，建议直接联系人工客服：' + CONTACT + '，我们会尽快回复您。';
+  }
+  var fab = document.getElementById('chatFab');
+  var panel = document.getElementById('chatPanel');
+  var body = document.getElementById('chatBody');
+  var input = document.getElementById('chatInput');
+  var opened = false;
+  function addMsg(text, who) {
+    var m = document.createElement('div');
+    m.className = 'msg ' + who;
+    m.textContent = text;
+    body.appendChild(m);
+    body.scrollTop = body.scrollHeight;
+  }
+  function welcome() {
+    addMsg('您好，我是智能客服，可以回答下载试用、价格、数据安全等常见问题。您也可以直接输入问题～', 'bot');
+  }
+  function send(q) {
+    q = (q || '').trim();
+    if (!q) return;
+    addMsg(q, 'user');
+    setTimeout(function () { addMsg(answer(q), 'bot'); }, 300);
+    input.value = '';
+  }
+  fab.onclick = function () {
+    opened = !opened;
+    panel.classList.toggle('open', opened);
+    if (opened && !body.children.length) welcome();
+  };
+  document.getElementById('chatClose').onclick = function () {
+    opened = false;
+    panel.classList.remove('open');
+  };
+  document.getElementById('chatSend').onclick = function () { send(input.value); };
+  input.onkeydown = function (e) { if (e.key === 'Enter') send(input.value); };
+  document.querySelectorAll('#chatQuick button').forEach(function (b) {
+    b.onclick = function () { send(b.getAttribute('data-q')); };
+  });
+})();
+</script>
+
+</body>
+</html>
