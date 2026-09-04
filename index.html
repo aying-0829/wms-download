@@ -150,6 +150,14 @@
   .dl-note { font-size: 12.5px; color: var(--text-3); margin-top: 14px; line-height: 1.7; }
   .download-steps ol { padding-left: 18px; font-size: 13.5px; color: var(--text-2); line-height: 1.9; }
   .download-steps ol li { margin-bottom: 12px; }
+  .mode-compare { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 28px; margin-top: 20px; overflow-x: auto; }
+  .mode-compare h3 { font-size: 17px; margin-bottom: 6px; }
+  .mc-sub { font-size: 13px; color: var(--text-3); margin-bottom: 16px; }
+  .mode-compare table { width: 100%; border-collapse: collapse; font-size: 13.5px; min-width: 620px; }
+  .mode-compare th, .mode-compare td { border: 1px solid var(--border); padding: 10px 12px; text-align: left; vertical-align: top; line-height: 1.7; }
+  .mode-compare th { background: #F7F9FC; font-weight: 600; white-space: nowrap; }
+  .mode-compare td:first-child { color: var(--text-2); white-space: nowrap; }
+  .tip-box { margin-top: 16px; background: #FFF8E6; border: 1px solid #FFE1A6; color: #8A5A00; border-radius: 8px; padding: 12px 14px; font-size: 13px; line-height: 1.8; }
   .dl-flow { margin-top: 24px; background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 28px; }
   .dl-flow h3 { font-size: 17px; margin-bottom: 18px; text-align: center; }
   .dl-flow-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
@@ -452,17 +460,18 @@
 <!-- 下载安装 -->
 <section class="section" id="download">
   <div class="wrap">
-    <h2 class="section-title">下载安装 · 免费试用 1 个月</h2>
-    <p class="section-sub">下载安装包 → 双击安装 → 首次启动自动进入 30 天全功能试用，无需注册、无需留联系方式</p>
+    <h2 class="section-title">下载安装 · 两种模式任选</h2>
+    <p class="section-sub">两种用法，数据与功能完全一样，区别只在「怎么用」· 首次启动自动进入 30 天全功能试用，无需注册、无需留联系方式</p>
 
     <div class="download-grid">
       <div class="download-main">
-        <h3>WMS 仓储管理系统（私有化版）</h3>
+        <h3>模式一 · 服务端版（装 1 台，全公司浏览器用）</h3>
         <ul class="dl-meta">
           <li>支持 Windows 10/11、Server 2016+</li>
           <li>私有化部署 · 纯内网运行 · 数据 100% 本地</li>
           <li>30 天全功能试用，到期转只读，数据完整保留</li>
           <li>内置数据库与运行环境，无需额外安装</li>
+          <li><b>装 1 台就够</b>：同事电脑免装任何东西，浏览器打开地址即用</li>
         </ul>
         <div id="dl-buttons"></div>
         <p class="dl-note" id="dl-note"></p>
@@ -476,6 +485,51 @@
           <li><b>付费升级</b>：软件内「系统管理 → 授权信息」点「复制申请码」发给我们，付款后粘贴授权文件即可激活，数据不丢失。</li>
         </ol>
       </div>
+    </div>
+
+    <div class="download-grid" style="margin-top: 20px;">
+      <div class="download-main">
+        <h3>模式二 · 桌面客户端版（每台电脑装，独立窗口）</h3>
+        <ul class="dl-meta">
+          <li>双击桌面图标直接弹窗，<b>不依赖浏览器</b></li>
+          <li>托盘常驻、静默打印、电子秤直连、自动更新</li>
+          <li>需搭配上面「模式一 服务端版」使用（客户端只是访问入口，<b>不存数据</b>）</li>
+          <li>支持 Windows 10/11 64 位</li>
+        </ul>
+        <div id="dl-buttons-2"></div>
+        <p class="dl-note" id="dl-note-2"></p>
+      </div>
+      <div class="download-steps">
+        <h3>客户端怎么用</h3>
+        <ol>
+          <li><b>先装服务端</b>：在一台机器上装好上面的「模式一 服务端版」。</li>
+          <li><b>再装客户端</b>：在要用的每台电脑上双击客户端安装包，一路「下一步」即可。</li>
+          <li><b>填一次地址</b>：首次启动填 <code>http://服务端IP:8000</code>，点「测试连接」→「保存并进入」。</li>
+          <li><b>以后双击就用</b>：桌面图标直接进系统，可最小化到右下角托盘常驻。</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="mode-compare">
+      <h3>两种模式怎么选？</h3>
+      <p class="mc-sub">数据与功能完全一样，区别只在「怎么用」和「要不要每台都装」。</p>
+      <table>
+        <thead>
+          <tr><th>对比项</th><th>模式一 · 服务端版</th><th>模式二 · 桌面客户端版</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><b>需要安装吗</b></td><td><b>只装 1 台</b>（服务端）；同事电脑免装</td><td>服务端仍要装 1 台；<b>每台电脑再装</b>客户端</td></tr>
+          <tr><td><b>能在哪用</b></td><td>任何能开浏览器的设备（电脑 / 平板 / 手机）</td><td>Windows 电脑（需先装客户端）</td></tr>
+          <tr><td><b>运行环境</b></td><td>浏览器（Chrome / Edge / 360 等）</td><td>独立窗口，自带内核，不依赖浏览器</td></tr>
+          <tr><td><b>数据存在哪</b></td><td>服务端那台机器，100% 本地</td><td>同样在服务端（客户端不存数据）</td></tr>
+          <tr><td><b>性能表现</b></td><td>日常够用，受浏览器标签页影响</td><td>更稳，独立进程，长时间开着不卡</td></tr>
+          <tr><td><b>离线 / 断网</b></td><td>纯内网可跑；服务端关了就用不了</td><td>同样需要连得上服务端</td></tr>
+          <tr><td><b>临时换台电脑</b></td><td>打开浏览器就能用</td><td>得先装客户端</td></tr>
+          <tr><td><b>特色能力</b></td><td>免维护、随时换机</td><td>托盘常驻、静默打印、电子秤直连、自动更新</td></tr>
+          <tr><td><b>适合谁</b></td><td>工位不固定、想省事、不想装软件</td><td>固定工位、想用得像正经软件、要打印 / 称重</td></tr>
+        </tbody>
+      </table>
+      <div class="tip-box"><b>请注意：</b>模式二（桌面客户端）必须搭配模式一（服务端版）使用，它本身不带数据库，<b>不能单独运行</b>。简单记：<b>服务端必装一次，客户端想装几台装几台。</b></div>
     </div>
 
     <div class="dl-flow">
@@ -523,27 +577,35 @@
          把链接换成你的直链即可，官网自动变成「点一下直接下载」。
          有多条就多写几行，第一条设 primary: true。
          ============================================================ */
+      /* 模式一：服务端版（必装，提供数据库与接口） */
       var DOWNLOAD_LINKS = [
-        { label: '⬇ 一键下载安装包（exe · 约25MB · 双击即装）', url: 'https://aying-0829.github.io/wms-download/WMS-Setup.exe', primary: true },
+        { label: '⬇ 下载 服务端版（exe · 约 26MB · 双击即装）', url: 'https://aying-0829.github.io/wms-download/WMS-Setup.exe', primary: true },
         { label: '备用下载（zip 压缩包）', url: 'https://aying-0829.github.io/wms-download/WMS-Setup.zip' }
+      ];
+      /* 模式二：桌面客户端版（可选，需搭配服务端版使用，不能单独运行） */
+      var DOWNLOAD_LINKS_2 = [
+        { label: '⬇ 下载 桌面客户端版（exe · 约 73MB）', url: 'https://aying-0829.github.io/wms-download/WMS-Client-Setup.exe', primary: true }
       ];
       var CONTACT = { wechat: 'Cy_refuel', email: 'hangzhoukaiwei@163.com' };
 
       (function renderDownloads() {
-        var box = document.getElementById('dl-buttons');
-        var note = document.getElementById('dl-note');
-        if (!box) return;
-        var has = DOWNLOAD_LINKS.length > 0;
-        var html = '<div class="dl-btns">';
-        DOWNLOAD_LINKS.forEach(function (d) {
-          var cls = d.primary ? 'btn btn-dl' : 'btn btn-dl btn-dl-ghost';
-          html += '<a href="' + d.url + '" class="' + cls + '" download>' + d.label + '</a>';
-        });
-        html += '</div>';
-        box.innerHTML = html;
-        if (note) {
-          note.innerHTML = '安装包约 25MB（exe 自解压安装向导），点上方按钮直接下载，双击后按提示选路径安装，装完自动打开浏览器登录页。若下载慢可试备用 zip 链接，或加微信 <b>' + CONTACT.wechat + '</b> 直接获取。';
+        function render(links, boxId, noteId, noteHtml) {
+          var box = document.getElementById(boxId);
+          var note = document.getElementById(noteId);
+          if (!box) return;
+          var html = '<div class="dl-btns">';
+          links.forEach(function (d) {
+            var cls = d.primary ? 'btn btn-dl' : 'btn btn-dl btn-dl-ghost';
+            html += '<a href="' + d.url + '" class="' + cls + '" download>' + d.label + '</a>';
+          });
+          html += '</div>';
+          box.innerHTML = html;
+          if (note && noteHtml) note.innerHTML = noteHtml;
         }
+        render(DOWNLOAD_LINKS, 'dl-buttons', 'dl-note',
+          '服务端版约 26MB，双击后按提示选路径安装，装完自动打开浏览器登录页。若下载慢可试备用 zip 链接，或加微信 <b>' + CONTACT.wechat + '</b> 直接获取。');
+        render(DOWNLOAD_LINKS_2, 'dl-buttons-2', 'dl-note-2',
+          '客户端版约 73MB，装在要用的电脑上；<b>必须先有一台装好「服务端版」的机器</b>，首次启动填它的地址（如 <code>http://192.168.1.100:8000</code>）即可。');
       })();
     </script>
     <script>
@@ -591,7 +653,8 @@
   <div class="wrap">
     <h2 class="section-title">常见问题</h2>
     <div class="faq">
-      <div class="faq-item"><h4>怎么开始免费试用？</h4><p>从官网下载安装包（WMS-Setup.exe），双击按提示安装，首次启动自动进入 30 天全功能试用，无需注册、无需留联系方式。到期不付费自动转只读，数据完整保留，续费即恢复。</p></div>
+      <div class="faq-item"><h4>怎么开始免费试用？</h4><p>从官网「下载安装」区任选一种模式：服务端版（装 1 台，全公司浏览器用，同事免装）或桌面客户端版（装在每台电脑，独立窗口，需搭配服务端版）。双击按提示安装，首次启动自动进入 30 天全功能试用，无需注册、无需留联系方式。到期不付费自动转只读，数据完整保留，续费即恢复。</p></div>
+      <div class="faq-item"><h4>两种模式该选哪个？</h4><p>想省事、工位不固定、不想给每台电脑装东西 → 选<b>模式一 服务端版</b>（装 1 台就够，同事打开浏览器就能用，手机平板也能开）。想要独立窗口、托盘常驻、静默打印、电子秤直连 → 在服务端版基础上再装<b>模式二 桌面客户端</b>。注意：客户端必须搭配服务端版使用，不能单独运行；两者数据完全一样，也可以先用模式一，以后想用了再补装客户端。</p></div>
       <div class="faq-item"><h4>试用到期后怎么升级？</h4><p>打开软件「系统管理 → 授权信息」，点「复制申请码」发给我们（邮箱/微信），付款后我们会把授权文件发回，你在同一页面「粘贴激活」即可，全程几分钟，数据不丢失。</p></div>
       <div class="faq-item"><h4>订阅版和私有化版有什么区别？</h4><p>订阅版按月/年付费、由我方按客户独立开通，适合想低门槛先用的客户；私有化版一次性买断、装在您自己机房，适合要买断和数据强私有化的客户。</p></div>
       <div class="faq-item"><h4>需要自己买服务器吗？</h4><p>私有化版需要一台普通电脑/服务器（内网即可）；安装包已内置数据库与运行环境，无需额外配置。</p></div>
@@ -658,7 +721,8 @@
 (function () {
   var CONTACT = '微信 Cy_refuel ／ 邮箱 hangzhoukaiwei@163.com';
   var QA = [
-    { k: ['下载', '安装', '试用', 'install', '部署'], a: '从本页「下载安装」区下载 WMS-Setup.exe → 双击按提示选路径安装（自动注册服务）→ 首次启动自动进入 30 天全功能试用，无需注册、无需留联系方式。' },
+    { k: ['下载', '安装', '试用', 'install', '部署'], a: '本页「下载安装」区有两种模式：①服务端版（必装，装 1 台，全公司用浏览器访问，同事电脑免装）；②桌面客户端版（可选，装在每台电脑上，双击图标弹独立窗口，但必须先有服务端版）。两者都是 30 天全功能试用，无需注册、无需留联系方式。' },
+    { k: ['客户端', '桌面', 'exe', '独立窗口', '模式二', '装在哪'], a: '模式二桌面客户端需搭配模式一服务端版使用，它本身不带数据库、不能单独运行。用法：先在一台机器装服务端版，再在要用的每台电脑装客户端，首次启动填 http://服务端IP:8000 即可。客户端好处是独立窗口、托盘常驻、静默打印、电子秤直连。' },
     { k: ['价格', '多少钱', '费用', '报价', '收费'], a: '订阅版 ¥98/月起（付10用12），私有化买断 ¥9,800 起，价格全透明，详见本页「四个版本到底差在哪？」。' },
     { k: ['订阅', '买断', '区别', '私有化', '按月'], a: '订阅版按月/年付费、我方托管；私有化版一次性买断、装在您自己机房。功能完全一样，详见「订阅 vs 私有化」对比表。' },
     { k: ['到期', '续费', '升级', '激活', '只读', '恢复'], a: '试用 30 天到期自动转只读、数据保留。付费后到软件「系统管理→授权信息」复制申请码发给我们，粘贴授权文件即可恢复。' },
