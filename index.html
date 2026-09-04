@@ -4,7 +4,6 @@
 <meta charset="UTF-8" data-page-node-id="yF6oH3ViEJaV4rGRBVu2zJ" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="zlXMGayZrHhi6KDEDG3Hq3" />
 <title>WMS 仓储管理系统 · 私有化部署 · 免费试用</title>
-<link rel="icon" type="image/svg+xml" href="logo/wms-logo-2-box.svg">
 <style>
 /* ============================================================
    DESIGN SYSTEM — WMS v2
@@ -150,11 +149,11 @@ h1, h2, h3, h4 { font-weight: 800; color: var(--ink); line-height: 1.2; letter-s
   letter-spacing: 0;
 }
 .nav-brand-icon {
-  width: 40px; height: 40px;
-  flex-shrink: 0;
-}
-.nav-brand-icon svg {
-  width: 100%; height: 100%;
+  width: 32px; height: 32px; border-radius: var(--radius-md);
+  background: var(--cobalt);
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-size: var(--text-base); font-weight: 800;
+  box-shadow: 0 2px 8px rgba(29,78,216,0.3);
 }
 .nav-links { display: flex; align-items: center; gap: var(--space-6); }
 .nav-links a {
@@ -271,11 +270,6 @@ h1, h2, h3, h4 { font-weight: 800; color: var(--ink); line-height: 1.2; letter-s
 
 /* Hero visual — product mockup */
 .hero-visual { position: relative; }
-.hero-brand-logo {
-  display: flex; justify-content: center; margin-bottom: var(--space-8);
-}
-.hero-brand-logo svg { width: 120px; height: 120px; filter: drop-shadow(0 8px 24px rgba(29,78,216,0.3)); }
-@media (max-width: 768px) { .hero-brand-logo svg { width: 96px; height: 96px; } }
 .hero-mock {
   background: rgba(255,255,255,0.06);
   border: 1px solid rgba(255,255,255,0.1);
@@ -718,6 +712,27 @@ h1, h2, h3, h4 { font-weight: 800; color: var(--ink); line-height: 1.2; letter-s
 .demo-side .btn { display: inline-flex; align-items: center; gap: var(--space-2); background: white; color: var(--navy); padding: 12px 24px; border-radius: var(--radius-md); font-size: var(--text-sm); font-weight: 700; transition: all var(--duration-fast) var(--spring); }
 .demo-side .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,255,255,0.2); }
 
+/* Video demo responsive */
+@media (max-width: 768px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .receipt-mode { flex-direction: column; }
+  .receipt-tip { flex-direction: column; }
+  .security-flow { flex-wrap: wrap; justify-content: center; gap: 8px; }
+  .flow-arrow { display: none; }
+  .deploy-compare { flex-direction: column; }
+  .pricing-cards { grid-template-columns: 1fr; }
+  .table-header, .table-row { grid-template-columns: 60px 1fr 70px 40px 60px 60px; }
+  .mock-sidebar { display: none; }
+  .scene-main { margin-left: 0; }
+}
+@media (max-width: 480px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .stat-value { font-size: 18px; }
+  .form-row { grid-template-columns: 1fr; }
+  .scene-content { padding: 10px; }
+  .video-controls { padding: 8px 10px; }
+}
+
 /* ============================================================
    FAQ
    ============================================================ */
@@ -843,10 +858,8 @@ h1, h2, h3, h4 { font-weight: 800; color: var(--ink); line-height: 1.2; letter-s
 <nav class="nav" id="nav" data-page-node-id="0AiLt4X4Nrt5WOfE3Zhi6r">
   <div class="nav-inner" data-page-node-id="zSuuUewus9aTZwcnXEaHFl">
     <a href="#" class="nav-brand" data-page-node-id="Ec3RpBwzsn9jPcaoYsU0r7">
-      <div class="nav-brand-icon" data-page-node-id="kRmnwxgJA4PGgzCbEqNOzr">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><defs><linearGradient id="boxGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1D4ED8"/><stop offset="50%" stop-color="#0D9488"/><stop offset="100%" stop-color="#1D4ED8"/></linearGradient></defs><rect width="512" height="512" fill="#FAFAF8"/><circle cx="256" cy="256" r="200" fill="none" stroke="url(#boxGrad)" stroke-width="8"/><circle cx="256" cy="256" r="170" fill="none" stroke="#1D4ED8" stroke-width="2" opacity="0.3"/><path d="M256 160 L340 210 L340 310 L256 360 L172 310 L172 210 Z" fill="url(#boxGrad)" opacity="0.9"/><path d="M256 160 L340 210 L256 260 L172 210 Z" fill="#3B82F6" opacity="0.6"/><line x1="172" y1="260" x2="340" y2="260" stroke="white" stroke-width="2" opacity="0.5"/><line x1="210" y1="260" x2="210" y2="340" stroke="white" stroke-width="2" opacity="0.5"/><line x1="302" y1="260" x2="302" y2="340" stroke="white" stroke-width="2" opacity="0.5"/></svg>
-      </div>
-      <span>WMS</span>
+      <div class="nav-brand-icon" data-page-node-id="kRmnwxgJA4PGgzCbEqNOzr">仓</div>
+      WMS
     </a>
     <div class="nav-links" id="navLinks" data-page-node-id="Ex8nGTbephVCxaKIyPjdJR">
       <a href="#features" data-page-node-id="97OYYIK69zKMeDT6Afs0rd">核心功能</a>
@@ -868,9 +881,6 @@ h1, h2, h3, h4 { font-weight: 800; color: var(--ink); line-height: 1.2; letter-s
 <section class="hero" data-page-node-id="VRKfARYi8pxPjOlbHMfXIR">
   <div class="wrap hero-inner" data-page-node-id="N6EfiB7D3vsO2CkiFtG21c">
     <div class="hero-content" data-page-node-id="5KwFBLQhj8RBkWBD59FxWb">
-      <div class="hero-brand-logo" data-page-node-id="heroLogo">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><defs><linearGradient id="boxGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1D4ED8"/><stop offset="50%" stop-color="#0D9488"/><stop offset="100%" stop-color="#1D4ED8"/></linearGradient></defs><circle cx="256" cy="256" r="200" fill="none" stroke="url(#boxGrad)" stroke-width="8"/><circle cx="256" cy="256" r="170" fill="none" stroke="#1D4ED8" stroke-width="2" opacity="0.3"/><path d="M256 160 L340 210 L340 310 L256 360 L172 310 L172 210 Z" fill="url(#boxGrad)" opacity="0.9"/><path d="M256 160 L340 210 L256 260 L172 210 Z" fill="#3B82F6" opacity="0.6"/><line x1="172" y1="260" x2="340" y2="260" stroke="white" stroke-width="2" opacity="0.5"/><line x1="210" y1="260" x2="210" y2="340" stroke="white" stroke-width="2" opacity="0.5"/><line x1="302" y1="260" x2="302" y2="340" stroke="white" stroke-width="2" opacity="0.5"/></svg>
-      </div>
       <span class="hero-eyebrow" data-page-node-id="th1FjGs1FV3YO3RaZeXFeE"><span class="hero-eyebrow-dot" data-page-node-id="c1KnZFIchnf9pLSAXDgRQe"></span> 私有化部署 · 纯内网运行 · 数据 100% 本地</span>
       <h1 data-page-node-id="Qb52xgWh9K52RmvEGP3SW5">不用装环境，<br data-page-node-id="gjOM7OrTpHC9jb8saMp0AG"><span class="accent" data-page-node-id="oAq06BlN0CUR1CLjrKCmXy">30 分钟上线</span>的仓储管理系统</h1>
       <p class="hero-sub" data-page-node-id="o6n3zO8NaQiJNPQ7JGbqK5">为电商仓、实体工厂、中小制造企业打造。扫码收货、防超卖、库存预警一应俱全。订阅版免费试用 1 个月，价格全透明，试了再决定。</p>
@@ -954,74 +964,419 @@ h1, h2, h3, h4 { font-weight: 800; color: var(--ink); line-height: 1.2; letter-s
       <p class="section-desc" data-page-node-id="ltm1Z1QGdjsirpxKYowi3y">扫码收货、防超卖、批次效期、两种部署模式，自动播放演示</p>
     </div>
     <div class="demo-layout reveal" data-page-node-id="R8WudfiLXlIcYJOS4rNjco">
-      <div class="demo-player" id="demoPlayer" data-page-node-id="Pstb7z75On2OOE62F8Rj33">
-        <div class="demo-slide active" data-page-node-id="vItjbGRZKC5FcsIEjRTh5X">
-          <div class="slide-icon" data-page-node-id="WADobEygzpWBSfFIUl19M0">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:40px;height:40px;" data-page-node-id="l4ujrm1bTPAgF3arSjCyYN">
-              <rect x="2" y="3" width="20" height="14" rx="2" data-page-node-id="GYpyf1vMCZHjotrkDGOatF"/>
-              <line x1="8" y1="21" x2="16" y2="21" data-page-node-id="8FaFTYdex127Wb5n7HIGei"/>
-              <line x1="12" y1="21" x2="12" y2="17" data-page-node-id="QISJ7fONVyMqKQ7sA5Ka8v"/>
-            </svg>
+      <!-- 视频播放器容器 -->
+      <div class="video-demo" id="videoDemo" data-page-node-id="Pstb7z75On2OOE62F8Rj33">
+        <!-- 视频画面区域 -->
+        <div class="video-screen" id="videoScreen">
+          <!-- 场景 1: 首页工作台 -->
+          <div class="demo-scene active" data-scene="1">
+            <div class="scene-header">
+              <div class="scene-dots">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+              </div>
+              <div class="scene-title">仓储管理系统</div>
+            </div>
+            <div class="scene-content">
+              <div class="mock-sidebar">
+                <div class="sidebar-item active">
+                  <span class="sidebar-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                  </span>
+                  <span>工作台</span>
+                </div>
+                <div class="sidebar-item"><span class="sidebar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span><span>入库管理</span></div>
+                <div class="sidebar-item"><span class="sidebar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12V5H7l-3 3 3 3v9a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2z"/></svg></span><span>出库管理</span></div>
+                <div class="sidebar-item"><span class="sidebar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><span>库存预警</span></div>
+              </div>
+              <div class="scene-main">
+                <div class="main-header">
+                  <div class="date-display">2026-09-05 周五</div>
+                  <div class="user-info">
+                    <span class="user-avatar">管</span>
+                    <span>管理员</span>
+                  </div>
+                </div>
+                <div class="stats-grid">
+                  <div class="stat-card">
+                    <div class="stat-value" data-target="38">0</div>
+                    <div class="stat-label">今日入库</div>
+                    <div class="stat-change up">↑ 12%</div>
+                  </div>
+                  <div class="stat-card">
+                    <div class="stat-value" data-target="52">0</div>
+                    <div class="stat-label">今日出库</div>
+                    <div class="stat-change up">↑ 8%</div>
+                  </div>
+                  <div class="stat-card warning">
+                    <div class="stat-value" data-target="3">0</div>
+                    <div class="stat-label">库存预警</div>
+                    <div class="stat-change down">需补货</div>
+                  </div>
+                  <div class="stat-card">
+                    <div class="stat-value" data-target="99.8">0</div>
+                    <div class="stat-label">准确率</div>
+                    <div class="stat-change up">稳定</div>
+                  </div>
+                </div>
+                <div class="chart-area">
+                  <div class="chart-title">近 7 天出入库趋势</div>
+                  <div class="chart-bars">
+                    <div class="bar-group"><div class="bar in" style="height:60%"></div><div class="bar out" style="height:45%"></div><span>周一</span></div>
+                    <div class="bar-group"><div class="bar in" style="height:75%"></div><div class="bar out" style="height:60%"></div><span>周二</span></div>
+                    <div class="bar-group"><div class="bar in" style="height:55%"></div><div class="bar out" style="height:70%"></div><span>周三</span></div>
+                    <div class="bar-group"><div class="bar in" style="height:85%"></div><div class="bar out" style="height:65%"></div><span>周四</span></div>
+                    <div class="bar-group"><div class="bar in" style="height:65%"></div><div class="bar out" style="height:80%"></div><span>周五</span></div>
+                    <div class="bar-group"><div class="bar in" style="height:90%"></div><div class="bar out" style="height:85%"></div><span>周六</span></div>
+                    <div class="bar-group"><div class="bar in" style="height:70%"></div><div class="bar out" style="height:55%"></div><span>周日</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <h3 data-page-node-id="fNh8XcOyDHk9PtjCqiDLE9">首页工作台</h3>
-          <p data-page-node-id="HLCfCjcFxI5GMjM8diVhzZ">今日入库 38 笔、出库 52 笔，3 个 SKU 库存低于安全线，近 7 天趋势一目了然</p>
-        </div>
-        <div class="demo-slide" data-page-node-id="7UQZs8os0grGPK7NGHcepe">
-          <div class="slide-icon" data-page-node-id="4eXsbDRXkFZgBTqNJH3lkj">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:40px;height:40px;" data-page-node-id="j0aFIkqXy7bh29vZTnpuYr">
-              <rect x="2" y="4" width="20" height="16" rx="2" data-page-node-id="Vnz1AC77AVGgYC6TfXNw38"/>
-              <path d="M7 11l3 3 7-7" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="BoGBkwtCnC0erwtABwnrRX"/>
-            </svg>
+          <!-- 场景 2: 扫码收货 -->
+          <div class="demo-scene" data-scene="2">
+            <div class="scene-header">
+              <div class="scene-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+              <div class="scene-title">扫码收货</div>
+            </div>
+            <div class="scene-content receipt-mode">
+              <div class="receipt-main">
+                <div class="receipt-header">
+                  <div class="back-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                    <span>返回</span>
+                  </div>
+                  <div class="page-title">新增入库单</div>
+                  <div class="save-btn">保存</div>
+                </div>
+                <div class="receipt-form">
+                  <div class="form-row">
+                    <div class="form-field">
+                      <label>采购单号</label>
+                      <input type="text" value="PO20260905001" readonly class="readonly-input"/>
+                    </div>
+                    <div class="form-field">
+                      <label>供应商</label>
+                      <input type="text" value="杭州供应商A" readonly class="readonly-input"/>
+                    </div>
+                  </div>
+                  <div class="scan-area">
+                    <div class="scan-icon">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 9h5M7 13h8M12 9v4"/></svg>
+                    </div>
+                    <div class="scan-text">扫码枪扫描条码，或手动输入</div>
+                    <div class="scan-input-wrap">
+                      <input type="text" placeholder="条码号..." class="scan-input"/>
+                      <button class="scan-btn">扫描</button>
+                    </div>
+                  </div>
+                  <div class="received-items">
+                    <div class="item-row">
+                      <span class="item-sku">SKU-001</span>
+                      <span class="item-name">A型螺丝 M8×20</span>
+                      <span class="item-qty">100</span>
+                      <span class="item-status success">✓ 已入库</span>
+                    </div>
+                    <div class="item-row">
+                      <span class="item-sku">SKU-002</span>
+                      <span class="item-name">B型螺母 M8</span>
+                      <span class="item-qty">200</span>
+                      <span class="item-status success">✓ 已入库</span>
+                    </div>
+                    <div class="item-row current">
+                      <span class="item-sku">SKU-003</span>
+                      <span class="item-name">C型垫片 10mm</span>
+                      <span class="item-qty">--</span>
+                      <span class="item-status pending">扫描中...</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="receipt-tip">
+                <div class="tip-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                </div>
+                <div class="tip-content">
+                  <div class="tip-title">快速上手</div>
+                  <div class="tip-text">扫码枪插上即用，无需额外配置。新人培训 5 分钟即可独立操作。</div>
+                </div>
+              </div>
+            </div>
           </div>
-          <h3 data-page-node-id="idnCcHsuP0aMOhn0c7Hez9">扫码收货，不用手敲</h3>
-          <p data-page-node-id="74oIOJceGg1BKPH4nvUFJi">扫条码自动匹配采购单，数量确认即入库。扫码枪插上就能用，新人培训 5 分钟上手</p>
-        </div>
-        <div class="demo-slide" data-page-node-id="0k6SlALbqEASUMrYZbfgq2">
-          <div class="slide-icon" data-page-node-id="4NfYFQDDhPWz3DlTVlDk2Y">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:40px;height:40px;" data-page-node-id="suygxLo40lbbbLWCB4ojmX">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" data-page-node-id="z8Jeu1gyOlBj6Upfr8QVBk"/>
-            </svg>
+          <!-- 场景 3: 防超卖 -->
+          <div class="demo-scene" data-scene="3">
+            <div class="scene-header">
+              <div class="scene-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+              <div class="scene-title">防超卖机制</div>
+            </div>
+            <div class="scene-content security-mode">
+              <div class="security-main">
+                <div class="security-header">
+                  <div class="page-title">库存锁定验证</div>
+                  <div class="badge security">安全模式</div>
+                </div>
+                <div class="security-flow">
+                  <div class="flow-step active">
+                    <div class="step-number">1</div>
+                    <div class="step-title">订单创建</div>
+                    <div class="step-desc">用户下单 100 件 SKU-001</div>
+                  </div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-step active">
+                    <div class="step-number">2</div>
+                    <div class="step-title">行锁锁定</div>
+                    <div class="step-desc">数据库 FOR UPDATE 锁定库存行</div>
+                  </div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-step active">
+                    <div class="step-number">3</div>
+                    <div class="step-title">乐观锁验证</div>
+                    <div class="step-desc">version 检查防止并发冲突</div>
+                  </div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-step active">
+                    <div class="step-number">4</div>
+                    <div class="step-title">CHECK 约束</div>
+                    <div class="step-desc">数据库级兜底校验</div>
+                  </div>
+                </div>
+                <div class="security-result">
+                  <div class="result-box success">
+                    <div class="result-icon">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <div class="result-text">
+                      <div class="result-title">库存充足，订单锁定成功</div>
+                      <div class="result-detail">可用库存：500 件 | 锁定：100 件 | 剩余可卖：400 件</div>
+                    </div>
+                  </div>
+                  <div class="result-box warning">
+                    <div class="result-icon">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </div>
+                    <div class="result-text">
+                      <div class="result-title">并发拦截演示</div>
+                      <div class="result-detail">若同时请求超库存，系统自动拦截并提示"库存不足"</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <h3 data-page-node-id="HVvqoAWko3X7zRZwFTcOIP">防超卖，三重防线</h3>
-          <p data-page-node-id="DizT3KwlejzfNONE0oarou">数据库行锁 + 乐观锁 + CHECK 约束，大促零点并发峰值也不踩雷，库存永远对得上</p>
-        </div>
-        <div class="demo-slide" data-page-node-id="pQb4lodgFMgciq9v9QgbGm">
-          <div class="slide-icon" data-page-node-id="bFRYGH2wSNIm0Pdm5bG76l">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:40px;height:40px;" data-page-node-id="j0aFIkqXy7bh29vZTnpuYr">
-              <circle cx="12" cy="12" r="10" data-page-node-id="Vnz1AC77AVGgYC6TfXNw38"/>
-              <polyline points="12 6 12 12 16 14" stroke-linecap="round" data-page-node-id="BoGBkwtCnC0erwtABwnrRX"/>
-            </svg>
+          <!-- 场景 4: 批次效期 -->
+          <div class="demo-scene" data-scene="4">
+            <div class="scene-header">
+              <div class="scene-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+              <div class="scene-title">批次效期管理</div>
+            </div>
+            <div class="scene-content batch-mode">
+              <div class="batch-main">
+                <div class="batch-header">
+                  <div class="page-title">库存批次列表</div>
+                  <div class="strategy-selector">
+                    <span class="strategy-label">出库策略：</span>
+                    <div class="strategy-tabs">
+                      <div class="strategy-tab active">FIFO</div>
+                      <div class="strategy-tab">FEFO</div>
+                      <div class="strategy-tab">LIFO</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="batch-table">
+                  <div class="table-header">
+                    <span>批次号</span>
+                    <span>入库日期</span>
+                    <span>有效期至</span>
+                    <span>数量</span>
+                    <span>库位</span>
+                    <span>状态</span>
+                  </div>
+                  <div class="table-row expired">
+                    <span class="batch-no">B20250801</span>
+                    <span>2025-08-01</span>
+                    <span>2026-02-01</span>
+                    <span>50</span>
+                    <span>A-01-03</span>
+                    <span class="status-badge expired">已过期</span>
+                  </div>
+                  <div class="table-row warning">
+                    <span class="batch-no">B20260301</span>
+                    <span>2026-03-01</span>
+                    <span>2026-12-01</span>
+                    <span>200</span>
+                    <span>A-02-01</span>
+                    <span class="status-badge warning">临期预警</span>
+                  </div>
+                  <div class="table-row safe">
+                    <span class="batch-no">B20260501</span>
+                    <span>2026-05-01</span>
+                    <span>2027-05-01</span>
+                    <span>300</span>
+                    <span>B-01-02</span>
+                    <span class="status-badge safe">正常</span>
+                  </div>
+                </div>
+                <div class="batch-tip">
+                  <div class="tip-item">
+                    <div class="tip-dot expired"></div>
+                    <span>过期批次自动锁定，禁止出库</span>
+                  </div>
+                  <div class="tip-item">
+                    <div class="tip-dot warning"></div>
+                    <span>临期 30 天自动预警，提醒优先出库</span>
+                  </div>
+                  <div class="tip-item">
+                    <div class="tip-dot safe"></div>
+                    <span>FIFO 优先出库最早批次，减少损耗</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <h3 data-page-node-id="383C1HowhCcBrzHesK6K9r">批次效期，先进先出</h3>
-          <p data-page-node-id="5wQxROmIfQVXEu0WrrRSl2">FIFO / FEFO / LIFO 可选，批次追溯完整，临期自动预警，库存周转不浪费</p>
-        </div>
-        <div class="demo-slide" data-page-node-id="lMAOEIu3FPh0b8JBLBvWZQ">
-          <div class="slide-icon" data-page-node-id="7rCePCbLXZc9nBWnLlLffG">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:40px;height:40px;" data-page-node-id="l4ujrm1bTPAgF3arSjCyYN">
-              <rect x="2" y="3" width="20" height="14" rx="2" data-page-node-id="GYpyf1vMCZHjotrkDGOatF"/>
-              <line x1="8" y1="21" x2="16" y2="21" data-page-node-id="8FaFTYdex127Wb5n7HIGei"/>
-              <line x1="12" y1="21" x2="12" y2="17" data-page-node-id="QISJ7fONVyMqKQ7sA5Ka8v"/>
-            </svg>
+          <!-- 场景 5: 两种部署 -->
+          <div class="demo-scene" data-scene="5">
+            <div class="scene-header">
+              <div class="scene-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+              <div class="scene-title">部署模式对比</div>
+            </div>
+            <div class="scene-content deploy-mode">
+              <div class="deploy-compare">
+                <div class="deploy-card">
+                  <div class="deploy-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="21" x2="12" y2="17"/></svg>
+                  </div>
+                  <div class="deploy-name">服务端版</div>
+                  <div class="deploy-desc">浏览器直接打开，无需安装</div>
+                  <div class="deploy-features">
+                    <div class="feature">✓ 支持手机/平板访问</div>
+                    <div class="feature">✓ 员工电脑免装</div>
+                    <div class="feature">✓ 换机器即用</div>
+                  </div>
+                  <div class="deploy-price">¥980/年起</div>
+                </div>
+                <div class="deploy-card featured">
+                  <div class="deploy-badge">推荐</div>
+                  <div class="deploy-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="21" x2="12" y2="17"/></svg>
+                  </div>
+                  <div class="deploy-name">桌面客户端</div>
+                  <div class="deploy-desc">局域网连接服务器，双击即用</div>
+                  <div class="deploy-features">
+                    <div class="feature">✓ 独立窗口体验</div>
+                    <div class="feature">✓ 托盘运行，后台静默</div>
+                    <div class="feature">✓ 自动更新，无需手动</div>
+                  </div>
+                  <div class="deploy-price">¥9,800 起买断</div>
+                </div>
+              </div>
+              <div class="deploy-note">
+                <div class="note-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                </div>
+                <div class="note-text">两种模式均可私有化部署，数据完全本地，断网也能用</div>
+              </div>
+            </div>
           </div>
-          <h3 data-page-node-id="ZCAFLJcR5QFUf9OubEWMXu">两种部署，选你方便的</h3>
-          <p data-page-node-id="qSAA2c9NYrZo11DlYioIOx">服务端版：浏览器直接打开；桌面客户端：局域网连服务器，双击即用，无需安装环境</p>
-        </div>
-        <div class="demo-slide" data-page-node-id="8vQnzl09F8mB4KmXWKTZF3">
-          <div class="slide-icon" data-page-node-id="9RajqeNvpRXqGXB0of38UP">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:40px;height:40px;" data-page-node-id="z8Jeu1gyOlBj6Upfr8QVBk">
-              <line x1="12" y1="1" x2="12" y2="23" data-page-node-id="wamrHOjnI4QzsF8LSVy4Ei"/>
-              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" data-page-node-id="hgFD2Km4LHE1LhiDE4c9QV"/>
-            </svg>
+          <!-- 场景 6: 价格与试用 -->
+          <div class="demo-scene" data-scene="6">
+            <div class="scene-header">
+              <div class="scene-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+              <div class="scene-title">透明价格，自由试用</div>
+            </div>
+            <div class="scene-content pricing-mode">
+              <div class="pricing-main">
+                <div class="pricing-header">
+                  <div class="page-title">选择您的方案</div>
+                  <div class="trial-badge">30 天全功能试用</div>
+                </div>
+                <div class="pricing-cards">
+                  <div class="pricing-card">
+                    <div class="pricing-name">基础版</div>
+                    <div class="pricing-price">
+                      <span class="price">¥9,800</span>
+                      <span class="price-unit">买断</span>
+                    </div>
+                    <div class="pricing-sub">或 ¥980/年订阅</div>
+                    <div class="pricing-features">
+                      <div class="feat">✓ 入库/出库/盘点</div>
+                      <div class="feat">✓ 基础库存管理</div>
+                      <div class="feat">✓ 单仓库支持</div>
+                    </div>
+                    <div class="pricing-cta">立即下载试用</div>
+                  </div>
+                  <div class="pricing-card featured">
+                    <div class="pricing-badge">最受欢迎</div>
+                    <div class="pricing-name">电商版</div>
+                    <div class="pricing-price">
+                      <span class="price">¥19,800</span>
+                      <span class="price-unit">买断</span>
+                    </div>
+                    <div class="pricing-sub">或 ¥1,980/年订阅</div>
+                    <div class="pricing-features">
+                      <div class="feat">✓ 基础版全部功能</div>
+                      <div class="feat">✓ 多平台订单对接</div>
+                      <div class="feat">✓ 批量打印标签</div>
+                    </div>
+                    <div class="pricing-cta">立即下载试用</div>
+                  </div>
+                  <div class="pricing-card">
+                    <div class="pricing-name">工贸版</div>
+                    <div class="pricing-price">
+                      <span class="price">¥36,800</span>
+                      <span class="price-unit">买断</span>
+                    </div>
+                    <div class="pricing-sub">或 ¥3,680/年订阅</div>
+                    <div class="pricing-features">
+                      <div class="feat">✓ 电商版全部功能</div>
+                      <div class="feat">✓ 生产工序管理</div>
+                      <div class="feat">✓ 成本核算</div>
+                    </div>
+                    <div class="pricing-cta">立即下载试用</div>
+                  </div>
+                </div>
+                <div class="pricing-note">
+                  <div class="note-item">
+                    <span class="note-dot"></span>
+                    <span>首次启动自动进入 30 天全功能试用，无需注册</span>
+                  </div>
+                  <div class="note-item">
+                    <span class="note-dot"></span>
+                    <span>到期不付费自动转只读模式，数据完整保留</span>
+                  </div>
+                  <div class="note-item">
+                    <span class="note-dot"></span>
+                    <span>续费即可恢复全部功能</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <h3 data-page-node-id="DizT3KwlejzfNONE0oarou">价格透明，试用 30 天</h3>
-          <p data-page-node-id="5wQxROmIfQVXEu0WrrRSl2">订阅 ¥980/年起 · 买断 ¥9,800 起 · 首次启动自动进入 30 天全功能试用，到期不付费自动转只读</p>
         </div>
-        <div class="demo-bar" id="demoBar" data-page-node-id="iRsIBhJeGBYGDlxIGquqQ3"></div>
-        <div class="demo-dots" id="demoDots" data-page-node-id="EU0yI8ZTrQvhHdAiupwbR6"></div>
-        <button class="demo-play-btn" id="demoPlay" aria-label="播放/暂停" data-page-node-id="X7rJjF5RrGCKLgpn62WWYF">
-          <svg viewBox="0 0 24 24" id="playIcon" data-page-node-id="hpbH9SEzUjArevHBztSyav"><polygon points="5 3 19 12 5 21 5 3" data-page-node-id="BoGBkwtCnC0erwtABwnrRX"/></svg>
-        </button>
+        <!-- 视频控制栏 -->
+        <div class="video-controls" data-page-node-id="iRsIBhJeGBYGDlxIGquqQ3">
+          <div class="control-left">
+            <button class="control-btn" id="playPauseBtn" aria-label="播放/暂停">
+              <svg id="playIcon" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              <svg id="pauseIcon" viewBox="0 0 24 24" fill="currentColor" style="display:none;"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+            </button>
+            <span class="time-display"><span id="currentTime">00:00</span> / <span id="totalTime">01:30</span></span>
+          </div>
+          <div class="control-center">
+            <div class="progress-bar" id="progressBar">
+              <div class="progress-fill" id="progressFill"></div>
+              <div class="progress-thumb" id="progressThumb"></div>
+            </div>
+          </div>
+          <div class="control-right">
+            <button class="control-btn" id="fullscreenBtn" aria-label="全屏">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+            </button>
+          </div>
+        </div>
       </div>
+      <!-- 右侧说明 -->
       <div class="demo-side" data-page-node-id="ngYFYc2UD7BbhFmuspLuy9">
         <h4 data-page-node-id="HGYdu4iLQ2aMrvey4j1Tom">产品手册与报价单</h4>
         <p data-page-node-id="LRKXXoiTwnQfmybDbSgcNy">完整功能清单 + 透明报价，可直接下载发给决策人。</p>
@@ -1484,10 +1839,7 @@ h1, h2, h3, h4 { font-weight: 800; color: var(--ink); line-height: 1.2; letter-s
 <footer class="footer" data-page-node-id="5b7e4OjHm9aHfqibrrxhFR">
   <div class="wrap" data-page-node-id="hVhhIIEDhJwHxvAAFhTsQS">
     <div class="footer-inner" data-page-node-id="cBzL0sD3y2ImnV0A01pBCj">
-      <div class="footer-brand" data-page-node-id="8hHCJUOSLkMKCTS1Y7U5zT">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="28" height="28" style="vertical-align:middle;margin-right:8px;"><defs><linearGradient id="boxGrad2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#3B82F6"/><stop offset="100%" stop-color="#1D4ED8"/></linearGradient></defs><circle cx="256" cy="256" r="200" fill="none" stroke="url(#boxGrad2)" stroke-width="12"/><path d="M256 160 L340 210 L340 310 L256 360 L172 310 L172 210 Z" fill="url(#boxGrad2)"/></svg>
-        WMS 仓储管理系统
-      </div>
+      <div class="footer-brand" data-page-node-id="8hHCJUOSLkMKCTS1Y7U5zT">WMS 仓储管理系统</div>
       <div data-page-node-id="fh73lJJ8mRM0ouz53S9NYx">私有化部署 · 纯内网运行 · 价格透明 · 30 天全功能试用</div>
       <div data-page-node-id="hOcg0PbdeEI7u2KsUmjrBY">联系：<a href="mailto:hangzhoukaiwei@163.com" data-page-node-id="WGaetDG3FcYERBNyGbcLpn">hangzhoukaiwei@163.com</a> · 微信 <a href="#" data-page-node-id="dT01NzMdUKeOQ9qkHCGbtB">Cy_refuel</a></div>
       <div style="color:rgba(255,255,255,0.25);margin-top:8px;" data-page-node-id="xRhDkgTRHCStuW6Xu0dDdw">© 2026 WMS 仓储管理系统 · 杭州凯微</div>
@@ -1582,45 +1934,87 @@ var CONTACT = { wechat: 'Cy_refuel', email: 'hangzhoukaiwei@163.com' };
   });
 })();
 
-// --- Demo player ---
+// --- Video demo player ---
 (function() {
-  var slides = document.querySelectorAll('#demoPlayer .demo-slide');
-  var bar = document.getElementById('demoBar');
-  var dotsBox = document.getElementById('demoDots');
-  var playBtn = document.getElementById('demoPlay');
+  var scenes = document.querySelectorAll('.demo-scene');
+  var playPauseBtn = document.getElementById('playPauseBtn');
   var playIcon = document.getElementById('playIcon');
-  var i = 0, timer = null, playing = true;
-  var DUR = 3800;
+  var pauseIcon = document.getElementById('pauseIcon');
+  var progressBar = document.getElementById('progressBar');
+  var progressFill = document.getElementById('progressFill');
+  var currentTimeEl = document.getElementById('currentTime');
+  var totalSeconds = 90; // 1:30 total duration
+  var currentSeconds = 0;
+  var interval = null;
+  var playing = true;
+  var currentScene = 0;
+  var sceneDuration = 15; // seconds per scene
 
-  slides.forEach(function(_, idx) {
-    var d = document.createElement('span');
-    d.className = 'demo-dot' + (idx === 0 ? ' active' : '');
-    d.setAttribute('role', 'button');
-    d.setAttribute('aria-label', '跳转第' + (idx+1) + '张');
-    d.addEventListener('click', function() { i = idx; show(); restart(); });
-    dotsBox.appendChild(d);
-  });
-
-  function show() {
-    slides.forEach(function(s, idx) { s.classList.toggle('active', idx === i); });
-    dotsBox.querySelectorAll('.demo-dot').forEach(function(d, idx) { d.classList.toggle('active', idx === i); });
-  }
-  function tick() {
-    bar.style.transition = 'none';
-    bar.style.width = '0%';
-    requestAnimationFrame(function() {
-      bar.style.transition = 'width ' + DUR + 'ms linear';
-      bar.style.width = '100%';
+  function showScene(idx) {
+    scenes.forEach(function(s, i) {
+      s.classList.toggle('active', i === idx);
     });
   }
-  function next() { i = (i + 1) % slides.length; show(); tick(); }
-  function start() { timer = setInterval(next, DUR); tick(); }
-  function stop() { clearInterval(timer); }
-  function restart() { stop(); start(); }
-  playBtn.addEventListener('click', function() {
-    if (playing) { stop(); playBtn.style.opacity = '0.7'; playing = false; }
-    else { start(); playBtn.style.opacity = '1'; playing = true; }
+
+  function formatTime(seconds) {
+    var m = Math.floor(seconds / 60);
+    var s = seconds % 60;
+    return (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+  }
+
+  function updateProgress() {
+    var pct = (currentSeconds / totalSeconds) * 100;
+    progressFill.style.width = pct + '%';
+    currentTimeEl.textContent = formatTime(currentSeconds);
+  }
+
+  function tick() {
+    if (!playing) return;
+    currentSeconds++;
+    if (currentSeconds >= totalSeconds) {
+      currentSeconds = 0;
+    }
+    // Advance scene every sceneDuration seconds
+    var newScene = Math.floor(currentSeconds / sceneDuration);
+    if (newScene !== currentScene && newScene < scenes.length) {
+      currentScene = newScene;
+      showScene(currentScene);
+    }
+    updateProgress();
+  }
+
+  function start() {
+    if (interval) clearInterval(interval);
+    interval = setInterval(tick, 1000);
+    playIcon.style.display = 'none';
+    pauseIcon.style.display = 'block';
+    playing = true;
+  }
+
+  function stop() {
+    if (interval) clearInterval(interval);
+    interval = null;
+    playIcon.style.display = 'block';
+    pauseIcon.style.display = 'none';
+    playing = false;
+  }
+
+  playPauseBtn.addEventListener('click', function() {
+    if (playing) stop();
+    else start();
   });
+
+  // Click on progress bar to seek
+  progressBar.addEventListener('click', function(e) {
+    var rect = progressBar.getBoundingClientRect();
+    var pct = (e.clientX - rect.left) / rect.width;
+    currentSeconds = Math.floor(pct * totalSeconds);
+    currentScene = Math.min(Math.floor(currentSeconds / sceneDuration), scenes.length - 1);
+    showScene(currentScene);
+    updateProgress();
+  });
+
+  // Start automatically
   start();
 })();
 
