@@ -4,6 +4,7 @@
 <meta charset="UTF-8" data-page-node-id="yF6oH3ViEJaV4rGRBVu2zJ" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="zlXMGayZrHhi6KDEDG3Hq3" />
 <title>WMS 仓储管理系统 · 私有化部署 · 免费试用</title>
+<link rel="icon" type="image/svg+xml" href="logo/wms-logo-2-box.svg">
 <style>
 /* ============================================================
    DESIGN SYSTEM — WMS v2
@@ -149,11 +150,11 @@ h1, h2, h3, h4 { font-weight: 800; color: var(--ink); line-height: 1.2; letter-s
   letter-spacing: 0;
 }
 .nav-brand-icon {
-  width: 32px; height: 32px; border-radius: var(--radius-md);
-  background: var(--cobalt);
-  display: flex; align-items: center; justify-content: center;
-  color: white; font-size: var(--text-base); font-weight: 800;
-  box-shadow: 0 2px 8px rgba(29,78,216,0.3);
+  width: 40px; height: 40px;
+  flex-shrink: 0;
+}
+.nav-brand-icon svg {
+  width: 100%; height: 100%;
 }
 .nav-links { display: flex; align-items: center; gap: var(--space-6); }
 .nav-links a {
@@ -270,6 +271,11 @@ h1, h2, h3, h4 { font-weight: 800; color: var(--ink); line-height: 1.2; letter-s
 
 /* Hero visual — product mockup */
 .hero-visual { position: relative; }
+.hero-brand-logo {
+  display: flex; justify-content: center; margin-bottom: var(--space-8);
+}
+.hero-brand-logo svg { width: 120px; height: 120px; filter: drop-shadow(0 8px 24px rgba(29,78,216,0.3)); }
+@media (max-width: 768px) { .hero-brand-logo svg { width: 96px; height: 96px; } }
 .hero-mock {
   background: rgba(255,255,255,0.06);
   border: 1px solid rgba(255,255,255,0.1);
@@ -837,8 +843,10 @@ h1, h2, h3, h4 { font-weight: 800; color: var(--ink); line-height: 1.2; letter-s
 <nav class="nav" id="nav" data-page-node-id="0AiLt4X4Nrt5WOfE3Zhi6r">
   <div class="nav-inner" data-page-node-id="zSuuUewus9aTZwcnXEaHFl">
     <a href="#" class="nav-brand" data-page-node-id="Ec3RpBwzsn9jPcaoYsU0r7">
-      <div class="nav-brand-icon" data-page-node-id="kRmnwxgJA4PGgzCbEqNOzr">仓</div>
-      WMS
+      <div class="nav-brand-icon" data-page-node-id="kRmnwxgJA4PGgzCbEqNOzr">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><defs><linearGradient id="boxGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1D4ED8"/><stop offset="50%" stop-color="#0D9488"/><stop offset="100%" stop-color="#1D4ED8"/></linearGradient></defs><rect width="512" height="512" fill="#FAFAF8"/><circle cx="256" cy="256" r="200" fill="none" stroke="url(#boxGrad)" stroke-width="8"/><circle cx="256" cy="256" r="170" fill="none" stroke="#1D4ED8" stroke-width="2" opacity="0.3"/><path d="M256 160 L340 210 L340 310 L256 360 L172 310 L172 210 Z" fill="url(#boxGrad)" opacity="0.9"/><path d="M256 160 L340 210 L256 260 L172 210 Z" fill="#3B82F6" opacity="0.6"/><line x1="172" y1="260" x2="340" y2="260" stroke="white" stroke-width="2" opacity="0.5"/><line x1="210" y1="260" x2="210" y2="340" stroke="white" stroke-width="2" opacity="0.5"/><line x1="302" y1="260" x2="302" y2="340" stroke="white" stroke-width="2" opacity="0.5"/></svg>
+      </div>
+      <span>WMS</span>
     </a>
     <div class="nav-links" id="navLinks" data-page-node-id="Ex8nGTbephVCxaKIyPjdJR">
       <a href="#features" data-page-node-id="97OYYIK69zKMeDT6Afs0rd">核心功能</a>
@@ -860,6 +868,9 @@ h1, h2, h3, h4 { font-weight: 800; color: var(--ink); line-height: 1.2; letter-s
 <section class="hero" data-page-node-id="VRKfARYi8pxPjOlbHMfXIR">
   <div class="wrap hero-inner" data-page-node-id="N6EfiB7D3vsO2CkiFtG21c">
     <div class="hero-content" data-page-node-id="5KwFBLQhj8RBkWBD59FxWb">
+      <div class="hero-brand-logo" data-page-node-id="heroLogo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><defs><linearGradient id="boxGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1D4ED8"/><stop offset="50%" stop-color="#0D9488"/><stop offset="100%" stop-color="#1D4ED8"/></linearGradient></defs><circle cx="256" cy="256" r="200" fill="none" stroke="url(#boxGrad)" stroke-width="8"/><circle cx="256" cy="256" r="170" fill="none" stroke="#1D4ED8" stroke-width="2" opacity="0.3"/><path d="M256 160 L340 210 L340 310 L256 360 L172 310 L172 210 Z" fill="url(#boxGrad)" opacity="0.9"/><path d="M256 160 L340 210 L256 260 L172 210 Z" fill="#3B82F6" opacity="0.6"/><line x1="172" y1="260" x2="340" y2="260" stroke="white" stroke-width="2" opacity="0.5"/><line x1="210" y1="260" x2="210" y2="340" stroke="white" stroke-width="2" opacity="0.5"/><line x1="302" y1="260" x2="302" y2="340" stroke="white" stroke-width="2" opacity="0.5"/></svg>
+      </div>
       <span class="hero-eyebrow" data-page-node-id="th1FjGs1FV3YO3RaZeXFeE"><span class="hero-eyebrow-dot" data-page-node-id="c1KnZFIchnf9pLSAXDgRQe"></span> 私有化部署 · 纯内网运行 · 数据 100% 本地</span>
       <h1 data-page-node-id="Qb52xgWh9K52RmvEGP3SW5">不用装环境，<br data-page-node-id="gjOM7OrTpHC9jb8saMp0AG"><span class="accent" data-page-node-id="oAq06BlN0CUR1CLjrKCmXy">30 分钟上线</span>的仓储管理系统</h1>
       <p class="hero-sub" data-page-node-id="o6n3zO8NaQiJNPQ7JGbqK5">为电商仓、实体工厂、中小制造企业打造。扫码收货、防超卖、库存预警一应俱全。订阅版免费试用 1 个月，价格全透明，试了再决定。</p>
@@ -1473,7 +1484,10 @@ h1, h2, h3, h4 { font-weight: 800; color: var(--ink); line-height: 1.2; letter-s
 <footer class="footer" data-page-node-id="5b7e4OjHm9aHfqibrrxhFR">
   <div class="wrap" data-page-node-id="hVhhIIEDhJwHxvAAFhTsQS">
     <div class="footer-inner" data-page-node-id="cBzL0sD3y2ImnV0A01pBCj">
-      <div class="footer-brand" data-page-node-id="8hHCJUOSLkMKCTS1Y7U5zT">WMS 仓储管理系统</div>
+      <div class="footer-brand" data-page-node-id="8hHCJUOSLkMKCTS1Y7U5zT">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="28" height="28" style="vertical-align:middle;margin-right:8px;"><defs><linearGradient id="boxGrad2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#3B82F6"/><stop offset="100%" stop-color="#1D4ED8"/></linearGradient></defs><circle cx="256" cy="256" r="200" fill="none" stroke="url(#boxGrad2)" stroke-width="12"/><path d="M256 160 L340 210 L340 310 L256 360 L172 310 L172 210 Z" fill="url(#boxGrad2)"/></svg>
+        WMS 仓储管理系统
+      </div>
       <div data-page-node-id="fh73lJJ8mRM0ouz53S9NYx">私有化部署 · 纯内网运行 · 价格透明 · 30 天全功能试用</div>
       <div data-page-node-id="hOcg0PbdeEI7u2KsUmjrBY">联系：<a href="mailto:hangzhoukaiwei@163.com" data-page-node-id="WGaetDG3FcYERBNyGbcLpn">hangzhoukaiwei@163.com</a> · 微信 <a href="#" data-page-node-id="dT01NzMdUKeOQ9qkHCGbtB">Cy_refuel</a></div>
       <div style="color:rgba(255,255,255,0.25);margin-top:8px;" data-page-node-id="xRhDkgTRHCStuW6Xu0dDdw">© 2026 WMS 仓储管理系统 · 杭州凯微</div>

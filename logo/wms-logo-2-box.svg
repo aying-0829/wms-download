@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="boxGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1D4ED8"/>
+      <stop offset="50%" stop-color="#0D9488"/>
+      <stop offset="100%" stop-color="#1D4ED8"/>
+    </linearGradient>
+  </defs>
+  <!-- Background - soft cream -->
+  <rect width="512" height="512" fill="#FAFAF8"/>
+  <!-- Outer ring -->
+  <circle cx="256" cy="256" r="200" fill="none" stroke="url(#boxGrad)" stroke-width="8"/>
+  <!-- Inner ring -->
+  <circle cx="256" cy="256" r="170" fill="none" stroke="#1D4ED8" stroke-width="2" opacity="0.3"/>
+  <!-- Box shape - abstract warehouse/storage -->
+  <path d="M256 160 L340 210 L340 310 L256 360 L172 310 L172 210 Z"
+        fill="url(#boxGrad)" opacity="0.9"/>
+  <!-- Box top face -->
+  <path d="M256 160 L340 210 L256 260 L172 210 Z"
+        fill="#3B82F6" opacity="0.6"/>
+  <!-- Box lines - shelf suggestion -->
+  <line x1="172" y1="260" x2="340" y2="260" stroke="white" stroke-width="2" opacity="0.5"/>
+  <line x1="210" y1="260" x2="210" y2="340" stroke="white" stroke-width="2" opacity="0.5"/>
+  <line x1="302" y1="260" x2="302" y2="340" stroke="white" stroke-width="2" opacity="0.5"/>
+  <!-- Small decorative dots -->
+  <circle cx="256" cy="120" r="8" fill="#0D9488"/>
+  <circle cx="256" cy="392" r="8" fill="#1D4ED8"/>
+</svg>
