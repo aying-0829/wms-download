@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="zh-CN" data-page-node-id="EXEE4jSxL3rZtilUzzukov">
+<head data-page-node-id="eAoWhP3bDy0fvsEThHfrTd">
+<meta charset="UTF-8" data-page-node-id="yF6oH3ViEJaV4rGRBVu2zJ" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="zlXMGayZrHhi6KDEDG3Hq3" />
 <title>WMS 仓储管理系统 · 私有化部署 · 免费试用</title>
 <style>
 /* ============================================================
@@ -410,6 +410,7 @@ h1, h2, h3, h4 { font-weight: 800; color: var(--ink); line-height: 1.2; letter-s
 .feature-card {
   background: white; border: 1px solid var(--border);
   border-radius: var(--radius-lg); padding: var(--space-7);
+  text-align: center;
   transition: all var(--duration-normal) var(--ease-out);
   position: relative; overflow: hidden;
 }
@@ -428,7 +429,7 @@ h1, h2, h3, h4 { font-weight: 800; color: var(--ink); line-height: 1.2; letter-s
   width: 48px; height: 48px; border-radius: var(--radius-md);
   background: linear-gradient(135deg, rgba(29,78,216,0.08), rgba(13,148,136,0.08));
   display: flex; align-items: center; justify-content: center;
-  margin-bottom: var(--space-4);
+  margin: 0 auto var(--space-4);
 }
 .feature-icon svg { width: 24px; height: 24px; stroke: var(--cobalt); stroke-width: 1.8; fill: none; }
 .feature-card h3 { font-size: var(--text-xl); font-weight: 700; margin-bottom: var(--space-3); letter-spacing: 0; line-height: 1.4; }
@@ -462,7 +463,7 @@ h1, h2, h3, h4 { font-weight: 800; color: var(--ink); line-height: 1.2; letter-s
   text-transform: uppercase; color: rgba(255,255,255,0.5);
   margin-bottom: var(--space-3);
 }
-.scene-card h3 { font-size: var(--text-2xl); font-weight: 800; margin-bottom: var(--space-3); line-height: 1.35; }
+.scene-card h3 { color: white; font-size: var(--text-2xl); font-weight: 800; margin-bottom: var(--space-3); line-height: 1.35; }
 .scene-card p { font-size: var(--text-sm); color: rgba(255,255,255,0.7); margin-bottom: var(--space-5); line-height: 1.7; }
 .scene-card ul { display: flex; flex-direction: column; gap: var(--space-2); }
 .scene-card li {
@@ -499,6 +500,7 @@ h1, h2, h3, h4 { font-weight: 800; color: var(--ink); line-height: 1.2; letter-s
   background: white; border: 1px solid var(--border);
   border-radius: var(--radius-xl); padding: var(--space-7) var(--space-6);
   display: flex; flex-direction: column;
+  text-align: center;
   transition: all var(--duration-normal) var(--ease-out);
   position: relative;
 }
@@ -515,14 +517,15 @@ h1, h2, h3, h4 { font-weight: 800; color: var(--ink); line-height: 1.2; letter-s
 }
 .price-card .plan-name { font-size: var(--text-lg); font-weight: 800; color: var(--ink); letter-spacing: 0; }
 .price-card .plan-desc { font-size: var(--text-sm); color: var(--text-muted); margin-top: 4px; margin-bottom: var(--space-5); min-height: 36px; }
-.price-card .price-row { display: flex; align-items: baseline; gap: 4px; margin-bottom: 4px; }
+.price-card .price-row { display: flex; align-items: baseline; justify-content: center; gap: 4px; margin-bottom: 4px; }
 .price-card .price-val { font-size: var(--text-4xl); font-weight: 800; color: var(--ink); letter-spacing: 0; }
 .price-card .price-unit { font-size: var(--text-sm); color: var(--text-muted); }
 .price-card .price-annual { font-size: var(--text-xs); color: var(--text-3); margin-bottom: var(--space-5); }
-.price-card ul { display: flex; flex-direction: column; gap: var(--space-2); margin-bottom: var(--space-6); flex: 1; }
+.price-card ul { display: flex; flex-direction: column; gap: var(--space-2); margin-bottom: var(--space-6); flex: 1; align-items: center; }
 .price-card li {
-  display: flex; align-items: flex-start; gap: var(--space-2);
+  display: inline-flex; align-items: center; gap: var(--space-2);
   font-size: var(--text-sm); color: var(--text-2); line-height: 1.6;
+  text-align: left;
 }
 .price-card li svg { width: 16px; height: 16px; stroke: var(--success); flex-shrink: 0; margin-top: 2px; }
 .price-card .btn-price {
@@ -606,7 +609,8 @@ h1, h2, h3, h4 { font-weight: 800; color: var(--ink); line-height: 1.2; letter-s
   border: 1px solid var(--border); overflow: hidden; background: white;
 }
 .mode-compare-table .mct-header {
-  background: var(--navy); color: white; padding: var(--space-6) var(--space-7);
+  background: var(--navy); color: white; padding: var(--space-8) var(--space-7);
+  text-align: center;
   border-top-left-radius: var(--radius-xl);
   border-top-right-radius: var(--radius-xl);
 }
@@ -639,6 +643,8 @@ h1, h2, h3, h4 { font-weight: 800; color: var(--ink); line-height: 1.2; letter-s
   text-align: center; padding: var(--space-7) var(--space-5);
   background: white; border: 1px solid var(--border); border-radius: var(--radius-xl);
   position: relative; transition: all var(--duration-normal) var(--ease-out);
+  min-height: 160px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
 }
 .dl-step:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
 .dl-step-num {
@@ -655,7 +661,7 @@ h1, h2, h3, h4 { font-weight: 800; color: var(--ink); line-height: 1.2; letter-s
   margin: 0 auto var(--space-4);
 }
 .dl-step-icon svg { width: 24px; height: 24px; stroke: var(--cobalt); }
-.dl-step h4 { font-size: var(--text-base); font-weight: 700; margin-bottom: var(--space-2); }
+.dl-step h4 { font-size: var(--text-base); font-weight: 700; }
 .dl-step p { font-size: var(--text-sm); color: var(--text-muted); line-height: 1.6; }
 
 /* ============================================================
@@ -821,27 +827,27 @@ h1, h2, h3, h4 { font-weight: 800; color: var(--ink); line-height: 1.2; letter-s
 .chat-input-row button:hover { background: var(--cobalt-dark); }
 </style>
 </head>
-<body>
+<body data-page-node-id="Xmq9aFMgAtufA8IeExxast">
 
 <!-- ============================================================
      NAVIGATION
      ============================================================ -->
-<nav class="nav" id="nav">
-  <div class="nav-inner">
-    <a href="#" class="nav-brand">
-      <div class="nav-brand-icon">仓</div>
+<nav class="nav" id="nav" data-page-node-id="0AiLt4X4Nrt5WOfE3Zhi6r">
+  <div class="nav-inner" data-page-node-id="zSuuUewus9aTZwcnXEaHFl">
+    <a href="#" class="nav-brand" data-page-node-id="Ec3RpBwzsn9jPcaoYsU0r7">
+      <div class="nav-brand-icon" data-page-node-id="kRmnwxgJA4PGgzCbEqNOzr">仓</div>
       WMS
     </a>
-    <div class="nav-links" id="navLinks">
-      <a href="#features">核心功能</a>
-      <a href="#scenes">适用场景</a>
-      <a href="#pricing">价格</a>
-      <a href="#modes">两种模式</a>
-      <a href="#faq">常见问题</a>
-      <a href="#download" class="nav-cta">免费试用</a>
+    <div class="nav-links" id="navLinks" data-page-node-id="Ex8nGTbephVCxaKIyPjdJR">
+      <a href="#features" data-page-node-id="97OYYIK69zKMeDT6Afs0rd">核心功能</a>
+      <a href="#scenes" data-page-node-id="YXxh82AdxaoBUlFT1QEqo2">适用场景</a>
+      <a href="#pricing" data-page-node-id="VoIMCgPjCMtxcBxZdCjksB">价格</a>
+      <a href="#modes" data-page-node-id="f7vwaAWPbvfSWCG7F2Z6O8">两种模式</a>
+      <a href="#faq" data-page-node-id="pjFUTpTMW3BYcfC02RCRPU">常见问题</a>
+      <a href="#download" class="nav-cta" data-page-node-id="CG3mLwpehWUqJhT01tHXOF">免费试用</a>
     </div>
-    <button class="nav-toggle" id="navToggle" aria-label="菜单">
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    <button class="nav-toggle" id="navToggle" aria-label="菜单" data-page-node-id="KOgb9WsU9DoTLc5Z1gdzkf">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" data-page-node-id="vEGDS2nAcrRAA0UmtW8GZl"><line x1="3" y1="6" x2="21" y2="6" data-page-node-id="3xWSRvhfZ9amVnqwcabnif"/><line x1="3" y1="12" x2="21" y2="12" data-page-node-id="qbH0mPaN1LjTsaxd8M4v1U"/><line x1="3" y1="18" x2="21" y2="18" data-page-node-id="1eaUUneQI1znqDzdwQGxnI"/></svg>
     </button>
   </div>
 </nav>
@@ -849,79 +855,79 @@ h1, h2, h3, h4 { font-weight: 800; color: var(--ink); line-height: 1.2; letter-s
 <!-- ============================================================
      HERO
      ============================================================ -->
-<section class="hero">
-  <div class="wrap hero-inner">
-    <div class="hero-content">
-      <span class="hero-eyebrow"><span class="hero-eyebrow-dot"></span> 私有化部署 · 纯内网运行 · 数据 100% 本地</span>
-      <h1>不用装环境，<br><span class="accent">30 分钟上线</span>的仓储管理系统</h1>
-      <p class="hero-sub">为电商仓、实体工厂、中小制造企业打造。扫码收货、防超卖、库存预警一应俱全。订阅版免费试用 1 个月，价格全透明，试了再决定。</p>
-      <div class="hero-ctas">
-        <a href="#download" class="btn-lg primary">免费试用 1 个月</a>
-        <a href="#pricing" class="btn-lg ghost">查看价格</a>
+<section class="hero" data-page-node-id="VRKfARYi8pxPjOlbHMfXIR">
+  <div class="wrap hero-inner" data-page-node-id="N6EfiB7D3vsO2CkiFtG21c">
+    <div class="hero-content" data-page-node-id="5KwFBLQhj8RBkWBD59FxWb">
+      <span class="hero-eyebrow" data-page-node-id="th1FjGs1FV3YO3RaZeXFeE"><span class="hero-eyebrow-dot" data-page-node-id="c1KnZFIchnf9pLSAXDgRQe"></span> 私有化部署 · 纯内网运行 · 数据 100% 本地</span>
+      <h1 data-page-node-id="Qb52xgWh9K52RmvEGP3SW5">不用装环境，<br data-page-node-id="gjOM7OrTpHC9jb8saMp0AG"><span class="accent" data-page-node-id="oAq06BlN0CUR1CLjrKCmXy">30 分钟上线</span>的仓储管理系统</h1>
+      <p class="hero-sub" data-page-node-id="o6n3zO8NaQiJNPQ7JGbqK5">为电商仓、实体工厂、中小制造企业打造。扫码收货、防超卖、库存预警一应俱全。订阅版免费试用 1 个月，价格全透明，试了再决定。</p>
+      <div class="hero-ctas" data-page-node-id="WStAvYzGg4KQmTRNjS7PUX">
+        <a href="#download" class="btn-lg primary" data-page-node-id="cFJt6mY6NCBg46s3Rvzqqg">免费试用 1 个月</a>
+        <a href="#pricing" class="btn-lg ghost" data-page-node-id="H8CadtEtv32O41q3MARVFj">查看价格</a>
       </div>
-      <div class="hero-trust">
-        <span class="hero-trust-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+      <div class="hero-trust" data-page-node-id="EGKni314Z9EbNqflfUHYEm">
+        <span class="hero-trust-item" data-page-node-id="SkF4WHvvto5OcmCcZkD26P">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" data-page-node-id="PepHGdkWxg43uf1wCQ0LLT"><polyline points="20 6 9 17 4 12" data-page-node-id="xmSbFJrbM4zcSUSUD5gbHm"/></svg>
           30 天全功能试用
         </span>
-        <span class="hero-trust-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <span class="hero-trust-item" data-page-node-id="Wq4NpKaVKjIHhFSXTtxqWi">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" data-page-node-id="4sCk6Gy20rRA0Mu6GUrtya"><polyline points="20 6 9 17 4 12" data-page-node-id="X1Uscj51sHFnAAWVJ1bjBc"/></svg>
           到期转只读，数据保留
         </span>
-        <span class="hero-trust-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <span class="hero-trust-item" data-page-node-id="U2MYm82X2x73yuB1eFNIh2">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" data-page-node-id="DzAg4FYmnt2Fm8t95rV9NI"><polyline points="20 6 9 17 4 12" data-page-node-id="U1f3Hd49UROYCRuIB7oQ9r"/></svg>
           无隐藏费用
         </span>
       </div>
     </div>
 
-    <div class="hero-visual">
-      <div class="hero-mock">
-        <div class="mock-titlebar">
-          <span class="mock-dot r"></span>
-          <span class="mock-dot y"></span>
-          <span class="mock-dot g"></span>
-          <span>WMS 工作台</span>
+    <div class="hero-visual" data-page-node-id="g1LO46qHSmFD9x5PQq7unL">
+      <div class="hero-mock" data-page-node-id="a8aaytKXz60zSr8Xx8cBEO">
+        <div class="mock-titlebar" data-page-node-id="cbRbob0iogLo3z2vgyFjns">
+          <span class="mock-dot r" data-page-node-id="90zYyFeG1X0oGjFeqEjecs"></span>
+          <span class="mock-dot y" data-page-node-id="XP2mR3s5KhMzpJ5j8nDM3F"></span>
+          <span class="mock-dot g" data-page-node-id="MqTYf68uceAR4yHJuRyVd2"></span>
+          <span data-page-node-id="NR4IbnwL6LxQE8fvhzTZis">WMS 工作台</span>
         </div>
-        <div class="mock-body">
-          <div class="mock-sidebar">
-            <div class="mock-sidebar-item active">
-              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        <div class="mock-body" data-page-node-id="3n1Is6PCgOCHvvpihPt6lO">
+          <div class="mock-sidebar" data-page-node-id="ueZaGab8vewDsQDu4gHqsO">
+            <div class="mock-sidebar-item active" data-page-node-id="VtwNMOqd8LT7OX9hOhRkwd">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" data-page-node-id="uqWVEKNACn4V1CFByipCQx"><rect x="3" y="3" width="7" height="7" data-page-node-id="Mrc5pq6xM40TQCBBX6zUyK"/><rect x="14" y="3" width="7" height="7" data-page-node-id="WU94ZZZPBhN7SS6RsCsjob"/><rect x="3" y="14" width="7" height="7" data-page-node-id="XPbGUbhSQMvLvHwNLFhFa0"/><rect x="14" y="14" width="7" height="7" data-page-node-id="5Jb9cA2hxAWVY9vYsDHKvA"/></svg>
             </div>
-            <div class="mock-sidebar-item">
-              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+            <div class="mock-sidebar-item" data-page-node-id="4LmzqwYcgFBrsY501WCuZl">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" data-page-node-id="xsByXPOYVqiBgHl87A6JUA"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" data-page-node-id="7vqh40UcdH7frJOgIkRfc9"/></svg>
             </div>
-            <div class="mock-sidebar-item">
-              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <div class="mock-sidebar-item" data-page-node-id="Fud61KeAASiUQ4ydAEHEZU">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" data-page-node-id="xCnQQkaoGPSxVCew3jqeam"><circle cx="12" cy="12" r="10" data-page-node-id="clg1Ke5pyOmpybCoVpLqE8"/><path d="M12 6v6l4 2" data-page-node-id="uSpn9KA6klBI6LpqHHOYp9"/></svg>
             </div>
-            <div class="mock-sidebar-item">
-              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            <div class="mock-sidebar-item" data-page-node-id="NDDAcnece9zlF4AOHPJdsU">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" data-page-node-id="XbE0AaYGelBaypA2ot9s2F"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" data-page-node-id="r0mFUTHjbUzOqgdbTt7f8f"/><polyline points="14 2 14 8 20 8" data-page-node-id="19ejmfAY5Ul6Wall9pAt0e"/></svg>
             </div>
           </div>
-          <div class="mock-content">
-            <div class="mock-kpis">
-              <div class="mock-kpi"><div class="val">1,284</div><div class="lbl">在库 SKU</div></div>
-              <div class="mock-kpi"><div class="val up">+326</div><div class="lbl">今日入库</div></div>
-              <div class="mock-kpi"><div class="val warn">3</div><div class="lbl">库存预警</div></div>
+          <div class="mock-content" data-page-node-id="TF0JTH7PcGJq3LG1iWnaW0">
+            <div class="mock-kpis" data-page-node-id="PJMG1GO6Moi6WW6qsA6n6q">
+              <div class="mock-kpi" data-page-node-id="u2HKzJilzNtR84DXRAfRX5"><div class="val" data-page-node-id="k0eLn3kBkGDFe2rcBKMY3f">1,284</div><div class="lbl" data-page-node-id="gpyimAAhJv0PASZbAFfDZC">在库 SKU</div></div>
+              <div class="mock-kpi" data-page-node-id="zZWFb8oG2t7tpzqjy34uXw"><div class="val up" data-page-node-id="eX6x7BDbB8UXcgToMVR3B8">+326</div><div class="lbl" data-page-node-id="88egDnvEwWmiBuEfuHF6XI">今日入库</div></div>
+              <div class="mock-kpi" data-page-node-id="GMvYx5Wa9EMTUBXKSS135Y"><div class="val warn" data-page-node-id="mjIfh3tkPaZBSA6q1Wh5lS">3</div><div class="lbl" data-page-node-id="jLuoMTHKscoJSY8N5VUY47">库存预警</div></div>
             </div>
-            <div class="mock-chart">
-              <div class="mock-chart-bar" style="height:45%"></div>
-              <div class="mock-chart-bar" style="height:72%"></div>
-              <div class="mock-chart-bar" style="height:58%"></div>
-              <div class="mock-chart-bar" style="height:88%"></div>
-              <div class="mock-chart-bar" style="height:65%"></div>
-              <div class="mock-chart-bar" style="height:95%"></div>
-              <div class="mock-chart-bar" style="height:78%"></div>
+            <div class="mock-chart" data-page-node-id="wkexUQjmwSxjDKZzRluYU6">
+              <div class="mock-chart-bar" style="height:45%" data-page-node-id="XxD6455ugx3YCqWl7QpZYZ"></div>
+              <div class="mock-chart-bar" style="height:72%" data-page-node-id="DXo9wmt7ylfT0I4RZYPdYF"></div>
+              <div class="mock-chart-bar" style="height:58%" data-page-node-id="QI6pHnfLBDKIM52Mql6t6M"></div>
+              <div class="mock-chart-bar" style="height:88%" data-page-node-id="aqzlz2HoOi9AsGthhL05bE"></div>
+              <div class="mock-chart-bar" style="height:65%" data-page-node-id="aPWbZWGU5q2DwX2buLyVzo"></div>
+              <div class="mock-chart-bar" style="height:95%" data-page-node-id="OiD9vAZXioir8YKb3gFFNy"></div>
+              <div class="mock-chart-bar" style="height:78%" data-page-node-id="n0XbiFOJveZD25FegFvv6o"></div>
             </div>
-            <div class="mock-table-row"><span class="name">A4 复印纸 70g</span><span>余 12</span><span class="mock-badge low">偏低</span></div>
-            <div class="mock-table-row"><span class="name">缠绕膜 50cm</span><span>余 240</span><span class="mock-badge ok">充足</span></div>
-            <div class="mock-table-row"><span class="name">封箱胶带 6cm</span><span>余 8</span><span class="mock-badge low">偏低</span></div>
+            <div class="mock-table-row" data-page-node-id="yJBcKtQBKYoRj5MA4Tw0FX"><span class="name" data-page-node-id="pVbfJQB0a1vZOpqjzmVxUV">A4 复印纸 70g</span><span data-page-node-id="Uh4WcqxlFljudiifbPfHMe">余 12</span><span class="mock-badge low" data-page-node-id="mXprFMNEKMyELqLCXmSMkX">偏低</span></div>
+            <div class="mock-table-row" data-page-node-id="cyUGhCFCHn16oCWcSN5aoG"><span class="name" data-page-node-id="DPsEGMhxmEr2EDgeAN0qhd">缠绕膜 50cm</span><span data-page-node-id="Uo205osAtFzvYCsNxFYEea">余 240</span><span class="mock-badge ok" data-page-node-id="QxSTC8ESwpxRODDGjYZ6bg">充足</span></div>
+            <div class="mock-table-row" data-page-node-id="qKmFU6SpmWJA6EAEnluFIc"><span class="name" data-page-node-id="K4QI5s8RL3YJbdCRhzu524">封箱胶带 6cm</span><span data-page-node-id="k1mrfe5y7Hz24yQ2LujhJu">余 8</span><span class="mock-badge low" data-page-node-id="V6XgtjDVvqWtl58QH754mO">偏低</span></div>
           </div>
         </div>
       </div>
-      <div class="hero-float">
-        <div class="val">99.8%</div>
-        <div class="lbl">库存准确率</div>
+      <div class="hero-float" data-page-node-id="Q0lYCVraL9jqBupQYsYUxV">
+        <div class="val" data-page-node-id="77TWFZjKEmCCCbSf3MqSvR">99.8%</div>
+        <div class="lbl" data-page-node-id="FOUv1NhhTTZorzakAtBUxT">库存准确率</div>
       </div>
     </div>
   </div>
@@ -930,67 +936,67 @@ h1, h2, h3, h4 { font-weight: 800; color: var(--ink); line-height: 1.2; letter-s
 <!-- ============================================================
      STATS BAR
      ============================================================ -->
-<section class="stats">
-  <div class="wrap stats-inner">
-    <div class="stat reveal"><div class="val">30 分钟</div><div class="lbl">平均上线时间</div></div>
-    <div class="stat reveal reveal-delay-1"><div class="val">100%</div><div class="lbl">数据本地私有</div></div>
-    <div class="stat reveal reveal-delay-2"><div class="val">30 天</div><div class="lbl">免费全功能试用</div></div>
-    <div class="stat reveal reveal-delay-3"><div class="val">0 元</div><div class="lbl">隐藏费用</div></div>
+<section class="stats" data-page-node-id="MwaoADco3DGBpzMqzZ6fhP">
+  <div class="wrap stats-inner" data-page-node-id="FBlLbiPRoabTNDJZXQn8EV">
+    <div class="stat reveal" data-page-node-id="yMMXUNnMuKRCGu7yctbCgA"><div class="val" data-page-node-id="ukUvzJHPUBVO8SnxcP4DVV">30 分钟</div><div class="lbl" data-page-node-id="EzIRpgG2knQ9kNW9PvPR4o">平均上线时间</div></div>
+    <div class="stat reveal reveal-delay-1" data-page-node-id="ZGEmHu5RAX2SHov4OQCAnf"><div class="val" data-page-node-id="0bXIfSNn5cL1Zm8FMhHeEU">100%</div><div class="lbl" data-page-node-id="CCZt8QXmSoRHM6WSBysBRS">数据本地私有</div></div>
+    <div class="stat reveal reveal-delay-2" data-page-node-id="1DW0EnrY2sx7Gs3fDv0XyT"><div class="val" data-page-node-id="WA0x1C4OCTi5wS6GKtSeC5">30 天</div><div class="lbl" data-page-node-id="byDC76kw4OBR0xvmyFB7oD">免费全功能试用</div></div>
+    <div class="stat reveal reveal-delay-3" data-page-node-id="YIws3gQMbuESosnz7LKOuJ"><div class="val" data-page-node-id="brN9L2giG2vdwGmgRiBDfk">0 元</div><div class="lbl" data-page-node-id="AKs0tRMLBrDW7nEEpTNVJ6">隐藏费用</div></div>
   </div>
 </section>
 
 <!-- ============================================================
      FEATURES
      ============================================================ -->
-<section class="section" id="features">
-  <div class="wrap">
-    <div class="section-header reveal">
-      <span class="section-label">核心功能</span>
-      <h2 class="section-title">为中小型仓储与工厂量身打造</h2>
-      <p class="section-desc">少请人、少出错、账实永远对得上——一套系统搞定出入库、盘点、预警、追溯</p>
+<section class="section" id="features" data-page-node-id="hCrGdrSyA9frmGBNJFVXzL">
+  <div class="wrap" data-page-node-id="fJEQcBMuwmMHe27bnOPk5w">
+    <div class="section-header reveal" data-page-node-id="R6o4s97DFuBo3QvX4OExLB">
+      <span class="section-label" data-page-node-id="bSSOHx9xXrZJMsBGlDQC0B">核心功能</span>
+      <h2 class="section-title" data-page-node-id="ttGXrNvbEnPjnIR8x25Njc">为中小型仓储与工厂量身打造</h2>
+      <p class="section-desc" data-page-node-id="fTQU36moE28IiwtUIRK08K">少请人、少出错、账实永远对得上——一套系统搞定出入库、盘点、预警、追溯</p>
     </div>
-    <div class="features-grid">
-      <div class="feature-card reveal">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    <div class="features-grid" data-page-node-id="offWOYUuDf8VqwGv8BjmIf">
+      <div class="feature-card reveal" data-page-node-id="RRg65xC9MsxDFlUwhtEouF">
+        <div class="feature-icon" data-page-node-id="JizDTyI0QHMjoRA8hCYWtk">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="BDHmy3o1vcmKYax40ntP5W"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" data-page-node-id="NavPX0EovGTiwjwbLn91fQ"/><polyline points="9 22 9 12 15 12 15 22" data-page-node-id="lWiTdvLecojBeDv88nwph9"/></svg>
         </div>
-        <h3>私有化 · 纯内网</h3>
-        <p>系统装在您自己机房，数据不出门，断网也能用，无需担心数据安全。</p>
+        <h3 data-page-node-id="jWeWKxRKlUuG7OKZqSs58b">私有化 · 纯内网</h3>
+        <p data-page-node-id="L4MpLZMSTlWgkjhMDMbI4T">系统装在您自己机房，数据不出门，断网也能用，无需担心数据安全。</p>
       </div>
-      <div class="feature-card reveal reveal-delay-1">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      <div class="feature-card reveal reveal-delay-1" data-page-node-id="e11bm14WrAfJJIMHbmEYhe">
+        <div class="feature-icon" data-page-node-id="CQPNzj7Hbfq5OMdzwJWyon">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="J4VPDmLakBkxE90qYmDDew"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" data-page-node-id="61FhFktYAKvWsnSVFfDY83"/></svg>
         </div>
-        <h3>30 分钟上线</h3>
-        <p>免装环境，一键部署，扫码枪插上即用，无需专职 IT。</p>
+        <h3 data-page-node-id="GON3B3AfhJvXXBAipZZRS8">30 分钟上线</h3>
+        <p data-page-node-id="MkFRGPDkMZDFXHIGPpGeV4">免装环境，一键部署，扫码枪插上即用，无需专职 IT。</p>
       </div>
-      <div class="feature-card reveal reveal-delay-2">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <div class="feature-card reveal reveal-delay-2" data-page-node-id="5C22vZCnN6zC6vEWXG1q24">
+        <div class="feature-icon" data-page-node-id="5bapxtI8Is4DVeODJHfzFv">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="ZGlET9yCnUiYTj1EXRAjkO"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" data-page-node-id="sVKgMaPbTHlQxx7ibqKQrg"/></svg>
         </div>
-        <h3>防超卖 · 防错账</h3>
-        <p>三重防线防超卖，库存变动全程留痕，账实永远对得上。</p>
+        <h3 data-page-node-id="mg4yrJv3HiIweqxjgAMCpl">防超卖 · 防错账</h3>
+        <p data-page-node-id="ICQg2vOL09dsP2YD5ZvjZV">三重防线防超卖，库存变动全程留痕，账实永远对得上。</p>
       </div>
-      <div class="feature-card reveal">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="21" x2="12" y2="17"/></svg>
+      <div class="feature-card reveal" data-page-node-id="y6ljJM11qpMAWXN8nwEyq2">
+        <div class="feature-icon" data-page-node-id="DhRzq9WPQr8agMjy8m9Rcx">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="uhxPBRvv1DBD98wJ5zzHfD"><rect x="2" y="3" width="20" height="14" rx="2" ry="2" data-page-node-id="qoII6oDmIPkNao6X7CTjvr"/><line x1="8" y1="21" x2="16" y2="21" data-page-node-id="l29FFU6huDnPNHO5IuDBd6"/><line x1="12" y1="21" x2="12" y2="17" data-page-node-id="hTUFCeHckmEPlxAANs1E1B"/></svg>
         </div>
-        <h3>扫码作业</h3>
-        <p>收货、拣货、盘点支持扫码枪，效率翻倍，少出错。</p>
+        <h3 data-page-node-id="5IBEpwdCHG49pG0VXnPLkS">扫码作业</h3>
+        <p data-page-node-id="jP5P50zjA47nQ7zVKSe7rC">收货、拣货、盘点支持扫码枪，效率翻倍，少出错。</p>
       </div>
-      <div class="feature-card reveal reveal-delay-1">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      <div class="feature-card reveal reveal-delay-1" data-page-node-id="ODe30DNIbaKHoUVGvqPfL4">
+        <div class="feature-icon" data-page-node-id="iymxgIOkhDqcayaAYpaxnT">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="ZSrFSHpnvzk4DxsGsX2ewE"><line x1="18" y1="20" x2="18" y2="10" data-page-node-id="psLDMup4BUMe3cdndo28r8"/><line x1="12" y1="20" x2="12" y2="4" data-page-node-id="kgqiSOTmZXsEjVrvOltQpB"/><line x1="6" y1="20" x2="6" y2="14" data-page-node-id="a6ekHi8SwWKSHPnDkgOsBh"/></svg>
         </div>
-        <h3>库存预警</h3>
-        <p>低于安全库存自动标红提醒，缺货前就补，不耽误发货。</p>
+        <h3 data-page-node-id="H2ASOBmAtm2kvdSKWzZSBr">库存预警</h3>
+        <p data-page-node-id="uYIK4feiunMSDfALplNsuh">低于安全库存自动标红提醒，缺货前就补，不耽误发货。</p>
       </div>
-      <div class="feature-card reveal reveal-delay-2">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      <div class="feature-card reveal reveal-delay-2" data-page-node-id="2OLx5lx8o73rXD1VJ1PwUQ">
+        <div class="feature-icon" data-page-node-id="cqbMy6vgWZOsNwB5jhIN9e">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="QMghJdK7KY7E5r8AeGBhYj"><circle cx="12" cy="12" r="10" data-page-node-id="fRqoG8FoCQy1PTWCy3gAfh"/><polyline points="12 6 12 12 16 14" data-page-node-id="p5OxU46t79uSc4V1MmzcLy"/></svg>
         </div>
-        <h3>批次与效期</h3>
-        <p>FIFO / FEFO 策略，批次追溯、效期预警，食品医药也合规。</p>
+        <h3 data-page-node-id="HSZ3lZdaDpmGeBqBQniewR">批次与效期</h3>
+        <p data-page-node-id="7ZdNBkM6PIoW5aNcgADqE4">FIFO / FEFO 策略，批次追溯、效期预警，食品医药也合规。</p>
       </div>
     </div>
   </div>
@@ -999,42 +1005,42 @@ h1, h2, h3, h4 { font-weight: 800; color: var(--ink); line-height: 1.2; letter-s
 <!-- ============================================================
      SCENES
      ============================================================ -->
-<section class="section section-alt" id="scenes">
-  <div class="wrap">
-    <div class="section-header reveal">
-      <span class="section-label">适用场景</span>
-      <h2 class="section-title">三类典型客户，一套系统搞定</h2>
-      <p class="section-desc">无论你是电商仓、实体工厂还是工贸企业，都能找到匹配的功能组合</p>
+<section class="section section-alt" id="scenes" data-page-node-id="pmQxlfG0WE9EfQ2LusFL9c">
+  <div class="wrap" data-page-node-id="gK6Iqgo2Tb2uDBJZijHsJ6">
+    <div class="section-header reveal" data-page-node-id="MDWz5nF3Ftj2M8Gp4BL3M7">
+      <span class="section-label" data-page-node-id="JjbPsfcJhmgMEPWKMrA1iH">适用场景</span>
+      <h2 class="section-title" data-page-node-id="MD3HAEZJbseiC2rQXm8Ekz">三类典型客户，一套系统搞定</h2>
+      <p class="section-desc" data-page-node-id="038CFLb3O04XKYxW7fcjph">无论你是电商仓、实体工厂还是工贸企业，都能找到匹配的功能组合</p>
     </div>
-    <div class="scenes-grid">
-      <div class="scene-card reveal">
-        <span class="scene-eyebrow">电商仓</span>
-        <h3>大促不爆仓、不超卖</h3>
-        <p>多仓调拨、波次拣货、批次效期，应对大促峰值从容不迫。</p>
-        <ul>
-          <li>多仓 / 调拨</li>
-          <li>波次拣货提效</li>
-          <li>批次效期管理</li>
+    <div class="scenes-grid" data-page-node-id="dl039byAWOy78UJptbSyIU">
+      <div class="scene-card reveal" data-page-node-id="iTybd0cAGDvb4jNWBObBNM">
+        <span class="scene-eyebrow" data-page-node-id="5NTDI9j3kN3PHP4rzggL1d">电商仓</span>
+        <h3 data-page-node-id="DaFNRjbK5CDmTdefW9DTk2">大促不爆仓、不超卖</h3>
+        <p data-page-node-id="9bFykexmb8LCf97RFobu2u">多仓调拨、波次拣货、批次效期，应对大促峰值从容不迫。</p>
+        <ul data-page-node-id="kSALczmEXg1ewGwZ8Gk7JJ">
+          <li data-page-node-id="FMeIUsrfzxvZfLAkw78wGI">多仓 / 调拨</li>
+          <li data-page-node-id="YBvG7kP37IufTn3QcSdaZ2">波次拣货提效</li>
+          <li data-page-node-id="kpVVkpDs074CHpbla6Z2rz">批次效期管理</li>
         </ul>
       </div>
-      <div class="scene-card reveal reveal-delay-1">
-        <span class="scene-eyebrow">实体工厂</span>
-        <h3>原料成品一本账</h3>
-        <p>生产领料、退料、半成品入库，全链路可追溯。</p>
-        <ul>
-          <li>生产领料 / 退料</li>
-          <li>半成品入库</li>
-          <li>报废与盘点</li>
+      <div class="scene-card reveal reveal-delay-1" data-page-node-id="10H6AriBqEl9UoE7509X85">
+        <span class="scene-eyebrow" data-page-node-id="MdDYLr2Q378itnqA8edSuv">实体工厂</span>
+        <h3 data-page-node-id="FkEnbLRWFF9UTH45DKhf2n">原料成品一本账</h3>
+        <p data-page-node-id="yPJkIf9mFrwRCq6H4SVvxp">生产领料、退料、半成品入库，全链路可追溯。</p>
+        <ul data-page-node-id="m7hjoyzTPHCOMSFGxdDjH4">
+          <li data-page-node-id="zmqrFKEpqREGaff9pToZqo">生产领料 / 退料</li>
+          <li data-page-node-id="a0TPOG5CErCMOZxh0jwatU">半成品入库</li>
+          <li data-page-node-id="Scv6h8qDFkO1JwbD64PxeH">报废与盘点</li>
         </ul>
       </div>
-      <div class="scene-card reveal reveal-delay-2">
-        <span class="scene-eyebrow">工贸企业</span>
-        <h3>采购到销售全链路</h3>
-        <p>从采购入库到销售出库，一张表贯穿全流程。</p>
-        <ul>
-          <li>采购入库 / 质检</li>
-          <li>销售出库 / 退货</li>
-          <li>客户 / 供应商台账</li>
+      <div class="scene-card reveal reveal-delay-2" data-page-node-id="jhgVCvwFoeMhgiAkT47dFw">
+        <span class="scene-eyebrow" data-page-node-id="PuB34yB3j9DbWABitW4WZU">工贸企业</span>
+        <h3 data-page-node-id="QlFHfDqSJqYTfA0paQUYVA">采购到销售全链路</h3>
+        <p data-page-node-id="EFzKCsrMu1IizGIFOgkHjG">从采购入库到销售出库，一张表贯穿全流程。</p>
+        <ul data-page-node-id="THGL7sSiD41x4ae7Yqjtra">
+          <li data-page-node-id="dM8A3IPWe4jbf7eSkmGbFE">采购入库 / 质检</li>
+          <li data-page-node-id="o00LYV9lbYJpK4CsCO8rr1">销售出库 / 退货</li>
+          <li data-page-node-id="D9Lv0bULdkN4EX9bhXXkt9">客户 / 供应商台账</li>
         </ul>
       </div>
     </div>
@@ -1044,125 +1050,125 @@ h1, h2, h3, h4 { font-weight: 800; color: var(--ink); line-height: 1.2; letter-s
 <!-- ============================================================
      PRICING
      ============================================================ -->
-<section class="section pricing-section" id="pricing">
-  <div class="wrap">
-    <div class="section-header reveal">
-      <span class="section-label">透明价格</span>
-      <h2 class="section-title">两种交付模式，价格一目了然</h2>
-      <p class="section-desc">无隐藏费用，试了再决定</p>
+<section class="section pricing-section" id="pricing" data-page-node-id="NoJ52DNXvMrq78kjcBdbjS">
+  <div class="wrap" data-page-node-id="CFMGjDF74CgA9lZcWFCZtc">
+    <div class="section-header reveal" data-page-node-id="L4D1Se1n4zTx3aG0C1xy8l">
+      <span class="section-label" data-page-node-id="Xs292KYOF6jWkub7xKKDIG">透明价格</span>
+      <h2 class="section-title" data-page-node-id="rMi1BBD6AxJrnExJdCLVI4">两种交付模式，价格一目了然</h2>
+      <p class="section-desc" data-page-node-id="VVJDyNesZlsgprSWQI1al3">无隐藏费用，试了再决定</p>
     </div>
 
-    <div class="pricing-toggle reveal">
-      <button class="active" data-mode="subscribe">订阅版（按月/年）</button>
-      <button data-mode="buyout">私有化买断（一次性）</button>
+    <div class="pricing-toggle reveal" data-page-node-id="D0iBbl8u5iwDdxiZiqqBxq">
+      <button class="active" data-mode="subscribe" data-page-node-id="UyzAEzBVVexf1QnhrLcqR5">订阅版（按月/年）</button>
+      <button data-mode="buyout" data-page-node-id="2lCbA1AsBugNZQxZnF7zV9">私有化买断（一次性）</button>
     </div>
 
     <!-- 订阅版 -->
-    <div class="pricing-grid reveal" id="pricingSubscribe">
-      <div class="price-card">
-        <div class="plan-name">基础版</div>
-        <div class="plan-desc">单仓 · 基础出入库 / 盘点</div>
-        <div class="price-row"><span class="price-val">980</span><span class="price-unit">元/年</span></div>
-        <div class="price-annual">¥98/月，付10用12</div>
-        <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>采购入库 / 销售出库</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>库存台账 / 流水</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>盘点</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>库存预警</li>
+    <div class="pricing-grid reveal" id="pricingSubscribe" data-page-node-id="G6nr7FBP8kDk9qk3Z7S2RT">
+      <div class="price-card" data-page-node-id="lfbWUY6M4GwsXghikblwfT">
+        <div class="plan-name" data-page-node-id="WAEHC6uDZqf9x7lhaAWte8">基础版</div>
+        <div class="plan-desc" data-page-node-id="J0I0T6TpaTVFAK1KP0qGPT">单仓 · 基础出入库 / 盘点</div>
+        <div class="price-row" data-page-node-id="WrvZiIpRl7REzxeANq6WOJ"><span class="price-val" data-page-node-id="KXHWeXRDdj8D9WkoONVoQK">980</span><span class="price-unit" data-page-node-id="6VlJhx9A9lMLxAeN9GJFwH">元/年</span></div>
+        <div class="price-annual" data-page-node-id="Z4U4JHdxGwcFwlHHzUEGtj">¥98/月，付10用12</div>
+        <ul data-page-node-id="l2giNGr5iYemxae0I8EFF5">
+          <li data-page-node-id="FUwo9ObcsjB9uxFBanR6nV"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="knlgWfewjapO7TtNaPlBLq"><polyline points="20 6 9 17 4 12" data-page-node-id="omEJm6adw8p7UZhsEymFRp"/></svg>采购入库 / 销售出库</li>
+          <li data-page-node-id="ZAa9ZTb6JVhDX2AsDkGbkX"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="j5ULxHLDhBBhXDuNctxprY"><polyline points="20 6 9 17 4 12" data-page-node-id="aa61cBzxN86KLkO7wlRWLj"/></svg>库存台账 / 流水</li>
+          <li data-page-node-id="SvYovLU3eLzbGJDBIlviro"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="xD2zy6Ggs1rGsGBCgfiAxc"><polyline points="20 6 9 17 4 12" data-page-node-id="OxYJS0FVzdAneImJdZwYtN"/></svg>盘点</li>
+          <li data-page-node-id="AxOWj9UHUB7ZatBcEoGhRB"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="QtDGDFTEzdm1w4F7qpSdzZ"><polyline points="20 6 9 17 4 12" data-page-node-id="ekmnPd3blAZqK1BAtGimqg"/></svg>库存预警</li>
         </ul>
-        <a href="#download" class="btn-price ghost">免费试用</a>
+        <a href="#download" class="btn-price ghost" data-page-node-id="n4LUgl6HvS8MC3Jv0AORGC">免费试用</a>
       </div>
-      <div class="price-card featured">
-        <span class="price-badge">最受欢迎</span>
-        <div class="plan-name">电商版</div>
-        <div class="plan-desc">多仓 · 波次 · 批次效期</div>
-        <div class="price-row"><span class="price-val">1,980</span><span class="price-unit">元/年</span></div>
-        <div class="price-annual">¥198/月，付10用12</div>
-        <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>基础版全部功能</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>多仓 / 调拨</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>波次拣货</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>批次与效期</li>
+      <div class="price-card featured" data-page-node-id="cEeeWCQ8GVjqb9nu0To7Hw">
+        <span class="price-badge" data-page-node-id="qPgxAvEjGorqMU4Ct7TypR">最受欢迎</span>
+        <div class="plan-name" data-page-node-id="Hr2i0zd9XYQBmj6pn9towO">电商版</div>
+        <div class="plan-desc" data-page-node-id="qFI26ydl1UJaNeyy0pKxw0">多仓 · 波次 · 批次效期</div>
+        <div class="price-row" data-page-node-id="GBYPTfXcDF9R1HnXDBTkId"><span class="price-val" data-page-node-id="56j5PMyANg1Gx5eGGA8SKe">1,980</span><span class="price-unit" data-page-node-id="8BHvRkcHFrp7oGvPHQnRBC">元/年</span></div>
+        <div class="price-annual" data-page-node-id="wtHaDgb0BcqkzBeSLUAYfK">¥198/月，付10用12</div>
+        <ul data-page-node-id="yNUxxi2BR3hz8JTT0FITOr">
+          <li data-page-node-id="ITJYEetGeU8B5CqSP2Wb26"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="Zv9kxIG2av5doFUkCWoyDh"><polyline points="20 6 9 17 4 12" data-page-node-id="7Zoon2kdBB5nyYmtCXm0o8"/></svg>基础版全部功能</li>
+          <li data-page-node-id="5gjWBb7TdRlTHHQ8rh3ApD"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="fTHA9x52acMm1R845oHIX0"><polyline points="20 6 9 17 4 12" data-page-node-id="Q1ZWG6oumn1N5ih14BGSDQ"/></svg>多仓 / 调拨</li>
+          <li data-page-node-id="raBdh3R6vPltOnUFhFGlZs"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="rFFQQ7o0ijuP9IIV6bic40"><polyline points="20 6 9 17 4 12" data-page-node-id="l75dDfyal00TlfzlJpyadt"/></svg>波次拣货</li>
+          <li data-page-node-id="z04wUC25Ja7OEdIuqat6oF"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="v4GRvBKLx0RiYvZuI6rhY4"><polyline points="20 6 9 17 4 12" data-page-node-id="FGylmByLHFE5Tj57UHOXBU"/></svg>批次与效期</li>
         </ul>
-        <a href="#download" class="btn-price primary">免费试用</a>
+        <a href="#download" class="btn-price primary" data-page-node-id="2rrJ8A2zcQFVBBL0w67L7A">免费试用</a>
       </div>
-      <div class="price-card">
-        <div class="plan-name">工贸版</div>
-        <div class="plan-desc">调拨 · 生产领料 · 质检</div>
-        <div class="price-row"><span class="price-val">3,680</span><span class="price-unit">元/年</span></div>
-        <div class="price-annual">¥368/月，付10用12</div>
-        <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>电商版全部功能</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>生产领料</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>退货质检</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>报废管理</li>
+      <div class="price-card" data-page-node-id="wpuZwpKNDNF9ekbYmHArO2">
+        <div class="plan-name" data-page-node-id="iOlDlriGvswPBKiu7X4IJz">工贸版</div>
+        <div class="plan-desc" data-page-node-id="GOpI2M0lFlnTNxQYWBSw8t">调拨 · 生产领料 · 质检</div>
+        <div class="price-row" data-page-node-id="pCpYy5mmHfehzaB2rLgFJi"><span class="price-val" data-page-node-id="zRCBRp2i6mIQx4B8QSeZcM">3,680</span><span class="price-unit" data-page-node-id="gwjQ14yF5CBeWxDEvZgHEw">元/年</span></div>
+        <div class="price-annual" data-page-node-id="xFSO378KVGUEAhBXlHB8jp">¥368/月，付10用12</div>
+        <ul data-page-node-id="es7ZKX4QRFfxen7cIP7iec">
+          <li data-page-node-id="lP1i4BNpZyRZH4BpnrcRc0"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="CHX8lmBThUH7Lr7UgRKJkk"><polyline points="20 6 9 17 4 12" data-page-node-id="iiwSOd75IulOaLzMBO7Mpz"/></svg>电商版全部功能</li>
+          <li data-page-node-id="Yk0iGDiKdgahfWAL4Vt3Jm"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="4ckJVxkYOxbsnyCzSh1jDU"><polyline points="20 6 9 17 4 12" data-page-node-id="kqIhXMgviTOlIM017waUrt"/></svg>生产领料</li>
+          <li data-page-node-id="9MDVjiBL6NzlY0NOpLn5jg"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="f00dks5FBB1JYpTOO3IBdY"><polyline points="20 6 9 17 4 12" data-page-node-id="LxfCln2K55dyDhbGQGtIRC"/></svg>退货质检</li>
+          <li data-page-node-id="5n2l9QphtEs8jO8EFCJvnU"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="m76QIN3BfyyOh0yEw9I44m"><polyline points="20 6 9 17 4 12" data-page-node-id="pyhLwEr5BSRKmhWzBciESo"/></svg>报废管理</li>
         </ul>
-        <a href="#download" class="btn-price ghost">免费试用</a>
+        <a href="#download" class="btn-price ghost" data-page-node-id="c08DSIBXGGAs5jws1ZED4e">免费试用</a>
       </div>
-      <div class="price-card">
-        <div class="plan-name">企业版</div>
-        <div class="plan-desc">全功能 · 批次追溯 · 优先支持</div>
-        <div class="price-row"><span class="price-val">6,800</span><span class="price-unit">元/年</span></div>
-        <div class="price-annual">¥680/月，付10用12</div>
-        <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>工贸版全部功能</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>批次追溯</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>数据权限细化</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>优先技术支持</li>
+      <div class="price-card" data-page-node-id="jaUS04nEjFctSg6y8q0eUa">
+        <div class="plan-name" data-page-node-id="H6UH3tGBfiSCe6Qu82q0Dh">企业版</div>
+        <div class="plan-desc" data-page-node-id="q82KY3ZLKUyr0Dzr4DFA81">全功能 · 批次追溯 · 优先支持</div>
+        <div class="price-row" data-page-node-id="WiRiy5MavoE3JSEhUyGGxh"><span class="price-val" data-page-node-id="VHzQBHyFOKGpg19iQ7BHuu">6,800</span><span class="price-unit" data-page-node-id="SpW8iPisqdnF7zMiuGLtbK">元/年</span></div>
+        <div class="price-annual" data-page-node-id="RxX0Jll6LhRjpNcoRBzaZt">¥680/月，付10用12</div>
+        <ul data-page-node-id="ZxKT0VuSvO8LFXZQGtzIQP">
+          <li data-page-node-id="oIPMJJk7BmgNqkFhTQmnYI"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="ClHWWZA6TozjSuDbv3kV9D"><polyline points="20 6 9 17 4 12" data-page-node-id="CD8XV3TnTyCq98vryhZylb"/></svg>工贸版全部功能</li>
+          <li data-page-node-id="1uwGGQCUST1eLqxuHTOvvN"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="6MDTi7rcSqXRTduQ0diwGm"><polyline points="20 6 9 17 4 12" data-page-node-id="U2OEF4VNCjrV0SRpPQGgoO"/></svg>批次追溯</li>
+          <li data-page-node-id="FahBnM1IjxGLI6SYpvN38B"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="Rd7rdHLBfmxdt49k6cDAsm"><polyline points="20 6 9 17 4 12" data-page-node-id="8QNB0vnUJJcD0aDkb9qGzC"/></svg>数据权限细化</li>
+          <li data-page-node-id="GUfRd9S0PIp6YgiGlMsmGb"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="BHIgyJrue0ZfkOpndCBXSl"><polyline points="20 6 9 17 4 12" data-page-node-id="ArSQbdS7vk2pKlJ1bMWcD3"/></svg>优先技术支持</li>
         </ul>
-        <a href="#download" class="btn-price ghost">免费试用</a>
+        <a href="#download" class="btn-price ghost" data-page-node-id="3coAoKQcnAc42ySRX7KX9d">免费试用</a>
       </div>
     </div>
 
     <!-- 买断版（默认隐藏） -->
-    <div class="pricing-grid reveal" id="pricingBuyout" style="display:none;">
-      <div class="price-card">
-        <div class="plan-name">基础版</div>
-        <div class="plan-desc">单仓 · 基础出入库 / 盘点</div>
-        <div class="price-row"><span class="price-val">9,800</span><span class="price-unit">元/套</span></div>
-        <div class="price-annual">含首年更新，之后可选维护 ¥980/年</div>
-        <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>永久使用权</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>数据完全本地</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>可选维护（不强制）</li>
+    <div class="pricing-grid reveal" id="pricingBuyout" style="display:none;" data-page-node-id="MjqQtRn1xIFA0iq7ndvnAZ">
+      <div class="price-card" data-page-node-id="y1LXAbjD8b568FBTRhuJa4">
+        <div class="plan-name" data-page-node-id="vK1Agtz9TBwsnNGL233d12">基础版</div>
+        <div class="plan-desc" data-page-node-id="VMtX8B3B6QokB4HtepJjbL">单仓 · 基础出入库 / 盘点</div>
+        <div class="price-row" data-page-node-id="Kk7l2X6Ak12qwcTYs8KcFj"><span class="price-val" data-page-node-id="0zWYBNCtOEeqEEE0EMnrFT">9,800</span><span class="price-unit" data-page-node-id="55R3ug5qoo1wJ0veEAwyVQ">元/套</span></div>
+        <div class="price-annual" data-page-node-id="GMCOHJyjAO0WYLSV1RIgj4">含首年更新，之后可选维护 ¥980/年</div>
+        <ul data-page-node-id="Tiu0YeB1pRDlBQ9Zu2g12E">
+          <li data-page-node-id="QEpdF0zzNz5zMn9Lbkif1V"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="Q5p0cXepAjVOAuEQfAF1YL"><polyline points="20 6 9 17 4 12" data-page-node-id="ZMNlJS0v9yFTTBXp5SnTmN"/></svg>永久使用权</li>
+          <li data-page-node-id="FCCw3lPXGTdVDC9VFVoH2A"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="CWbyL6S2Hdi3vZMFpiBocT"><polyline points="20 6 9 17 4 12" data-page-node-id="R5uKjutlN0AvPkO80WLSm7"/></svg>数据完全本地</li>
+          <li data-page-node-id="EeKUgTZMapitB7F2oNfCHz"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="pmPqDPXcl2kLtOB8OIJAK9"><polyline points="20 6 9 17 4 12" data-page-node-id="Z091s9hp9PGhV0tIxppPgV"/></svg>可选维护（不强制）</li>
         </ul>
-        <a href="#download" class="btn-price ghost">预约演示</a>
+        <a href="#download" class="btn-price ghost" data-page-node-id="l9bN4qwcljxxYIxcX3kOUs">预约演示</a>
       </div>
-      <div class="price-card">
-        <div class="plan-name">电商版</div>
-        <div class="plan-desc">多仓 · 波次 · 批次效期</div>
-        <div class="price-row"><span class="price-val">19,800</span><span class="price-unit">元/套</span></div>
-        <div class="price-annual">含首年更新，之后可选维护 ¥1,980/年</div>
-        <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>永久使用权</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>数据完全本地</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>可选维护（不强制）</li>
+      <div class="price-card" data-page-node-id="miV38q47DGMqX4XJjBeSkX">
+        <div class="plan-name" data-page-node-id="dJ1Amebs4DW0xlOfFDdd8d">电商版</div>
+        <div class="plan-desc" data-page-node-id="kM7e3zh5DnW3zwE94kJAXd">多仓 · 波次 · 批次效期</div>
+        <div class="price-row" data-page-node-id="OURFFBn4HctoytgOObMUUH"><span class="price-val" data-page-node-id="65A8Pc2UkFwySjfFdyZ6cH">19,800</span><span class="price-unit" data-page-node-id="oXIOFs59RqlBwCkbJ6FIgU">元/套</span></div>
+        <div class="price-annual" data-page-node-id="AyoN4YTp43nO7BQD2s9GPn">含首年更新，之后可选维护 ¥1,980/年</div>
+        <ul data-page-node-id="e1MjpDMox6rrZtxDGzGzd2">
+          <li data-page-node-id="1DqV1s1EEf0MrdzL4h3Rc8"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="zmB2Vgnaepsc7lBMCAGnmy"><polyline points="20 6 9 17 4 12" data-page-node-id="4UO0GjvCSePH87ElmB4fbu"/></svg>永久使用权</li>
+          <li data-page-node-id="66wJQ7CbcRvCv1BBDEce2g"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="spMsMInSuL88vaokzeXL25"><polyline points="20 6 9 17 4 12" data-page-node-id="UjwX4gwaTeyNn16bb0Udhg"/></svg>数据完全本地</li>
+          <li data-page-node-id="5uxaAKuYbLctlCmDxQNukO"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="As76OKnFA2yacWz5HVwqWW"><polyline points="20 6 9 17 4 12" data-page-node-id="Vr1BbOdpeDSfRzyUWnQCwJ"/></svg>可选维护（不强制）</li>
         </ul>
-        <a href="#download" class="btn-price ghost">预约演示</a>
+        <a href="#download" class="btn-price ghost" data-page-node-id="GIiosn7qaMO4RVavwLk7XH">预约演示</a>
       </div>
-      <div class="price-card">
-        <div class="plan-name">工贸版</div>
-        <div class="plan-desc">调拨 · 生产领料 · 质检</div>
-        <div class="price-row"><span class="price-val">36,800</span><span class="price-unit">元/套</span></div>
-        <div class="price-annual">含首年更新，之后可选维护 ¥3,680/年</div>
-        <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>永久使用权</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>数据完全本地</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>可选维护（不强制）</li>
+      <div class="price-card" data-page-node-id="7HKQmsoCWBzqiI3QSCjSdj">
+        <div class="plan-name" data-page-node-id="zfS2Y27jkhqHFMZpis0t8r">工贸版</div>
+        <div class="plan-desc" data-page-node-id="H2jyiyRmqKWTMDr1HpOQiD">调拨 · 生产领料 · 质检</div>
+        <div class="price-row" data-page-node-id="VSZg1S8xFUqyjknpYoaSqX"><span class="price-val" data-page-node-id="MDnLXgtP9eudX9qAqUwHGJ">36,800</span><span class="price-unit" data-page-node-id="1fnwzNVLMPkp1YJ672sGwi">元/套</span></div>
+        <div class="price-annual" data-page-node-id="DKFroeD4LTJOGsDQupm1cV">含首年更新，之后可选维护 ¥3,680/年</div>
+        <ul data-page-node-id="w3wAtQp4lBKNPuBwCIaHjM">
+          <li data-page-node-id="yb2mEud3R4fnZq1BDBhvLF"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="4gK9Fpv4BThDZtLkFzo5XR"><polyline points="20 6 9 17 4 12" data-page-node-id="RFW8VrXo23dhIb6YXNEUzP"/></svg>永久使用权</li>
+          <li data-page-node-id="12COsg02kMw50dyQiuw40s"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="mADPbcLn5Kuddd4uKACFdE"><polyline points="20 6 9 17 4 12" data-page-node-id="w1y7COXWGFtKTMSMRg4ieC"/></svg>数据完全本地</li>
+          <li data-page-node-id="N7RHudDl3bN0xl93DEqcf6"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="VYuvZEHqJmzr2Yd1Jmuquc"><polyline points="20 6 9 17 4 12" data-page-node-id="dQaUfPLhLiFd7bgbS1OHT7"/></svg>可选维护（不强制）</li>
         </ul>
-        <a href="#download" class="btn-price ghost">预约演示</a>
+        <a href="#download" class="btn-price ghost" data-page-node-id="jykDeOzSyFb767vPm4ZhLx">预约演示</a>
       </div>
-      <div class="price-card">
-        <div class="plan-name">企业版</div>
-        <div class="plan-desc">全功能 · 批次追溯 · 优先支持</div>
-        <div class="price-row"><span class="price-val">68,000</span><span class="price-unit">元/套</span></div>
-        <div class="price-annual">含首年更新，之后可选维护 ¥6,800/年</div>
-        <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>永久使用权</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>数据完全本地</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>优先技术支持</li>
+      <div class="price-card" data-page-node-id="6zr9wi7c7bOnSOLvUYPX2Q">
+        <div class="plan-name" data-page-node-id="7bpari2I6aLmEzc4DpHxiu">企业版</div>
+        <div class="plan-desc" data-page-node-id="DnvphIr1cK10o0dpcoiD89">全功能 · 批次追溯 · 优先支持</div>
+        <div class="price-row" data-page-node-id="GSjvDoDKDAyGRDBXD4BFrX"><span class="price-val" data-page-node-id="ZNkUKEk6gmBL2KWOD8eytG">68,000</span><span class="price-unit" data-page-node-id="dWlR9bVGPmnn40Dj3PNK7U">元/套</span></div>
+        <div class="price-annual" data-page-node-id="vHDvjaerQHU8hgUJUvUYzv">含首年更新，之后可选维护 ¥6,800/年</div>
+        <ul data-page-node-id="hpf0tH8Mlr6Jf1Ow03BDTa">
+          <li data-page-node-id="CqCWFhDGuguvHIHcZhCYW6"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="DoJDHfD8s8zWyrQUzM9MFs"><polyline points="20 6 9 17 4 12" data-page-node-id="SqK4eqAs2LTiuNPpbx4dWC"/></svg>永久使用权</li>
+          <li data-page-node-id="rNmKc6jJJrrnZIFMN27DSy"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="Q3ErE9RfgwbmuMDryeXcc8"><polyline points="20 6 9 17 4 12" data-page-node-id="vlwPORBpW7H1k5ONLMUNih"/></svg>数据完全本地</li>
+          <li data-page-node-id="dpfo5LzTkxcna8HLeWzAnr"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="LMEvqgKk4sQUGdurLCu4UR"><polyline points="20 6 9 17 4 12" data-page-node-id="dV36She2ginY0YJKDP1iFB"/></svg>优先技术支持</li>
         </ul>
-        <a href="#download" class="btn-price ghost">预约演示</a>
+        <a href="#download" class="btn-price ghost" data-page-node-id="NxPmSyGJuz2LEYmPmTzhkR">预约演示</a>
       </div>
     </div>
   </div>
@@ -1171,68 +1177,68 @@ h1, h2, h3, h4 { font-weight: 800; color: var(--ink); line-height: 1.2; letter-s
 <!-- ============================================================
      MODES — 两种模式对比
      ============================================================ -->
-<section class="section modes-section" id="modes">
-  <div class="wrap">
-    <div class="section-header reveal">
-      <span class="section-label">两种模式</span>
-      <h2 class="section-title">两种模式，数据与功能完全一样</h2>
-      <p class="section-desc">区别只在「怎么用」——选最适合你们团队工作方式的那一种</p>
+<section class="section modes-section" id="modes" data-page-node-id="pe0u8CbgKwDizoRkAFA24T">
+  <div class="wrap" data-page-node-id="xHdz6TyteznamKjfMp8bnM">
+    <div class="section-header reveal" data-page-node-id="C3TPEYdbHcnHOw08ugM8e3">
+      <span class="section-label" data-page-node-id="pOPO6MuNHClUo6aGgzncS0">两种模式</span>
+      <h2 class="section-title" data-page-node-id="iDbBfdqIBDoxQtmyWprxKA">两种模式，数据与功能完全一样</h2>
+      <p class="section-desc" data-page-node-id="OFGcKEyHEJairXzI89FLDc">区别只在「怎么用」——选最适合你们团队工作方式的那一种</p>
     </div>
 
-    <div class="modes-grid">
-      <div class="mode-card reveal">
-        <span class="mode-tag">模式一 · 推荐首选</span>
-        <h3>服务端版</h3>
-        <p>装 1 台服务端，全公司用浏览器访问，同事电脑免装任何东西，手机平板也能开。</p>
-        <ul class="mode-list">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>装 1 台就够，同事浏览器打开地址即用</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>支持 Windows 10/11、Server 2016+</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>任何能开浏览器的设备：电脑 / 平板 / 手机</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>临时换台电脑，打开浏览器就能用</li>
+    <div class="modes-grid" data-page-node-id="CO9sKVBopLos29TCTU4DBI">
+      <div class="mode-card reveal" data-page-node-id="aZpvzWHFJnkLk7wJZ1AZI5">
+        <span class="mode-tag" data-page-node-id="8UMiWmTJffjOMnuMJS22YH">模式一 · 推荐首选</span>
+        <h3 data-page-node-id="fjiIjunGKTfBLTAlXvWl0K">服务端版</h3>
+        <p data-page-node-id="gF6ncFvHQHRVysCimIB1PR">装 1 台服务端，全公司用浏览器访问，同事电脑免装任何东西，手机平板也能开。</p>
+        <ul class="mode-list" data-page-node-id="xoGOkDpM85S3p8QKePEnzk">
+          <li data-page-node-id="2TfaVAk64CuAGkse1Qzesb"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="KAOwvSdJEoKNy0vlNuRnHb"><polyline points="20 6 9 17 4 12" data-page-node-id="2eJ4RS7dsIGEhRcwXsbCM9"/></svg>装 1 台就够，同事浏览器打开地址即用</li>
+          <li data-page-node-id="pvjOnpt5LNAB8nJaQwp7Ok"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="K7Ksm1RdqLXC3FoiqhHsWU"><polyline points="20 6 9 17 4 12" data-page-node-id="kOG5FES3rfnffF8mRcG3Z8"/></svg>支持 Windows 10/11、Server 2016+</li>
+          <li data-page-node-id="6iA69a8szhyk5dgmaq8JFE"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="qCNvhIz9wCrufvI4j0tGWp"><polyline points="20 6 9 17 4 12" data-page-node-id="XpUCfrjs7J8Rk7DRAx5LO5"/></svg>任何能开浏览器的设备：电脑 / 平板 / 手机</li>
+          <li data-page-node-id="ZVPnt6liG2tUjXcjWMQS3d"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="MImrDtvF87yMyefon0ABuj"><polyline points="20 6 9 17 4 12" data-page-node-id="0CAg9zfonNZzeTCnEWwPdQ"/></svg>临时换台电脑，打开浏览器就能用</li>
         </ul>
-        <a href="#download" class="btn btn-primary">下载服务端版</a>
+        <a href="#download" class="btn btn-primary" data-page-node-id="EOFhQU9HzKBvL1vr7osG76">下载服务端版</a>
       </div>
-      <div class="mode-card reveal reveal-delay-1">
-        <span class="mode-tag" style="background:rgba(13,148,136,0.08);color:var(--teal);">模式二 · 进阶选择</span>
-        <h3>桌面客户端版</h3>
-        <p>装在每台电脑上，双击图标弹出独立窗口，托盘常驻，适合需要本地硬件直连的场景。</p>
-        <ul class="mode-list">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>独立窗口，不依赖浏览器</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>托盘常驻、静默打印、电子秤直连</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>更稳，独立进程，长时间开着不卡</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>需搭配服务端版使用（不能单独运行）</li>
+      <div class="mode-card reveal reveal-delay-1" data-page-node-id="muJBlIhpYt898NhzJY90Dr">
+        <span class="mode-tag" style="background:rgba(13,148,136,0.08);color:var(--teal);" data-page-node-id="ueUirLGhlD2wKXCCR1ylUw">模式二 · 进阶选择</span>
+        <h3 data-page-node-id="vKmJMOAb1O9Hu0EdX8P12u">桌面客户端版</h3>
+        <p data-page-node-id="3FbEbYN1RT6wyiJgEHE7jZ">装在每台电脑上，双击图标弹出独立窗口，托盘常驻，适合需要本地硬件直连的场景。</p>
+        <ul class="mode-list" data-page-node-id="XJdsb23FPM5krMiQbRY8ZV">
+          <li data-page-node-id="vq7gfFSDbXkumKdpSoSxgM"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="OfZ3tsDOD7OrnTnHcGNBOG"><polyline points="20 6 9 17 4 12" data-page-node-id="VvNjrEiabRvyW1Y8U8yB9W"/></svg>独立窗口，不依赖浏览器</li>
+          <li data-page-node-id="mIvUEYyVK5j2pZPkuN9L3d"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="jjyMXM7xY8BdgJRDR86Qlk"><polyline points="20 6 9 17 4 12" data-page-node-id="TnGGMHOEEGPLpE556cWoYS"/></svg>托盘常驻、静默打印、电子秤直连</li>
+          <li data-page-node-id="z12RKZBafmZJE6baE8q98q"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="R807JqMCCyjQPnGLKLHF2t"><polyline points="20 6 9 17 4 12" data-page-node-id="vRGQC0uoyVcDSQ94IxZGaj"/></svg>更稳，独立进程，长时间开着不卡</li>
+          <li data-page-node-id="R3VXa6xfNgWNc36r8JyHQD"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="8vjzmYxc0XtrOlU2VWhZX7"><polyline points="20 6 9 17 4 12" data-page-node-id="MhrIQM4TA8J53cAeXONylT"/></svg>需搭配服务端版使用（不能单独运行）</li>
         </ul>
-        <a href="#download" class="btn btn-outline">下载客户端版</a>
+        <a href="#download" class="btn btn-outline" data-page-node-id="qUhsqrWUaglvHS9TdvI0JL">下载客户端版</a>
       </div>
     </div>
 
     <!-- 对比表格 -->
-    <div class="mode-compare-table reveal">
-      <div class="mct-header">
-        <h3>两种模式怎么选？</h3>
-        <p>数据与功能完全一样，区别只在「怎么用」</p>
+    <div class="mode-compare-table reveal" data-page-node-id="GdMZlQQt200uf8d24GQbFR">
+      <div class="mct-header" data-page-node-id="DJUAd3dE6JPPPNrnldGb2X">
+        <h3 data-page-node-id="U9GwNP15X5yKGAbnU2zYlv">两种模式怎么选？</h3>
+        <p data-page-node-id="qXObtDR5F1rjGXwG7Ir9bA">数据与功能完全一样，区别只在「怎么用」</p>
       </div>
-      <table>
-        <thead>
-          <tr>
-            <th>对比项</th>
-            <th class="highlight-col">模式一 · 服务端版</th>
-            <th>模式二 · 桌面客户端版</th>
+      <table data-page-node-id="xnHGhNdK0hs6LaqcIMocVY">
+        <thead data-page-node-id="Won8nc90mKc9isZ2E576Yv">
+          <tr data-page-node-id="h9xAW2kgNbPrF7XAh2CxQc">
+            <th data-page-node-id="9A479ANRMAcJvFfIvPaKRZ">对比项</th>
+            <th class="highlight-col" data-page-node-id="zaHusL1uGuRkUC005PzSx6">模式一 · 服务端版</th>
+            <th data-page-node-id="0FuGbeYvEFTiIr3X6EEZge">模式二 · 桌面客户端版</th>
           </tr>
         </thead>
-        <tbody>
-          <tr><td>需要安装吗</td><td class="highlight-col">只装 1 台（服务端），同事免装</td><td>服务端装 1 台 + 每台电脑再装客户端</td></tr>
-          <tr><td>能在哪用</td><td class="highlight-col">任何设备（电脑 / 平板 / 手机）+ 浏览器</td><td>Windows 电脑（需先装客户端）</td></tr>
-          <tr><td>运行环境</td><td class="highlight-col">浏览器（Chrome / Edge / 360 等）</td><td>独立窗口，自带内核，不依赖浏览器</td></tr>
-          <tr><td>数据存在哪</td><td class="highlight-col">服务端那台机器，100% 本地</td><td>同样在服务端（客户端不存数据）</td></tr>
-          <tr><td>性能表现</td><td class="highlight-col">日常够用，受浏览器标签页影响</td><td>更稳，独立进程，长时间开着不卡</td></tr>
-          <tr><td>特色能力</td><td class="highlight-col">免维护、随时换机、手机也能用</td><td>托盘常驻、静默打印、电子秤直连</td></tr>
-          <tr><td>适合谁</td><td class="highlight-col">工位不固定、想省事、不想装软件</td><td>固定工位、要打印 / 称重、想像正经软件</td></tr>
+        <tbody data-page-node-id="J0gJBBqSeS0XyQOxPPKnYY">
+          <tr data-page-node-id="k8eGQ4ibONDtxyxQGiuzZp"><td data-page-node-id="0BHAHEfNcecjapEWu5q17O">需要安装吗</td><td class="highlight-col" data-page-node-id="aHxo4kGFa2oYuiV2GincpG">只装 1 台（服务端），同事免装</td><td data-page-node-id="BgCgsmqjTo8uF1fn3y69iW">服务端装 1 台 + 每台电脑再装客户端</td></tr>
+          <tr data-page-node-id="dSqDJkx9BGDAk1RaLG7W9a"><td data-page-node-id="FFX2PY6XVBvkO2s8XCw1ls">能在哪用</td><td class="highlight-col" data-page-node-id="7JLGH6KF6RnX5API5pFyJj">任何设备（电脑 / 平板 / 手机）+ 浏览器</td><td data-page-node-id="J4PNaQIkqDFKFnwEasASQA">Windows 电脑（需先装客户端）</td></tr>
+          <tr data-page-node-id="FL3VWWU16ndF8YXsIk6IIF"><td data-page-node-id="39zyko1Mdp7RriXKLrCF2K">运行环境</td><td class="highlight-col" data-page-node-id="9fMU4PD7LiMhwe1a17pzd3">浏览器（Chrome / Edge / 360 等）</td><td data-page-node-id="f0PSWhcpM3k0FWCtu02jsg">独立窗口，自带内核，不依赖浏览器</td></tr>
+          <tr data-page-node-id="M77GwVAIUeJa3tBct61qGx"><td data-page-node-id="omTydLDvZBJegxuCHtSxnw">数据存在哪</td><td class="highlight-col" data-page-node-id="yNVd6XhOH0AynDXA5mGXk7">服务端那台机器，100% 本地</td><td data-page-node-id="1IZ1tGGeXCEGgp02LO5Owe">同样在服务端（客户端不存数据）</td></tr>
+          <tr data-page-node-id="TX5sZjMdJ5prTq5aCJ8HAg"><td data-page-node-id="TMJWBt85rXzrfM9sdDVLX8">性能表现</td><td class="highlight-col" data-page-node-id="UB7DqiIFBNvKDdnRhIO3x5">日常够用，受浏览器标签页影响</td><td data-page-node-id="nHVnagtEisqsh4RwiTnIhH">更稳，独立进程，长时间开着不卡</td></tr>
+          <tr data-page-node-id="8oyomjRBbhyyI9dqBVRZff"><td data-page-node-id="FchJcseOSUXy2zZqntMt52">特色能力</td><td class="highlight-col" data-page-node-id="SY0HGXXe2NBCrF8HWYMGqJ">免维护、随时换机、手机也能用</td><td data-page-node-id="2DO88C6VIatlBB2CJjYtbS">托盘常驻、静默打印、电子秤直连</td></tr>
+          <tr data-page-node-id="XLiOt6TcoSaG3jJgnFVftk"><td data-page-node-id="d6a6o1FUTx2rFevqI2UAXT">适合谁</td><td class="highlight-col" data-page-node-id="FEJNUscbd9ZnwVC7L9Obmx">工位不固定、想省事、不想装软件</td><td data-page-node-id="H7Xs4bXEF91jeey6OrH3eK">固定工位、要打印 / 称重、想像正经软件</td></tr>
         </tbody>
       </table>
-      <div class="tip">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-        <span><b>请注意：</b>模式二（桌面客户端）必须搭配模式一（服务端版）使用，它本身不带数据库，<b>不能单独运行</b>。简单记：<b>服务端必装一次，客户端想装几台装几台。</b></span>
+      <div class="tip" data-page-node-id="Vmf25k4H246lsjVUFxN6Pb">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" data-page-node-id="28VJEWa6eimvTf9EYyZkSP"><circle cx="12" cy="12" r="10" data-page-node-id="Od7LEsMYeRi1Md4JfIHQDp"/><line x1="12" y1="8" x2="12" y2="12" data-page-node-id="sZmrNM0JiPjsxEamtE1Cl8"/><line x1="12" y1="16" x2="12.01" y2="16" data-page-node-id="OXPrCeVx1nvMCxLXs02WGP"/></svg>
+        <span data-page-node-id="pfGlIkBplF6rsf75JDb5YJ"><b data-page-node-id="RBl2XZeJKvLRzCAIrnDng5">请注意：</b>模式二（桌面客户端）必须搭配模式一（服务端版）使用，它本身不带数据库，<b data-page-node-id="uvzlxAkoal9ZqE20LtTntI">不能单独运行</b>。简单记：<b data-page-node-id="EyNwpP02WIXQFzjlLyb1RT">服务端必装一次，客户端想装几台装几台。</b></span>
       </div>
     </div>
   </div>
@@ -1241,74 +1247,70 @@ h1, h2, h3, h4 { font-weight: 800; color: var(--ink); line-height: 1.2; letter-s
 <!-- ============================================================
      DOWNLOAD
      ============================================================ -->
-<section class="section" id="download" style="background: var(--cream);">
-  <div class="wrap">
-    <div class="section-header reveal">
-      <span class="section-label">下载安装</span>
-      <h2 class="section-title">免费试用 1 个月，30 分钟上线</h2>
-      <p class="section-desc">首次启动自动进入 30 天全功能试用，无需注册、无需留联系方式，到期不付费自动转只读</p>
+<section class="section" id="download" style="background: var(--cream);" data-page-node-id="qFiiiGb1zZGpROhG9NYFxC">
+  <div class="wrap" data-page-node-id="4ZiHBOzS7oBnm6AxNiBMrm">
+    <div class="section-header reveal" data-page-node-id="PfFE94vHo9ZwBDsqxTbXmB">
+      <span class="section-label" data-page-node-id="c8163EgZY5zgwlKBqVXOqR">下载安装</span>
+      <h2 class="section-title" data-page-node-id="UmRB8jmK1w3HgPZSW07Cff">免费试用 1 个月，30 分钟上线</h2>
+      <p class="section-desc" data-page-node-id="wbQlZ7fDx7mesXXWaHN3wQ">首次启动自动进入 30 天全功能试用，无需注册、无需留联系方式，到期不付费自动转只读</p>
     </div>
 
-    <div class="modes-grid reveal">
-      <div class="mode-card">
-        <span class="mode-tag">模式一 · 服务端版</span>
-        <h3>下载安装</h3>
-        <ul class="mode-list">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>约 26MB，Windows 10/11、Server 2016+</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>双击安装，自动注册服务，打开浏览器登录页</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>内置数据库与运行环境，无需额外安装</li>
+    <div class="modes-grid reveal" data-page-node-id="30JMUmFVKtzz0CYlj4ytIj">
+      <div class="mode-card" data-page-node-id="Jd8u2Eg2zUiH59A0TIaIhT">
+        <span class="mode-tag" data-page-node-id="wnCJ7dVxLI2qK6HuKpqvNX">模式一 · 服务端版</span>
+        <h3 data-page-node-id="j0llPZM3CzONTdUcW2Zhal">下载安装</h3>
+        <ul class="mode-list" data-page-node-id="3Jr9DBfEwiPecekn2dpTM6">
+          <li data-page-node-id="D9sFvRCYae0NnbWPJyzfD8"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="0efKrnbLJMKva45ps93QML"><polyline points="20 6 9 17 4 12" data-page-node-id="SNeZnuTypplwPCRO4dyiY3"/></svg>约 26MB，Windows 10/11、Server 2016+</li>
+          <li data-page-node-id="zkdAwfyHOtYrQyy5s3lBTp"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="gGX9bzzrpTQPda4SIn6Z2g"><polyline points="20 6 9 17 4 12" data-page-node-id="eqbwq4tobLBDcj1OZSgAJl"/></svg>双击安装，自动注册服务，打开浏览器登录页</li>
+          <li data-page-node-id="Ugt7oTCjSLD7aZ7hef72uV"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="wDLLiwFGghSGTzOeQUJByJ"><polyline points="20 6 9 17 4 12" data-page-node-id="nV6h9u8Xe4SMxcW7ywhuDq"/></svg>内置数据库与运行环境，无需额外安装</li>
         </ul>
-        <div id="dl-buttons"></div>
-        <p class="dl-note" id="dl-note" style="font-size:var(--text-sm);color:var(--text-3);margin-top:14px;line-height:1.7;"></p>
+        <div id="dl-buttons" data-page-node-id="lW34o6ERFm5AT3AKVwWszr"></div>
+        <p class="dl-note" id="dl-note" style="font-size:var(--text-sm);color:var(--text-3);margin-top:14px;line-height:1.7;" data-page-node-id="vS0HxXDWKk2I5LwoZQG5qE"></p>
       </div>
-      <div class="mode-card">
-        <span class="mode-tag" style="background:rgba(13,148,136,0.08);color:var(--teal);">模式二 · 桌面客户端版</span>
-        <h3>下载安装</h3>
-        <ul class="mode-list">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>约 73MB，Windows 10/11 64 位</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>双击安装，首次启动填服务端地址</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>托盘常驻、自动更新、独立窗口</li>
+      <div class="mode-card" data-page-node-id="kLzJ7hNHS8Yx0X7rwt3QoS">
+        <span class="mode-tag" style="background:rgba(13,148,136,0.08);color:var(--teal);" data-page-node-id="1SC1PWCFzTndPgEQQsl0ML">模式二 · 桌面客户端版</span>
+        <h3 data-page-node-id="phcelNVb1CPrRZ9tiXEBL3">下载安装</h3>
+        <ul class="mode-list" data-page-node-id="94N4qum3E8Bck9fMdtmeH6">
+          <li data-page-node-id="63kjps9eqkqEWZup8SD8f4"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="PcoNmnXJadjDL6AuOl7G04"><polyline points="20 6 9 17 4 12" data-page-node-id="3a3AiT1KY4JtLAieBSoQbj"/></svg>约 73MB，Windows 10/11 64 位</li>
+          <li data-page-node-id="MvxIH9An0hvxXeXH6tFd0G"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="TsTDTuNVaHTx2yFJupfxoq"><polyline points="20 6 9 17 4 12" data-page-node-id="pQNMk2KLoNwjP3IuBsx0rF"/></svg>双击安装，首次启动填服务端地址</li>
+          <li data-page-node-id="ijdjLcO5U8WGzgDpCBygUX"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="nOlfc6mHhqX9x2fP9LunAI"><polyline points="20 6 9 17 4 12" data-page-node-id="AERbJ6EylCiPgI8f9Upfal"/></svg>托盘常驻、自动更新、独立窗口</li>
         </ul>
-        <div id="dl-buttons-2"></div>
-        <p class="dl-note" id="dl-note-2" style="font-size:var(--text-sm);color:var(--text-3);margin-top:14px;line-height:1.7;"></p>
+        <div id="dl-buttons-2" data-page-node-id="wfGEnDtzYYg37OxfCjpPkF"></div>
+        <p class="dl-note" id="dl-note-2" style="font-size:var(--text-sm);color:var(--text-3);margin-top:14px;line-height:1.7;" data-page-node-id="zZAKctAeBSLOfD4HHImK0X"></p>
       </div>
     </div>
 
     <!-- 三步上线流程 -->
-    <div class="dl-flow reveal">
-      <h3 class="dl-flow-title">三步上线</h3>
-      <div class="dl-steps">
-        <div class="dl-step">
-          <span class="dl-step-num">1</span>
-          <div class="dl-step-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    <div class="dl-flow reveal" data-page-node-id="23Ca3z7socGrLh9iYblKdf">
+      <h3 class="dl-flow-title" data-page-node-id="ao96ntUTFsRwdAUs6u8xw8">三步上线</h3>
+      <div class="dl-steps" data-page-node-id="qjTYDT1REetEW1nxOwkGLr">
+        <div class="dl-step" data-page-node-id="0T4spIbdHq8JfTOvY25pvk">
+          <span class="dl-step-num" data-page-node-id="CE6gnmYqRqP61DvcA3jmBA">1</span>
+          <div class="dl-step-icon" data-page-node-id="M4176g6S5xRo6xKOUgYaho">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" data-page-node-id="ZlgI66IuuwmCs0HNW3IW7e"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" data-page-node-id="f61DIDjE2M7jEm1fNyijHf"/><polyline points="7 10 12 15 17 10" data-page-node-id="8eeihMzxeLnRuGHOKTNBDE"/><line x1="12" y1="15" x2="12" y2="3" data-page-node-id="zpCOXEjqq3C3gNrJcORkk8"/></svg>
           </div>
           <h4>下载安装</h4>
-          <p>双击 .exe，一路「下一步」，装完自动打开浏览器</p>
         </div>
-        <div class="dl-step">
-          <span class="dl-step-num">2</span>
-          <div class="dl-step-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <div class="dl-step" data-page-node-id="PeH9nRn9RbcSG1JA6fn1Sz">
+          <span class="dl-step-num" data-page-node-id="lQOBvlzGeFi33Ql0mk9kzd">2</span>
+          <div class="dl-step-icon" data-page-node-id="Rtn3QCofGe8JhJFCMn3E5G">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" data-page-node-id="dnFx60L7naV8Usp63K4H0M"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" data-page-node-id="F5rpE4Hb7EPQztozFDKEQH"/><circle cx="12" cy="7" r="4" data-page-node-id="cQJVuf4e2O3Bt1q3LlwFI5"/></svg>
           </div>
           <h4>自设账号</h4>
-          <p>浏览器打开 <code>http://本机IP:8000</code>，自己设置管理员账号</p>
         </div>
-        <div class="dl-step">
-          <span class="dl-step-num">3</span>
-          <div class="dl-step-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <div class="dl-step" data-page-node-id="eTBLGFgVROMpZ2QrqepuvU">
+          <span class="dl-step-num" data-page-node-id="IXKKTof282GnRRuCDFbm4i">3</span>
+          <div class="dl-step-icon" data-page-node-id="yNOgyYvycfkZXQdIVp6u5b">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" data-page-node-id="KeipqiCRRezbMpuTvN00Kg"><polyline points="20 6 9 17 4 12" data-page-node-id="QDtknldGI8H9pC48dTsZfl"/></svg>
           </div>
           <h4>开始试用</h4>
-          <p>设完账号即登录，自动进入 30 天全功能试用</p>
         </div>
-        <div class="dl-step">
-          <span class="dl-step-num">4</span>
-          <div class="dl-step-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        <div class="dl-step" data-page-node-id="KuRZX3ANUYCACu0Ng3EOXD">
+          <span class="dl-step-num" data-page-node-id="Rng8hJ7kjAV5qCc5FhD9m5">4</span>
+          <div class="dl-step-icon" data-page-node-id="PjjQWfx4Lh7RYENvfAeIWy">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" data-page-node-id="tUAnY3K8yWGJlWs1Yl2K78"><rect x="1" y="4" width="22" height="16" rx="2" ry="2" data-page-node-id="A7hi7mJCuOFhzeioh6YMEZ"/><line x1="1" y1="10" x2="23" y2="10" data-page-node-id="LQXH0qP4PsSUyIZWNPvY8j"/></svg>
           </div>
           <h4>付费激活</h4>
-          <p>软件内「复制申请码」发给我们，付款后粘贴激活</p>
         </div>
       </div>
     </div>
@@ -1318,32 +1320,32 @@ h1, h2, h3, h4 { font-weight: 800; color: var(--ink); line-height: 1.2; letter-s
 <!-- ============================================================
      DEMO
      ============================================================ -->
-<section class="section demo-section" id="demo">
-  <div class="wrap">
-    <div class="section-header reveal">
-      <span class="section-label">产品演示</span>
-      <h2 class="section-title">30 分钟上线，所见即所得</h2>
-      <p class="section-desc">扫码收货、拣货防超卖、盘点差异，自动播放演示</p>
+<section class="section demo-section" id="demo" data-page-node-id="wyAuO9XZ4zVgPPOfd8HgIL">
+  <div class="wrap" data-page-node-id="SbkOM38X96nIcxChvApV2c">
+    <div class="section-header reveal" data-page-node-id="1s8S26ed9h2mcwiSv1GU50">
+      <span class="section-label" data-page-node-id="YHKjSGXiX5L2FGt7rCmvT4">产品演示</span>
+      <h2 class="section-title" data-page-node-id="KnDfehSRdgXckNJzcGWCc3">30 分钟上线，所见即所得</h2>
+      <p class="section-desc" data-page-node-id="ltm1Z1QGdjsirpxKYowi3y">扫码收货、拣货防超卖、盘点差异，自动播放演示</p>
     </div>
-    <div class="demo-layout reveal">
-      <div class="demo-player" id="demoPlayer">
-        <div class="demo-slide active"><div class="slide-icon">S</div><h3>发错货 · 库存对不上 · 盘点累</h3><p>WMS 帮你一次解决</p></div>
-        <div class="demo-slide"><div class="slide-icon">⚡</div><h3>30 分钟上线</h3><p>免装环境，双击就装，扫码枪插上即用</p></div>
-        <div class="demo-slide"><div class="slide-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:36px;height:36px;"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div><h3>工作台一屏看清</h3><p>今日进出、待办、库存预警，实时掌握</p></div>
-        <div class="demo-slide"><div class="slide-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:36px;height:36px;"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="21" x2="12" y2="17"/></svg></div><h3>扫码收货</h3><p>扫一下自动入库，不用手敲</p></div>
-        <div class="demo-slide"><div class="slide-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:36px;height:36px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>防超卖</h3><p>库存不足自动拦截，再也不超卖</p></div>
-        <div class="demo-slide"><div class="slide-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:36px;height:36px;"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><h3>价格透明</h3><p>订阅 ¥980/年起 · 买断 ¥9,800 起</p></div>
-        <div class="demo-bar" id="demoBar"></div>
-        <div class="demo-dots" id="demoDots"></div>
-        <button class="demo-play-btn" id="demoPlay" aria-label="播放/暂停">
-          <svg viewBox="0 0 24 24" id="playIcon"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+    <div class="demo-layout reveal" data-page-node-id="R8WudfiLXlIcYJOS4rNjco">
+      <div class="demo-player" id="demoPlayer" data-page-node-id="Pstb7z75On2OOE62F8Rj33">
+        <div class="demo-slide active" data-page-node-id="vItjbGRZKC5FcsIEjRTh5X"><div class="slide-icon" data-page-node-id="WADobEygzpWBSfFIUl19M0">S</div><h3 data-page-node-id="U8aJG32i6fBtDAQgdSsnmL">发错货 · 库存对不上 · 盘点累</h3><p data-page-node-id="kLWUMXdc6ERb81MArUycpz">WMS 帮你一次解决</p></div>
+        <div class="demo-slide" data-page-node-id="7UQZs8os0grGPK7NGHcepe"><div class="slide-icon" data-page-node-id="4eXsbDRXkFZgBTqNJH3lkj">⚡</div><h3 data-page-node-id="idnCcHsuP0aMOhn0c7Hez9">30 分钟上线</h3><p data-page-node-id="74oIOJceGg1BKPH4nvUFJi">免装环境，双击就装，扫码枪插上即用</p></div>
+        <div class="demo-slide" data-page-node-id="0k6SlALbqEASUMrYZbfgq2"><div class="slide-icon" data-page-node-id="4NfYFQDDhPWz3DlTVlDk2Y"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:36px;height:36px;" data-page-node-id="l4ujrm1bTPAgF3arSjCyYN"><rect x="3" y="3" width="7" height="7" data-page-node-id="8AFSsd8qNvgX39Z4WDLsNG"/><rect x="14" y="3" width="7" height="7" data-page-node-id="2pmCshE7pN581fFfpf9gzO"/><rect x="3" y="14" width="7" height="7" data-page-node-id="15CVBEi35Zr8s15VL1rJNA"/><rect x="14" y="14" width="7" height="7" data-page-node-id="Z90L8uuAr5UeQB7GdFR2TY"/></svg></div><h3 data-page-node-id="fNh8XcOyDHk9PtjCqiDLE9">工作台一屏看清</h3><p data-page-node-id="HLCfCjcFxI5GMjM8diVhzZ">今日进出、待办、库存预警，实时掌握</p></div>
+        <div class="demo-slide" data-page-node-id="pQb4lodgFMgciq9v9QgbGm"><div class="slide-icon" data-page-node-id="bFRYGH2wSNIm0Pdm5bG76l"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:36px;height:36px;" data-page-node-id="suygxLo40lbbbLWCB4ojmX"><rect x="2" y="3" width="20" height="14" rx="2" data-page-node-id="GYpyf1vMCZHjotrkDGOatF"/><line x1="8" y1="21" x2="16" y2="21" data-page-node-id="8FaFTYdex127Wb5n7HIGei"/><line x1="12" y1="21" x2="12" y2="17" data-page-node-id="QISJ7fONVyMqKQ7sA5Ka8v"/></svg></div><h3 data-page-node-id="HVvqoAWko3X7zRZwFTcOIP">扫码收货</h3><p data-page-node-id="ZCAFLJcR5QFUf9OubEWMXu">扫一下自动入库，不用手敲</p></div>
+        <div class="demo-slide" data-page-node-id="lMAOEIu3FPh0b8JBLBvWZQ"><div class="slide-icon" data-page-node-id="7rCePCbLXZc9nBWnLlLffG"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:36px;height:36px;" data-page-node-id="j0aFIkqXy7bh29vZTnpuYr"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" data-page-node-id="Vnz1AC77AVGgYC6TfXNw38"/></svg></div><h3 data-page-node-id="DizT3KwlejzfNONE0oarou">防超卖</h3><p data-page-node-id="qSAA2c9NYrZo11DlYioIOx">库存不足自动拦截，再也不超卖</p></div>
+        <div class="demo-slide" data-page-node-id="8vQnzl09F8mB4KmXWKTZF3"><div class="slide-icon" data-page-node-id="9RajqeNvpRXqGXB0of38UP"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:36px;height:36px;" data-page-node-id="z8Jeu1gyOlBj6Upfr8QVBk"><line x1="12" y1="1" x2="12" y2="23" data-page-node-id="wamrHOjnI4QzsF8LSVy4Ei"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" data-page-node-id="hgFD2Km4LHE1LhiDE4c9QV"/></svg></div><h3 data-page-node-id="383C1HowhCcBrzHesK6K9r">价格透明</h3><p data-page-node-id="5wQxROmIfQVXEu0WrrRSl2">订阅 ¥980/年起 · 买断 ¥9,800 起</p></div>
+        <div class="demo-bar" id="demoBar" data-page-node-id="iRsIBhJeGBYGDlxIGquqQ3"></div>
+        <div class="demo-dots" id="demoDots" data-page-node-id="EU0yI8ZTrQvhHdAiupwbR6"></div>
+        <button class="demo-play-btn" id="demoPlay" aria-label="播放/暂停" data-page-node-id="X7rJjF5RrGCKLgpn62WWYF">
+          <svg viewBox="0 0 24 24" id="playIcon" data-page-node-id="hpbH9SEzUjArevHBztSyav"><polygon points="5 3 19 12 5 21 5 3" data-page-node-id="BoGBkwtCnC0erwtABwnrRX"/></svg>
         </button>
       </div>
-      <div class="demo-side">
-        <h4>产品手册与报价单</h4>
-        <p>完整功能清单 + 透明报价，可直接下载发给决策人。</p>
-        <a href="产品手册与报价单.pdf" download class="btn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:16px;height:16px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      <div class="demo-side" data-page-node-id="ngYFYc2UD7BbhFmuspLuy9">
+        <h4 data-page-node-id="HGYdu4iLQ2aMrvey4j1Tom">产品手册与报价单</h4>
+        <p data-page-node-id="LRKXXoiTwnQfmybDbSgcNy">完整功能清单 + 透明报价，可直接下载发给决策人。</p>
+        <a href="产品手册与报价单.pdf" download class="btn" data-page-node-id="g0JFNAwgTRmgaAbjbwZuXH">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:16px;height:16px;" data-page-node-id="CP1mat4HW65xsqKcv1OEGI"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" data-page-node-id="HnmCmD6zqWsGACq5vHEZk4"/><polyline points="7 10 12 15 17 10" data-page-node-id="vYd9Q1CJiQ1Kq9CJO1tPMB"/><line x1="12" y1="15" x2="12" y2="3" data-page-node-id="fGIWWAN9eZYwr0hK4RXGEI"/></svg>
           下载 PDF 报价单
         </a>
       </div>
@@ -1354,36 +1356,36 @@ h1, h2, h3, h4 { font-weight: 800; color: var(--ink); line-height: 1.2; letter-s
 <!-- ============================================================
      FAQ
      ============================================================ -->
-<section class="section section-alt" id="faq">
-  <div class="wrap">
-    <div class="section-header reveal">
-      <span class="section-label">常见问题</span>
-      <h2 class="section-title">还有疑问？</h2>
+<section class="section section-alt" id="faq" data-page-node-id="YLSc0zrCnduWZE43HO7R3V">
+  <div class="wrap" data-page-node-id="eUlzoCksmNz35KRh4j6wQK">
+    <div class="section-header reveal" data-page-node-id="jCRfJceemu4o84OXi8V3dJ">
+      <span class="section-label" data-page-node-id="RMvQzzA89YJqfxGE8wB9NO">常见问题</span>
+      <h2 class="section-title" data-page-node-id="J7gFTRCG5AihKh8zXi1NDA">还有疑问？</h2>
     </div>
-    <div class="faq-list reveal">
-      <div class="faq-item">
-        <div class="faq-q">怎么开始免费试用？<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
-        <div class="faq-a"><div class="faq-a-inner">从官网「下载安装」区任选一种模式：服务端版（装 1 台，全公司浏览器用，同事免装）或桌面客户端版（装在每台电脑，独立窗口，需搭配服务端版）。双击按提示安装，首次启动自动进入 30 天全功能试用，无需注册、无需留联系方式。到期不付费自动转只读，数据完整保留，续费即恢复。</div></div>
+    <div class="faq-list reveal" data-page-node-id="01NiBxTgGaQBOS54tChzmH">
+      <div class="faq-item" data-page-node-id="ZZL2SqzB7HhU8a3z63Gd16">
+        <div class="faq-q" data-page-node-id="ZzWns9Zc7zN7mKT5uKM3Ir">怎么开始免费试用？<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" data-page-node-id="7HuhbodepRKlyepqbx6RSz"><line x1="12" y1="5" x2="12" y2="19" data-page-node-id="gOaEUsYWPepk73A1SMSmzu"/><line x1="5" y1="12" x2="19" y2="12" data-page-node-id="DQsPlvzVClMea5S0OVWs5F"/></svg></div>
+        <div class="faq-a" data-page-node-id="YgvESIYB8Vk3SIHiTsSEHx"><div class="faq-a-inner" data-page-node-id="SEAM26nAXz2ZAEnxXnCIrI">从官网「下载安装」区任选一种模式：服务端版（装 1 台，全公司浏览器用，同事免装）或桌面客户端版（装在每台电脑，独立窗口，需搭配服务端版）。双击按提示安装，首次启动自动进入 30 天全功能试用，无需注册、无需留联系方式。到期不付费自动转只读，数据完整保留，续费即恢复。</div></div>
       </div>
-      <div class="faq-item">
-        <div class="faq-q">两种模式该选哪个？<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
-        <div class="faq-a"><div class="faq-a-inner">想省事、工位不固定、不想给每台电脑装东西 → 选<b>模式一 服务端版</b>（装 1 台就够，同事打开浏览器就能用，手机平板也能开）。想要独立窗口、托盘常驻、静默打印、电子秤直连 → 在服务端版基础上再装<b>模式二 桌面客户端</b>。两者数据完全一样，也可以先用模式一，以后想用了再补装客户端。</div></div>
+      <div class="faq-item" data-page-node-id="shcFYHZazneGMbcLw1rFaP">
+        <div class="faq-q" data-page-node-id="0BPhaupx4O0gybEiS2Hfiv">两种模式该选哪个？<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" data-page-node-id="WSFjjkcsnNNrX8RNjHxbJL"><line x1="12" y1="5" x2="12" y2="19" data-page-node-id="9UAoiV7jNea3AKK1YJ8sOI"/><line x1="5" y1="12" x2="19" y2="12" data-page-node-id="YjVmhTZcxVOsnArJ6rFaLj"/></svg></div>
+        <div class="faq-a" data-page-node-id="iQFXBwRtM9buRSUV6vebEO"><div class="faq-a-inner" data-page-node-id="jNCaH0ZBNiLmgXEZ92pFDq">想省事、工位不固定、不想给每台电脑装东西 → 选<b data-page-node-id="TFvDZwiZnee1tI0TOgoG0L">模式一 服务端版</b>（装 1 台就够，同事打开浏览器就能用，手机平板也能开）。想要独立窗口、托盘常驻、静默打印、电子秤直连 → 在服务端版基础上再装<b data-page-node-id="k846Mqjqq60rEzck8Dmst0">模式二 桌面客户端</b>。两者数据完全一样，也可以先用模式一，以后想用了再补装客户端。</div></div>
       </div>
-      <div class="faq-item">
-        <div class="faq-q">试用到期后怎么升级？<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
-        <div class="faq-a"><div class="faq-a-inner">打开软件「系统管理 → 授权信息」，点「复制申请码」发给我们（邮箱/微信），付款后我们会把授权文件发回，你在同一页面「粘贴激活」即可，全程几分钟，数据不丢失。</div></div>
+      <div class="faq-item" data-page-node-id="PQReOZCctLiyJrnBs4MPVk">
+        <div class="faq-q" data-page-node-id="Cc9bf8yxS0lmQQHs7b6Fs2">试用到期后怎么升级？<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" data-page-node-id="ondTuwNT5IAqp4jGyX0Smy"><line x1="12" y1="5" x2="12" y2="19" data-page-node-id="SBqHJ0JREX6gVpBlscohKe"/><line x1="5" y1="12" x2="19" y2="12" data-page-node-id="DL00INUnw9PXtocsOnvNJt"/></svg></div>
+        <div class="faq-a" data-page-node-id="fTNT4MIP0hc3g5bcKn2XwC"><div class="faq-a-inner" data-page-node-id="G1C7Hf6wxmW7iCxtaFFxu4">打开软件「系统管理 → 授权信息」，点「复制申请码」发给我们（邮箱/微信），付款后我们会把授权文件发回，你在同一页面「粘贴激活」即可，全程几分钟，数据不丢失。</div></div>
       </div>
-      <div class="faq-item">
-        <div class="faq-q">订阅版和私有化版有什么区别？<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
-        <div class="faq-a"><div class="faq-a-inner">订阅版按月/年付费、由我方按客户独立开通，适合想低门槛先用的客户；私有化版一次性买断、装在您自己机房，适合要买断和数据强私有化的客户。功能完全一样。</div></div>
+      <div class="faq-item" data-page-node-id="r3S6B8j9OiIih4tuKx0yaY">
+        <div class="faq-q" data-page-node-id="4nBYD1UzacPlGM1mpDq6jd">订阅版和私有化版有什么区别？<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" data-page-node-id="65G2JbRsmRWAValYXa1TY4"><line x1="12" y1="5" x2="12" y2="19" data-page-node-id="GkSBg0CTYUTVrDSZhVv2y9"/><line x1="5" y1="12" x2="19" y2="12" data-page-node-id="iuxAtoAnFeTmB6IFNH4xii"/></svg></div>
+        <div class="faq-a" data-page-node-id="wUdlzYlJvOXLVpfpRNWoKq"><div class="faq-a-inner" data-page-node-id="GOT4CSolMEN6cKqvNlSviV">订阅版按月/年付费、由我方按客户独立开通，适合想低门槛先用的客户；私有化版一次性买断、装在您自己机房，适合要买断和数据强私有化的客户。功能完全一样。</div></div>
       </div>
-      <div class="faq-item">
-        <div class="faq-q">数据安全吗？<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
-        <div class="faq-a"><div class="faq-a-inner">私有化部署、纯内网运行，数据 100% 在您本地机房，不经过任何第三方，断网也能用。</div></div>
+      <div class="faq-item" data-page-node-id="9VHbBTTLp08ujBqCAc48sf">
+        <div class="faq-q" data-page-node-id="oGjrKEzuEaKEZSEuktEmVU">数据安全吗？<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" data-page-node-id="C6WE2yiJ1vWLAXVAkkvVFA"><line x1="12" y1="5" x2="12" y2="19" data-page-node-id="wwEaBjdnbYzZMBBYhutCzH"/><line x1="5" y1="12" x2="19" y2="12" data-page-node-id="gV5X8PwcigMfuR6HyvTPhq"/></svg></div>
+        <div class="faq-a" data-page-node-id="97FLEm72kt7EvGbtgCGC6f"><div class="faq-a-inner" data-page-node-id="jFobpRAhV4RFXHQgK3153N">私有化部署、纯内网运行，数据 100% 在您本地机房，不经过任何第三方，断网也能用。</div></div>
       </div>
-      <div class="faq-item">
-        <div class="faq-q">需要自己买服务器吗？<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
-        <div class="faq-a"><div class="faq-a-inner">私有化版需要一台普通电脑/服务器（内网即可）；安装包已内置数据库与运行环境，无需额外配置。订阅版由我方托管，零操心。</div></div>
+      <div class="faq-item" data-page-node-id="v0MN5R0fduSy0XfYqy4B87">
+        <div class="faq-q" data-page-node-id="b2oCrmvepKuF6sPirJnu1k">需要自己买服务器吗？<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" data-page-node-id="41Wg8hiKRtTX5LifLeuNpc"><line x1="12" y1="5" x2="12" y2="19" data-page-node-id="bwmNiqnEnETMtIXQcuzOMU"/><line x1="5" y1="12" x2="19" y2="12" data-page-node-id="rJ2OPjAjvYnPQMEbEfI8BH"/></svg></div>
+        <div class="faq-a" data-page-node-id="IaU4cSGmgXRm5uRtLEI8Xe"><div class="faq-a-inner" data-page-node-id="wmp0ZFLDrZIMqTRCw6aj0w">私有化版需要一台普通电脑/服务器（内网即可）；安装包已内置数据库与运行环境，无需额外配置。订阅版由我方托管，零操心。</div></div>
       </div>
     </div>
   </div>
@@ -1392,16 +1394,16 @@ h1, h2, h3, h4 { font-weight: 800; color: var(--ink); line-height: 1.2; letter-s
 <!-- ============================================================
      CTA
      ============================================================ -->
-<section class="cta-section">
-  <div class="wrap">
-    <div class="cta-inner reveal">
-      <h2>下载即可免费试用 1 个月，<br>30 分钟上线</h2>
-      <p>无需注册、无需留联系方式，首次启动自动进入 30 天全功能试用</p>
-      <div class="cta-btns">
-        <a href="#download" class="btn-lg primary">免费下载安装包</a>
-        <a href="#pricing" class="btn-lg ghost">查看价格</a>
+<section class="cta-section" data-page-node-id="NCoECfGRXRiCD1bkZGtLUe">
+  <div class="wrap" data-page-node-id="cyEA0BBpqWV2yow664x4pD">
+    <div class="cta-inner reveal" data-page-node-id="LsKPvF4fMZCivsaLqrXyiX">
+      <h2 data-page-node-id="thn78Bc2IZu66GnygjHqmR">下载即可免费试用 1 个月，<br data-page-node-id="kQZuya5rRXoCaXn5B1tByT">30 分钟上线</h2>
+      <p data-page-node-id="ZoEkBuv1inOrOhVuyOeFy7">无需注册、无需留联系方式，首次启动自动进入 30 天全功能试用</p>
+      <div class="cta-btns" data-page-node-id="2Na9dZZRpzqdXDz9FfJFkf">
+        <a href="#download" class="btn-lg primary" data-page-node-id="iIxrsZMNqAu8RsynvS2wDe">免费下载安装包</a>
+        <a href="#pricing" class="btn-lg ghost" data-page-node-id="XxntHRzqRXaGKbtZ0K0t8M">查看价格</a>
       </div>
-      <p class="cta-note">到期不付费自动转只读，数据完整保留 · 续费即恢复全部功能</p>
+      <p class="cta-note" data-page-node-id="pfYYahoAQsAnv9htqpGZIV">到期不付费自动转只读，数据完整保留 · 续费即恢复全部功能</p>
     </div>
   </div>
 </section>
@@ -1409,13 +1411,13 @@ h1, h2, h3, h4 { font-weight: 800; color: var(--ink); line-height: 1.2; letter-s
 <!-- ============================================================
      FOOTER
      ============================================================ -->
-<footer class="footer">
-  <div class="wrap">
-    <div class="footer-inner">
-      <div class="footer-brand">WMS 仓储管理系统</div>
-      <div>私有化部署 · 纯内网运行 · 价格透明 · 30 天全功能试用</div>
-      <div>联系：<a href="mailto:hangzhoukaiwei@163.com">hangzhoukaiwei@163.com</a> · 微信 <a href="#">Cy_refuel</a></div>
-      <div style="color:rgba(255,255,255,0.25);margin-top:8px;">© 2026 WMS 仓储管理系统 · 杭州凯微</div>
+<footer class="footer" data-page-node-id="5b7e4OjHm9aHfqibrrxhFR">
+  <div class="wrap" data-page-node-id="hVhhIIEDhJwHxvAAFhTsQS">
+    <div class="footer-inner" data-page-node-id="cBzL0sD3y2ImnV0A01pBCj">
+      <div class="footer-brand" data-page-node-id="8hHCJUOSLkMKCTS1Y7U5zT">WMS 仓储管理系统</div>
+      <div data-page-node-id="fh73lJJ8mRM0ouz53S9NYx">私有化部署 · 纯内网运行 · 价格透明 · 30 天全功能试用</div>
+      <div data-page-node-id="hOcg0PbdeEI7u2KsUmjrBY">联系：<a href="mailto:hangzhoukaiwei@163.com" data-page-node-id="WGaetDG3FcYERBNyGbcLpn">hangzhoukaiwei@163.com</a> · 微信 <a href="#" data-page-node-id="dT01NzMdUKeOQ9qkHCGbtB">Cy_refuel</a></div>
+      <div style="color:rgba(255,255,255,0.25);margin-top:8px;" data-page-node-id="xRhDkgTRHCStuW6Xu0dDdw">© 2026 WMS 仓储管理系统 · 杭州凯微</div>
     </div>
   </div>
 </footer>
@@ -1423,25 +1425,25 @@ h1, h2, h3, h4 { font-weight: 800; color: var(--ink); line-height: 1.2; letter-s
 <!-- ============================================================
      CHAT FAB
      ============================================================ -->
-<button class="chat-fab" id="chatFab" aria-label="在线客服">
-  <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+<button class="chat-fab" id="chatFab" aria-label="在线客服" data-page-node-id="GrEX1tZvoaA0FavoTQkd4m">
+  <svg viewBox="0 0 24 24" data-page-node-id="M6yn5BZmnMM0zRuBSSIuex"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" data-page-node-id="Rt7n6sH1VnqBzJuJ8p1mBU"/></svg>
 </button>
-<div class="chat-panel" id="chatPanel">
-  <div class="chat-head">
-    <span class="online-dot"></span>
-    <b>在线客服（自动回复）</b>
-    <span class="close-btn" id="chatClose">&times;</span>
+<div class="chat-panel" id="chatPanel" data-page-node-id="QHvAfRCQALe1Yianrl3Mny">
+  <div class="chat-head" data-page-node-id="IghhUd4lHHal1LaLUbhpZr">
+    <span class="online-dot" data-page-node-id="79NZrVtxf4ui6gvOnJLi7T"></span>
+    <b data-page-node-id="Y1CzW7DEvy7GbgbuXtFj9C">在线客服（自动回复）</b>
+    <span class="close-btn" id="chatClose" data-page-node-id="KDfuo2OchlI7zZsrmdkrBI">&times;</span>
   </div>
-  <div class="chat-body" id="chatBody"></div>
-  <div class="chat-quick" id="chatQuick">
-    <button data-q="怎么下载试用？">怎么下载试用？</button>
-    <button data-q="价格多少？">价格多少？</button>
-    <button data-q="数据安全吗？">数据安全吗？</button>
-    <button data-q="怎么购买？">怎么购买？</button>
+  <div class="chat-body" id="chatBody" data-page-node-id="WHuQeLJbOdWZZzGfDClE9S"></div>
+  <div class="chat-quick" id="chatQuick" data-page-node-id="MkgjyDEUTFlTcXB4KXjzAD">
+    <button data-q="怎么下载试用？" data-page-node-id="5ocDlgqZvBSmG4iKtZOxJj">怎么下载试用？</button>
+    <button data-q="价格多少？" data-page-node-id="ybMjQ5NnZ4JKMs6XBBrVJI">价格多少？</button>
+    <button data-q="数据安全吗？" data-page-node-id="lU6iJvKWEIHlRUqdoPIrVK">数据安全吗？</button>
+    <button data-q="怎么购买？" data-page-node-id="RKX0A6iNB0JEUC6WPdGOOy">怎么购买？</button>
   </div>
-  <div class="chat-input-row">
-    <input id="chatInput" placeholder="输入问题…" />
-    <button id="chatSend">发送</button>
+  <div class="chat-input-row" data-page-node-id="Ec5Tw0cciUvPcDnDjIdW0D">
+    <input id="chatInput" placeholder="输入问题…" data-page-node-id="DN0SmezPi24XT37up8DLCI" />
+    <button id="chatSend" data-page-node-id="XwGEb6Mv4pQOyIBird08Zv">发送</button>
   </div>
 </div>
 
