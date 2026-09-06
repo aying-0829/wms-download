@@ -1,123 +1,113 @@
 <!DOCTYPE html>
-<html lang="zh-Cn">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WMS 仓储管理系统 · 私有化部署 · 免费试用</title>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WMS 仓储管理系统</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; background: #0A1628; color: #fff; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
-        .hero { text-align: center; padding: 80px 20px; }
-        .logo { font-size: 80px; margin-bottom: 20px; }
-        h1 { font-size: 48px; font-weight: 700; margin-bottom: 20px; background: linear-gradient(135deg, #fff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .subtitle { font-size: 20px; color: #94a3b8; margin-bottom: 40px; }
-        .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin: 60px 0; }
-        .feature { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 30px; text-align: center; }
-        .feature .icon { font-size: 40px; margin-bottom: 15px; }
-        .feature h3 { font-size: 18px; margin-bottom: 10px; }
-        .feature p { font-size: 14px; color: #94a3b8; }
-        .cta { margin: 60px 0; }
-        .btn { display: inline-block; padding: 16px 40px; background: linear-gradient(135deg, #1D4ED8, #3B82F6); color: #fff; text-decoration: none; border-radius: 8px; font-size: 18px; font-weight: 600; margin: 10px; transition: all 0.3s; }
-        .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(29,78,216,0.4); }
-        .btn-secondary { background: transparent; border: 2px solid #1D4ED8; }
-        .btn-secondary:hover { background: rgba(29,78,216,0.1); }
-        .btn-green { background: linear-gradient(135deg, #059669, #10B981); }
-        .btn-green:hover { box-shadow: 0 10px 30px rgba(5,150,105,0.4); }
-        .info { background: rgba(255,255,255,0.05); border-radius: 12px; padding: 30px; max-width: 600px; margin: 40px auto; }
-        .info h3 { margin-bottom: 15px; color: #3B82F6; }
-        .info p { margin: 8px 0; color: #94a3b8; }
-        .demo-link { display: inline-block; margin-top: 30px; padding: 12px 30px; background: #059669; color: #fff; text-decoration: none; border-radius: 8px; }
-        .demo-link:hover { background: #10B981; }
-        .footer { text-align: center; padding: 40px; color: #64748b; font-size: 14px; }
-        .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin: 40px 0; }
-        .step { background: rgba(255,255,255,0.05); border-radius: 12px; padding: 30px; }
-        .step .num { font-size: 36px; font-weight: 700; color: #3B82F6; margin-bottom: 15px; }
-        .step h3 { font-size: 18px; margin-bottom: 10px; }
-        .step p { font-size: 14px; color: #94a3b8; }
-        @media (max-width: 768px) {
-            .features, .steps { grid-template-columns: 1fr; }
-            h1 { font-size: 32px; }
-        }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; background: #f5f7fa; }
+      .topbar { background: #fff; border-bottom: 1px solid #e5e7eb; padding: 12px 20px; display: flex; align-items: center; gap: 12px; font-size: 14px; }
+      .topbar .logo { font-size: 20px; font-weight: 700; color: #1f2937; }
+      .topbar .spacer { flex: 1; }
+      .topbar a { color: #2563eb; text-decoration: none; padding: 6px 12px; }
+      .topbar a:hover { background: #eff6ff; border-radius: 6px; }
+      .config-bar { background: #fffbeb; border-bottom: 1px solid #fde68a; padding: 10px 20px; font-size: 13px; color: #92400e; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+      .config-bar input { padding: 6px 10px; border: 1px solid #d1d5db; border-radius: 6px; width: 320px; font-size: 13px; }
+      .config-bar button { padding: 6px 16px; background: #2563eb; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-size: 13px; }
+      .config-bar button:hover { background: #1d4ed8; }
+      #app { min-height: calc(100vh - 100px); }
+      .empty-state { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: calc(100vh - 100px); padding: 40px 20px; text-align: center; background: #f5f7fa; }
+      .empty-state .icon { font-size: 72px; margin-bottom: 20px; }
+      .empty-state h2 { font-size: 26px; color: #1f2937; margin-bottom: 12px; }
+      .empty-state p { font-size: 15px; color: #6b7280; margin: 4px 0; max-width: 560px; }
+      .empty-state .steps { background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 24px 28px; margin-top: 24px; max-width: 560px; text-align: left; }
+      .empty-state .steps h3 { color: #2563eb; margin-bottom: 12px; font-size: 16px; }
+      .empty-state .steps ol { padding-left: 22px; color: #4b5563; line-height: 2; font-size: 14px; }
+      .empty-state .steps code { background: #f3f4f6; padding: 2px 6px; border-radius: 4px; color: #d97706; font-family: monospace; }
+      .empty-state .btn-group { margin-top: 24px; }
+      .empty-state .btn { display: inline-block; padding: 12px 28px; border-radius: 8px; font-size: 15px; font-weight: 600; text-decoration: none; margin: 6px; }
+      .empty-state .btn-primary { background: #2563eb; color: #fff; }
+      .empty-state .btn-primary:hover { box-shadow: 0 8px 20px rgba(37,99,235,0.3); }
+      .empty-state .btn-secondary { background: #fff; border: 2px solid #2563eb; color: #2563eb; }
     </style>
-</head>
-<body>
-    <div class="container">
-        <div class="hero">
-            <div class="logo">📦</div>
-            <h1>WMS 仓储管理系统</h1>
-            <p class="subtitle">专为中小工厂、电商仓设计 · 私有化部署 · 数据自主可控</p>
-            <a href="https://aying-0829.github.io/wms-download/app.html" class="btn btn-green">🚀 进入系统</a>
-            <a href="https://aying-0829.github.io/wms-download/demo.html" class="demo-link">🎬 观看演示视频</a>
-        </div>
-
-        <div class="features">
-            <div class="feature">
-                <div class="icon">📥</div>
-                <h3>入库管理</h3>
-                <p>扫码收货，自动上架，库存实时更新</p>
-            </div>
-            <div class="feature">
-                <div class="icon">📤</div>
-                <h3>出库管理</h3>
-                <p>智能拣货，复核发货，效率提升 50%</p>
-            </div>
-            <div class="feature">
-                <div class="icon">📊</div>
-                <h3>库存盘点</h3>
-                <p>一键盘点，差异自动生成报表</p>
-            </div>
-            <div class="feature">
-                <div class="icon">⚠️</div>
-                <h3>库存预警</h3>
-                <p>库存不足、效期将近自动提醒</p>
-            </div>
-            <div class="feature">
-                <div class="icon">📱</div>
-                <h3>手机看板</h3>
-                <p>老板随时看，不在仓库也清楚</p>
-            </div>
-            <div class="feature">
-                <div class="icon">🔒</div>
-                <h3>数据安全</h3>
-                <p>私有化部署，数据在自己电脑</p>
-            </div>
-        </div>
-
-        <div class="steps">
-            <div class="step">
-                <div class="num">1</div>
-                <h3>下载安装</h3>
-                <p>下载服务端版（26MB）或桌面客户端（74MB），双击安装即可</p>
-            </div>
-            <div class="step">
-                <div class="num">2</div>
-                <h3>配置后端</h3>
-                <p>首次启动填写服务器地址（本机或局域网），无需技术基础</p>
-            </div>
-            <div class="step">
-                <div class="num">3</div>
-                <h3>开始使用</h3>
-                <p>用演示账号登录，一键导入演示数据，立即体验完整功能</p>
-            </div>
-        </div>
-
-        <div class="cta">
-            <a href="https://aying-0829.github.io/wms-download/WMS-Setup.exe" class="btn">📥 下载服务端版 (26MB)</a>
-            <a href="https://aying-0829.github.io/wms-download/WMS-Client-Setup.exe" class="btn btn-secondary">🖥️ 下载桌面客户端 (74MB)</a>
-        </div>
-
-        <div class="info">
-            <h3>🎁 现在试用，送 30 天全功能免费体验</h3>
-            <p>✅ 无需联网 · ✅ 无需注册 · ✅ 数据在自己电脑</p>
-            <p>演示账号：admin / Admin@123456</p>
-            <p style="margin-top: 15px; color: #fff;">官网：https://aying-0829.github.io/wms-download/</p>
-        </div>
-
-        <div class="footer">
-            <p>WMS 仓储管理系统 · 私有化部署解决方案</p>
-            <p style="margin-top: 10px;">© 2026 All rights reserved</p>
-        </div>
+  </head>
+  <body>
+    <div class="topbar">
+      <span class="logo">📦 WMS 仓储管理系统</span>
+      <span class="spacer"></span>
+      <a href="/demo.html">演示视频</a>
+      <a href="/WMS-Client-Setup.exe">下载客户端</a>
     </div>
-</body>
+    <div class="config-bar">
+      <span>🔧 后端服务器地址：</span>
+      <input id="apiBase" placeholder="http://localhost:8000/api/v1" />
+      <button onclick="window.saveApiBase()">连接</button>
+      <span id="status"></span>
+    </div>
+    <div id="app"></div>
+
+    <script>
+      window.saveApiBase = function() {
+        const val = document.getElementById('apiBase').value.trim();
+        if (!val) { alert('请输入后端服务器地址'); return; }
+        localStorage.setItem('wms_api_base', val);
+        window.location.reload();
+      };
+
+      const saved = localStorage.getItem('wms_api_base') || 'http://localhost:8000/api/v1';
+      document.getElementById('apiBase').value = saved;
+      window.__WMS_CONFIG__ = { apiBase: saved };
+
+      // 连不上后端时显示引导页，不白屏
+      async function checkBackend() {
+        const status = document.getElementById('status');
+        try {
+          const base = saved.replace(/\/api\/v1\/?$/, '');
+          const r = await fetch(base + '/docs', { method: 'GET', mode: 'cors' });
+          if (r.ok) {
+            status.style.color = '#059669';
+            status.textContent = '✅ 已连接';
+            return true;
+          }
+          throw new Error('HTTP ' + r.status);
+        } catch (e) {
+          status.style.color = '#dc2626';
+          status.textContent = '❌ 未连接（请先在本地启动后端）';
+          return false;
+        }
+      }
+
+      checkBackend().then(connected => {
+        if (!connected) {
+          document.getElementById('app').innerHTML = `
+            <div class="empty-state">
+              <div class="icon">🚀</div>
+              <h2>系统尚未启动</h2>
+              <p>WMS 系统需要先在本地运行后端服务，才能进入登录页。</p>
+              <p>你的电脑还没启动后端，所以看不到登录界面。</p>
+              <div class="steps">
+                <h3>📋 三种启动方式（任选其一）</h3>
+                <ol>
+                  <li><b>下载桌面客户端（最简单）</b>：点右上角「下载客户端」→ 双击安装 → 自动启动</li>
+                  <li><b>下载一键启动包</b>：点「下载客户端」下方链接 → 解压 → 双击 <code>启动后端.bat</code></li>
+                  <li><b>你已有后端在跑</b>：上方填写正确地址（如 <code>http://192.168.1.10:8000/api/v1</code>）→ 点「连接」</li>
+                </ol>
+              </div>
+              <div class="btn-group">
+                <a href="/WMS-Client-Setup.exe" class="btn btn-primary">📥 下载桌面客户端</a>
+              </div>
+            </div>
+          `;
+          return;
+        }
+        const s = document.createElement('script');
+        s.type = 'module';
+        s.crossOrigin = 'anonymous';
+        s.src = '/assets/index-ClEN3rqV.js';
+        document.body.appendChild(s);
+      });
+    </script>
+  </body>
 </html>
