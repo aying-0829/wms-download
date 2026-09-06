@@ -1,94 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WMS 仓储管理系统 · 私有化部署 · 免费试用</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; background: #0A1628; color: #fff; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
-        .hero { text-align: center; padding: 80px 20px; }
-        .logo { font-size: 80px; margin-bottom: 20px; }
-        h1 { font-size: 48px; font-weight: 700; margin-bottom: 20px; background: linear-gradient(135deg, #fff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .subtitle { font-size: 20px; color: #94a3b8; margin-bottom: 40px; }
-        .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin: 60px 0; }
-        .feature { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 30px; text-align: center; }
-        .feature .icon { font-size: 40px; margin-bottom: 15px; }
-        .feature h3 { font-size: 18px; margin-bottom: 10px; }
-        .feature p { font-size: 14px; color: #94a3b8; }
-        .cta { margin: 60px 0; }
-        .btn { display: inline-block; padding: 16px 40px; background: linear-gradient(135deg, #1D4ED8, #3B82F6); color: #fff; text-decoration: none; border-radius: 8px; font-size: 18px; font-weight: 600; margin: 10px; transition: all 0.3s; }
-        .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(29,78,216,0.4); }
-        .btn-secondary { background: transparent; border: 2px solid #1D4ED8; }
-        .btn-secondary:hover { background: rgba(29,78,216,0.1); }
-        .info { background: rgba(255,255,255,0.05); border-radius: 12px; padding: 30px; max-width: 600px; margin: 40px auto; }
-        .info h3 { margin-bottom: 15px; color: #3B82F6; }
-        .info p { margin: 8px 0; color: #94a3b8; }
-        .demo-link { display: inline-block; margin-top: 30px; padding: 12px 30px; background: #059669; color: #fff; text-decoration: none; border-radius: 8px; }
-        .demo-link:hover { background: #10B981; }
-        .footer { text-align: center; padding: 40px; color: #64748b; font-size: 14px; }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="hero">
-            <div class="logo">📦</div>
-            <h1>WMS 仓储管理系统</h1>
-            <p class="subtitle">专为中小工厂、电商仓设计 · 私有化部署 · 数据自主可控</p>
-        </div>
-        
-        <div class="features">
-            <div class="feature">
-                <div class="icon">📥</div>
-                <h3>入库管理</h3>
-                <p>扫码收货，自动上架，库存实时更新</p>
-            </div>
-            <div class="feature">
-                <div class="icon">📤</div>
-                <h3>出库管理</h3>
-                <p>智能拣货，复核发货，效率提升 50%</p>
-            </div>
-            <div class="feature">
-                <div class="icon">📊</div>
-                <h3>库存盘点</h3>
-                <p>一键盘点，差异自动生成报表</p>
-            </div>
-            <div class="feature">
-                <div class="icon">⚠️</div>
-                <h3>库存预警</h3>
-                <p>库存不足、效期将近自动提醒</p>
-            </div>
-            <div class="feature">
-                <div class="icon">📱</div>
-                <h3>手机看板</h3>
-                <p>老板随时看，不在仓库也清楚</p>
-            </div>
-            <div class="feature">
-                <div class="icon">🔒</div>
-                <h3>数据安全</h3>
-                <p>私有化部署，数据在自己电脑</p>
-            </div>
-        </div>
-        
-        <div class="cta">
-            <a href="https://aying-0829.github.io/wms-download/WMS-Setup.exe" class="btn">📥 下载服务端版 (26MB)</a>
-            <a href="https://aying-0829.github.io/wms-download/WMS-Client-Setup.exe" class="btn btn-secondary">🖥️ 下载桌面客户端 (74MB)</a>
-        </div>
-        
-        <a href="https://aying-0829.github.io/wms-download/demo.html" class="demo-link">🎬 观看演示视频</a>
-        
-        <div class="info">
-            <h3>🎁 现在试用，送 30 天全功能免费体验</h3>
-            <p>✅ 无需联网 · ✅ 无需注册 · ✅ 数据在自己电脑</p>
-            <p>演示账号：admin / Admin@123456</p>
-            <p style="margin-top: 15px; color: #fff;">官网：https://aying-0829.github.io/wms-download/</p>
-        </div>
-        
-        <div class="footer">
-            <p>WMS 仓储管理系统 · 私有化部署解决方案</p>
-            <p style="margin-top: 10px;">© 2026 All rights reserved</p>
-        </div>
-    </div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WMS 仓储管理系统</title>
+    <!-- 运行时配置：后端地址（Electron 首启配置页会写入；浏览器环境可手改覆盖） -->
+    <script src="/config.js"></script>
+    <script type="module" crossorigin src="/assets/index-ClEN3rqV.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/vue-DyD5YdIs.js">
+    <link rel="modulepreload" crossorigin href="/assets/element-HWD0n3JO.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-eFGPerzO.css">
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
 </html>
