@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="5q6lyOf0QRMSSB301i1m99">
+<head data-page-node-id="MLX5iDRQSI3njQQsCsM6Ki">
+    <meta charset="UTF-8" data-page-node-id="XzjEl1yhiwYDE8lIwy8TX8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="Ej5ypzY3iHpJyJQiLoNiX4">
+    <title>WMS 仓储管理系统 · 3 分钟演示</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #0A1628;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .video-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            pointer-events: none;
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+        }
+
+        .slide-title {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-align: center;
+            background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .slide-subtitle {
+            font-size: 24px;
+            color: #94a3b8;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .slide-content {
+            max-width: 900px;
+            text-align: center;
+        }
+
+        .slide-icon {
+            font-size: 80px;
+            margin-bottom: 30px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #1D4ED8 0%, #3B82F6 100%);
+            border-radius: 16px;
+            padding: 30px 50px;
+            margin: 20px 0;
+            box-shadow: 0 20px 60px rgba(29, 78, 216, 0.3);
+        }
+
+        .highlight-box h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .highlight-box p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .feature-card .icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h4 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            color: #94a3b8;
+        }
+
+        .stats-row {
+            display: flex;
+            gap: 60px;
+            margin-top: 50px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 56px;
+            font-weight: 700;
+            color: #3B82F6;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            color: #94a3b8;
+            margin-top: 8px;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, #059669 0%, #10B981 100%);
+            border-radius: 20px;
+            padding: 50px 80px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .cta-box h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .cta-box p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        .controls {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 15px 30px;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-primary {
+            background: #1D4ED8;
+        }
+
+        .btn-primary:hover {
+            background: #3B82F6;
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #1D4ED8, #3B82F6);
+            transition: width 0.3s ease;
+            z-index: 100;
+        }
+
+        .slide-counter {
+            font-size: 14px;
+            color: #94a3b8;
+        }
+
+        /* 模拟系统界面 */
+        .mock-ui {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            width: 800px;
+            max-width: 90vw;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .mock-header {
+            background: #1D4ED8;
+            color: #fff;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .mock-sidebar {
+            width: 200px;
+            background: #0A1628;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .mock-nav-item {
+            padding: 10px 15px;
+            border-radius: 6px;
+            color: #94a3b8;
+            font-size: 14px;
+        }
+
+        .mock-nav-item.active {
+            background: #1D4ED8;
+            color: #fff;
+        }
+
+        .mock-body {
+            flex: 1;
+            padding: 20px;
+            background: #F5F7FA;
+        }
+
+        .mock-table {
+            width: 100%;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .mock-table-header {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            padding: 12px 20px;
+            background: #F5F7FA;
+            font-weight: 600;
+            color: #606266;
+            font-size: 13px;
+        }
+
+        .mock-table-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            padding: 12px 20px;
+            border-bottom: 1px solid #EBEEF5;
+            font-size: 13px;
+            color: #303133;
+        }
+
+        .mock-table-row:hover {
+            background: #F5F7FA;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .badge-success {
+            background: #ECFDF5;
+            color: #059669;
+        }
+
+        .badge-warning {
+            background: #FFFBEB;
+            color: #D97706;
+        }
+
+        .badge-info {
+            background: #EFF6FF;
+            color: #1D4ED8;
+        }
+
+        /* 动画 */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .animate-pulse {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* 二维码占位 */
+        .qr-placeholder {
+            width: 120px;
+            height: 120px;
+            background: #fff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0A1628;
+            font-weight: 600;
+            font-size: 14px;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body data-page-node-id="05kuZdFRgJlyQe9f7x54c0">
+    <div class="progress-bar" id="progressBar" data-page-node-id="sHPRMGBsgQ8dheWaRYbK5A"></div>
+
+    <div class="video-container" data-page-node-id="Tl6s50fltZWvrqxmn490is">
+        <!-- Slide 1: 开场 -->
+        <div class="slide active" data-duration="20000" data-page-node-id="OIxH9Zp6ReEyVCOo4O1sV6">
+            <div class="slide-icon animate-float" data-page-node-id="5OC98xC1K1DiA5VpZ9mUMY">📦</div>
+            <h1 class="slide-title" data-page-node-id="P6T4kiFj7lmmoSCcFG1Rsg">仓库管理靠 Excel？<br data-page-node-id="W8pwww1HPBnJeHSH7LxEoD">入库出库靠手写？</h1>
+            <p class="slide-subtitle" data-page-node-id="fVtgu4QyEanM8TvJWTjEfI">盘点时对不上账，老板不知道真实库存...</p>
+            <div class="highlight-box" data-page-node-id="mvUksJoLNUOqFbSdTvhNQi">
+                <h3 data-page-node-id="vrjflXrUBdMdeRjTZnJq3x">WMS 仓储管理系统</h3>
+                <p data-page-node-id="9HDCvgZmKSXB0dlndSGzit">专为中小工厂、电商仓设计 · 私有化部署 · 数据在自己手里</p>
+            </div>
+        </div>
+
+        <!-- Slide 2: 一键体验 -->
+        <div class="slide" data-duration="15000" data-page-node-id="pW4B35rgFt7CLbl4fm8afI">
+            <div class="slide-icon" data-page-node-id="F0duUUDxvVyUvflAe9PUJz">🚀</div>
+            <h1 class="slide-title" data-page-node-id="2PtLVKcTBD3hEy6Hu49MT8">一键体验，无需录入</h1>
+            <p class="slide-subtitle" data-page-node-id="KObLye4v5rndMbW8OhEj2F">下载即用，30 天免费全功能试用</p>
+            <div class="feature-grid" data-page-node-id="DYbSp3R0hfDLBg3oNxCSLv">
+                <div class="feature-card" data-page-node-id="bFaPfC8wprvWXtoFmfNqPd">
+                    <div class="icon" data-page-node-id="UzpOyAGkDqswttcd3Z1fEX">📥</div>
+                    <h4 data-page-node-id="c7SgSKZLGETrNHsiraErBX">下载安装</h4>
+                    <p data-page-node-id="6XD1KTbuALsSf86nOUGBEG">1 分钟完成安装</p>
+                </div>
+                <div class="feature-card" data-page-node-id="4eEHS5HPPdC67UEUFkHrEz">
+                    <div class="icon" data-page-node-id="qDLSaDzpXWSA7KhyY8SKYo">🎯</div>
+                    <h4 data-page-node-id="UDxbxncwnjWeWXVeMTyiFB">导入演示数据</h4>
+                    <p data-page-node-id="9FBn5KRohH6bA3arnyrsU6">一键加载完整仓库</p>
+                </div>
+                <div class="feature-card" data-page-node-id="CGYi3gL2TMpeKNrlhyGGih">
+                    <div class="icon" data-page-node-id="CHs3pscATYy9JDguBxM1bI">✅</div>
+                    <h4 data-page-node-id="NHE9MXDEPij5sq19nm0X5H">立即体验</h4>
+                    <p data-page-node-id="ad10N4U8swGFhvZ8CDwIlU">真实业务场景</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: 入库流程 -->
+        <div class="slide" data-duration="25000" data-page-node-id="X9hGMCAGnPCX2ug2BhUdO7">
+            <div class="slide-icon" data-page-node-id="kiwtmxK3hHH65QwnGiHvbf">📋</div>
+            <h1 class="slide-title" data-page-node-id="7kLXzgMOWokJ8EocfC0qJ2">入库管理 · 扫码收货</h1>
+            <p class="slide-subtitle" data-page-node-id="SizOwPAE2Oggr6q2xkenQs">从下单到上架，全流程数字化</p>
+            <div class="mock-ui" data-page-node-id="YJZXF1mSKTJfxa0ZB3Fgvp">
+                <div class="mock-header" data-page-node-id="CMRJCUc3di4GLhOTAlx9Tl">
+                    <span data-page-node-id="mpvocAmK1ORELPyrlzRCGP">📦</span>
+                    <span data-page-node-id="OFuB4mAQRfhNnWx0qqPCss">WMS 仓储管理系统 - 入库管理</span>
+                </div>
+                <div style="display: flex;" data-page-node-id="duYy7VKWdrH1ZVuFDsJOw9">
+                    <div class="mock-sidebar" data-page-node-id="EtR6UhYbgCOufwFHWTaocu">
+                        <div class="mock-nav-item" data-page-node-id="Z23Rhdk13C0Flxls13lNWC">📊 工作台</div>
+                        <div class="mock-nav-item active" data-page-node-id="B9MjVnrtQUtr09RC4MJCtV">📥 入库管理</div>
+                        <div class="mock-nav-item" data-page-node-id="e2j0uBQoFQZg60mYsjB8is">📤 出库管理</div>
+                        <div class="mock-nav-item" data-page-node-id="kbAi7Q4QYRkklOqibVzcHs">📋 库存管理</div>
+                        <div class="mock-nav-item" data-page-node-id="BnGokzArFTiq829EIzDeH9">📊 报表中心</div>
+                    </div>
+                    <div class="mock-body" style="flex: 1;" data-page-node-id="9gBU4xMRX4UrNO33S0tV31">
+                        <div style="margin-bottom: 15px; display: flex; gap: 10px;" data-page-node-id="9yyKXCoHBVWYk4yqCU7Bwx">
+                            <button class="btn btn-primary" data-page-node-id="40W1SKZiIPUbLGFZPk4ONH">+ 新建入库单</button>
+                            <button class="btn" data-page-node-id="MeHav5Q7ByD3xHmn7IkRz4">📥 扫码收货</button>
+                        </div>
+                        <div class="mock-table" data-page-node-id="lFjaWERoCDnCNLXwhGgGMZ">
+                            <div class="mock-table-header" data-page-node-id="p2kYCmJvN4yJHU1KRBL3k3">
+                                <span data-page-node-id="UzYt8C5iGtfsYx3zGFwaP4">入库单号</span>
+                                <span data-page-node-id="99a08gxqcsFUwOQMKUkAtB">供应商</span>
+                                <span data-page-node-id="ZW4IDVv1U45hBmzy18pplc">状态</span>
+                                <span data-page-node-id="KMjYNINKEPJFHTH7H7a9j7">操作</span>
+                            </div>
+                            <div class="mock-table-row" data-page-node-id="tfFsdu2IEhRxvxr7J8lzTq">
+                                <span data-page-node-id="6VFBhH8cEW2DNFw7UniV26">RU20260906001</span>
+                                <span data-page-node-id="H1vHhQ6Ax5GiJMaPC7BRUF">华为供应商</span>
+                                <span data-page-node-id="sPzA6Ydbxtp31k1LbL4zKx"><span class="badge badge-success" data-page-node-id="iGa89JfXFFrEBU70BoXD27">已完成</span></span>
+                                <span data-page-node-id="eDQBiO4Jx0DxJVzAhFr0vm"><button class="btn" style="padding: 5px 10px; font-size: 12px;" data-page-node-id="9wcQCc2pmXn64mBOZVXy7g">查看</button></span>
+                            </div>
+                            <div class="mock-table-row" data-page-node-id="O2mdgLmaWtXsYpM3hZ1QOm">
+                                <span data-page-node-id="IwmsVqy9COmetMffIAesg6">RU20260906002</span>
+                                <span data-page-node-id="NcAGUsMNXTSu6LgVETGgWS">小米供应商</span>
+                                <span data-page-node-id="pTLwtB4AXPvIgvYPxwa0dR"><span class="badge badge-warning" data-page-node-id="AUVWCPkklHM5BUgR8V2xXd">待收货</span></span>
+                                <span data-page-node-id="iEa3PGY5BiEj6yUAlcJO6u"><button class="btn" style="padding: 5px 10px; font-size: 12px;" data-page-node-id="cTGJPypypEoJWJUri6Ps0K">操作</button></span>
+                            </div>
+                            <div class="mock-table-row" data-page-node-id="5SV3beYCdlSDACOJsLOI4o">
+                                <span data-page-node-id="Y4rPPThyX1Rc0tpBS0v6vN">RU20260906003</span>
+                                <span data-page-node-id="ZukHjEKhoDc0VcRTWD9Bot">OPPO 供应商</span>
+                                <span data-page-node-id="ME0qDIpczO5VHnE8214G8Y"><span class="badge badge-info" data-page-node-id="YqvS4K66lmrgqcq1t0ySYn">拣货中</span></span>
+                                <span data-page-node-id="2IT1njIvLJdOjNah0rjQre"><button class="btn" style="padding: 5px 10px; font-size: 12px;" data-page-node-id="5VuYzsmdBMmAYeRFQXvtgt">查看</button></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: 出库流程 -->
+        <div class="slide" data-duration="20000" data-page-node-id="wBlHjrmUyD9HMBw5RIqL3L">
+            <div class="slide-icon" data-page-node-id="qcny67S9lBMzFbqpJJuL4o">📤</div>
+            <h1 class="slide-title" data-page-node-id="FZXEIj1A302hbhgDLPENFl">出库管理 · 智能拣货</h1>
+            <p class="slide-subtitle" data-page-node-id="CAYUajErFhUajXgiQ9m555">按指引拣货，扫码确认，效率提升 50%</p>
+            <div class="feature-grid" data-page-node-id="xaO5DnrArnIyKGgY5vGa5o">
+                <div class="feature-card" data-page-node-id="RJGNDqsnLUEPT5ZQLDwhhz">
+                    <div class="icon" data-page-node-id="jmSRgDI03OrNArh3hkwUmm">📝</div>
+                    <h4 data-page-node-id="BYgAeQRPHYQUAsxthhfRyM">创建出库单</h4>
+                    <p data-page-node-id="6wSByTZDRS5kuyELBB9HxH">一键生成拣货任务</p>
+                </div>
+                <div class="feature-card" data-page-node-id="lzjEQsEGa371TPDW5v0IIw">
+                    <div class="icon" data-page-node-id="XAbViCMErr6ww3pniTmegj">📍</div>
+                    <h4 data-page-node-id="PZIOaLeZsCdgQIvhHRHdh2">智能拣货指引</h4>
+                    <p data-page-node-id="gVIAtTZyCh8MLxVrTawIHD">系统推荐最优路径</p>
+                </div>
+                <div class="feature-card" data-page-node-id="9jt2WMXxCWU2pH7Hz28VFg">
+                    <div class="icon" data-page-node-id="pjk38PjpmaE0wgPlRyJisa">✅</div>
+                    <h4 data-page-node-id="tie9dvmP8PFVsdU6qLrmFe">扫码复核发货</h4>
+                    <p data-page-node-id="bMerf4AbA6U1HulvUfAJNn">防错防漏，实时准确</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: 库存盘点 -->
+        <div class="slide" data-duration="20000" data-page-node-id="jES8mBZPyoL7oCKpwMdaRY">
+            <div class="slide-icon" data-page-node-id="ys2cCvRL2GRMpQcAifiAuC">📊</div>
+            <h1 class="slide-title" data-page-node-id="GgFCPToqoM19RG6mKnDJe3">库存盘点 · 一键盘点</h1>
+            <p class="slide-subtitle" data-page-node-id="t2HTADGoQR4NbVWwIDZs7v">从半天缩短到 1 小时，差异自动生成报表</p>
+            <div class="stats-row" data-page-node-id="bGHiPtGKZ3F3KkFLZuUpQH">
+                <div class="stat-item" data-page-node-id="WUB0hH0mTbSYdOy9XHANDQ">
+                    <div class="stat-number" data-page-node-id="DwrBUDnSN7nflfoIFsL9Md">50%</div>
+                    <div class="stat-label" data-page-node-id="bKr6F2OlfIszVxHoDZGogz">盘点效率提升</div>
+                </div>
+                <div class="stat-item" data-page-node-id="nC0o0PdGhj1nXFg3riNen8">
+                    <div class="stat-number" data-page-node-id="CE51Q2BTMahOLPYHK2jhvZ">99.9%</div>
+                    <div class="stat-label" data-page-node-id="E1idrAeSz6sRiqNWPDVnSm">库存准确率</div>
+                </div>
+                <div class="stat-item" data-page-node-id="By1CmodLAsxiquZe0mTl9Q">
+                    <div class="stat-number" data-page-node-id="5YMBa6xwf7KEL6nbfdgGlr">0</div>
+                    <div class="stat-label" data-page-node-id="gsBOO9IOy8opbSiHyiEHZS">人工差错率</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: 数据看板 -->
+        <div class="slide" data-duration="20000" data-page-node-id="0IxEhFScAWmmOrLJmV40rs">
+            <div class="slide-icon" data-page-node-id="hu43PtxHf9y1hnICyj0yen">📈</div>
+            <h1 class="slide-title" data-page-node-id="qPpBRYG3YjpvSyMi4AzPdL">数据看板 · 手机实时看</h1>
+            <p class="slide-subtitle" data-page-node-id="kZMdNsKAERwkJA8EPP4OQZ">今日出入库、库存预警、待审核单据，一目了然</p>
+            <div class="mock-ui" data-page-node-id="cpnMkHFkImGbifBeKK1VHi">
+                <div class="mock-header" data-page-node-id="ZfcTfYIYzfJT4npmHzBgDT">
+                    <span data-page-node-id="qKCaSAsiHLyt8HLcA2QsSM">📊</span>
+                    <span data-page-node-id="GmKk2ZpkC2YrC7ErpgIAcW">WMS - 数据看板</span>
+                </div>
+                <div class="mock-body" data-page-node-id="J2TdwKFhaw4iepcdRuO16M">
+                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 20px;" data-page-node-id="SOuV8158HSyj2Q090QH7Lh">
+                        <div class="feature-card" style="padding: 20px;" data-page-node-id="qT4uaDuxzQqsygMqt5OasL">
+                            <div style="font-size: 32px; font-weight: 700; color: #1D4ED8;" data-page-node-id="gfw8DWS9K3mhcfXAXIZoFZ">156</div>
+                            <div style="font-size: 13px; color: #606266;" data-page-node-id="T6hS1YuF8woxAiL4E3PEEw">今日入库</div>
+                        </div>
+                        <div class="feature-card" style="padding: 20px;" data-page-node-id="v3ExkLw3FFdODMFiQakGQc">
+                            <div style="font-size: 32px; font-weight: 700; color: #059669;" data-page-node-id="9XSHnebISOJ9QxlKNmX2pS">142</div>
+                            <div style="font-size: 13px; color: #606266;" data-page-node-id="sHF7iZ7BrmAjCEQD7BuAFI">今日出库</div>
+                        </div>
+                        <div class="feature-card" style="padding: 20px;" data-page-node-id="olJMWwnvj76R7aJsif6Jx1">
+                            <div style="font-size: 32px; font-weight: 700; color: #D97706;" data-page-node-id="Bj2Q8jrKsDfoMMYfyZqxXn">8</div>
+                            <div style="font-size: 13px; color: #606266;" data-page-node-id="Iq6B1Xe09yJuL8KJNx5R3E">待审核</div>
+                        </div>
+                        <div class="feature-card" style="padding: 20px;" data-page-node-id="L0PvbZAp5ojRYoHFJRPvpB">
+                            <div style="font-size: 32px; font-weight: 700; color: #DC2626;" data-page-node-id="6GT1R1WoNHSLFM5repX23O">3</div>
+                            <div style="font-size: 13px; color: #606266;" data-page-node-id="mUC6QNmG10OAM8k4cRqk7p">库存预警</div>
+                        </div>
+                    </div>
+                    <div style="background: #fff; padding: 20px; border-radius: 8px;" data-page-node-id="m5CeaDNsJ4ckFom7CHWbGO">
+                        <div style="font-weight: 600; margin-bottom: 15px; color: #303133;" data-page-node-id="e4mA1A0EZSDT8nDGh8AtY7">近 7 天出入库趋势</div>
+                        <div style="height: 150px; background: linear-gradient(180deg, rgba(29,78,216,0.1) 0%, rgba(29,78,216,0) 100%); border-radius: 8px; display: flex; align-items: flex-end; padding: 10px; gap: 8px;" data-page-node-id="brWEKYwNUpWtLJJvK4kDP1">
+                            <div style="flex: 1; background: #1D4ED8; height: 60%; border-radius: 4px;" data-page-node-id="cyij33DXPL6pKAC02ctGAk"></div>
+                            <div style="flex: 1; background: #3B82F6; height: 80%; border-radius: 4px;" data-page-node-id="E0F8ROYwdtWFkFUL8x3q8c"></div>
+                            <div style="flex: 1; background: #1D4ED8; height: 45%; border-radius: 4px;" data-page-node-id="WsCxHUMoPejP6s3OySo9wr"></div>
+                            <div style="flex: 1; background: #3B82F6; height: 90%; border-radius: 4px;" data-page-node-id="YhiHQnf6yQ6mMdm5vnQkkq"></div>
+                            <div style="flex: 1; background: #1D4ED8; height: 70%; border-radius: 4px;" data-page-node-id="aiwp35yuFksxnUZmD0AE4r"></div>
+                            <div style="flex: 1; background: #3B82F6; height: 55%; border-radius: 4px;" data-page-node-id="u4XGRp2o37vjwYIr2DpAYc"></div>
+                            <div style="flex: 1; background: #1D4ED8; height: 85%; border-radius: 4px;" data-page-node-id="sfL47MJOmLWaH4bNQy37yu"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: 核心优势 -->
+        <div class="slide" data-duration="15000" data-page-node-id="QBTTmjFH7wk8xuWrVpG0Gf">
+            <div class="slide-icon" data-page-node-id="n4PECgWFIuqAMiddEpcJDj">⭐</div>
+            <h1 class="slide-title" data-page-node-id="aMr9vJFfj1N8pGdtJWGBJK">核心优势</h1>
+            <div class="feature-grid" style="grid-template-columns: repeat(2, 1fr);" data-page-node-id="nf87eBmGiKwHipRdJmyItK">
+                <div class="feature-card" data-page-node-id="nwtl8J10C1UOMq4MgQ48o4">
+                    <div class="icon" data-page-node-id="U7RsW9aGT4Qul7Cgwn9he2">🔒</div>
+                    <h4 data-page-node-id="UYXe424rqsMUfDGPYw09TI">私有化部署</h4>
+                    <p data-page-node-id="JBf0taUAXBzeoWt3bqz96r">数据存在自己电脑，<br data-page-node-id="AF7Ytbo5z8597LfMlgNwg7">安全可控</p>
+                </div>
+                <div class="feature-card" data-page-node-id="3o05mHRdEp7fA2d5FZqYKR">
+                    <div class="icon" data-page-node-id="5y9qViwFVSq49BmBT9kL2l">📱</div>
+                    <h4 data-page-node-id="AteL0nFTRjgAynmPIVXUbm">手机 PDA 可用</h4>
+                    <p data-page-node-id="kX7qet5nZJhcZRXNZCG1AF">扫码操作，<br data-page-node-id="fDbUBnEeg15Wa0oittgWaB">仓库工人轻松上手</p>
+                </div>
+                <div class="feature-card" data-page-node-id="hhefIYIecnBez6abkEEqTN">
+                    <div class="icon" data-page-node-id="P4qYxvyRwXAbkdL5MG3W0J">💰</div>
+                    <h4 data-page-node-id="g7v0DbHQcuqwXKkIhMVtGA">一次买断</h4>
+                    <p data-page-node-id="IpgEwSI4UCwEs6YRtSPEdS">¥9,800 起，<br data-page-node-id="SFiE3CCWyHmtzklEGzy2Fj">无年费压力</p>
+                </div>
+                <div class="feature-card" data-page-node-id="6j4mu8BrnGfdFkisANqqYi">
+                    <div class="icon" data-page-node-id="MO7KTqDlF9wDvcrwNSMUiy">🎁</div>
+                    <h4 data-page-node-id="cUvoWk9v6t27BqERcF29Qf">30 天免费试用</h4>
+                    <p data-page-node-id="jkTe2qKPbXs718VRvYl7gD">无需注册，<br data-page-node-id="rSxtbwV2LzIoo4SUSAFs7Z">下载即用</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: 行动号召 -->
+        <div class="slide" data-duration="20000" data-page-node-id="xrSNv40WtP9YAFsqwRevhT">
+            <div class="slide-icon animate-pulse" data-page-node-id="00koMHb2DiPcQ8DEEV7V4o">🎯</div>
+            <h1 class="slide-title" data-page-node-id="HHhiEKYiTUqEe1ZEu4PyFb">立即开始免费试用</h1>
+            <p class="slide-subtitle" data-page-node-id="XEA54K3W5CxhxQmza7M1PE">30 天全功能体验，无需联网，无需注册</p>
+            <div class="cta-box" data-page-node-id="lznxamEV27Gwvs7j5ZTy7M">
+                <h2 data-page-node-id="KyA1xxSdPrzvumhyQeER1H">访问官网下载安装</h2>
+                <p data-page-node-id="IeFoG0xR1j2zAFZti2Qw4A">https://aying-0829.github.io/wms-download/</p>
+                <div class="qr-placeholder" data-page-node-id="GjrLdE4igKl1Jhs3qvj3TC">扫码下载</div>
+                <p style="margin-top: 20px; font-size: 16px;" data-page-node-id="xIFrIa3suymoxKpYLvtqai">
+                    演示账号：admin / Admin@123456<br data-page-node-id="mwAuZB4Iawsgfp0Gm0miwB">
+                    客服热线：400-XXX-XXXX
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 控制按钮 -->
+    <div class="controls" data-page-node-id="9D86iWoUQswiGFpLgTxmsH">
+        <button class="btn" onclick="prevSlide()" data-page-node-id="xkQpM8msOQqa8IpZOFX8Fm">◀ 上一项</button>
+        <button class="btn btn-primary" id="playBtn" onclick="togglePlay()" data-page-node-id="PddgxRyXCKja0h4MQZY9aY">▶ 播放</button>
+        <button class="btn" onclick="nextSlide()" data-page-node-id="qksMaoKSsLDu0wsqgUo4IO">下一项 ▶</button>
+        <span class="slide-counter" id="slideCounter" data-page-node-id="9BkZSwASCchbo62FGEkjDw">1 / 8</span>
+    </div>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const progressBar = document.getElementById('progressBar');
+        const slideCounter = document.getElementById('slideCounter');
+        const playBtn = document.getElementById('playBtn');
+        let currentIndex = 0;
+        let isPlaying = false;
+        let timer = null;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+            slideCounter.textContent = `${index + 1} / ${slides.length}`;
+            updateProgress();
+        }
+
+        function updateProgress() {
+            const progress = ((currentIndex + 1) / slides.length) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+
+        function nextSlide() {
+            if (currentIndex < slides.length - 1) {
+                currentIndex++;
+                showSlide(currentIndex);
+            } else {
+                // 循环播放
+                currentIndex = 0;
+                showSlide(currentIndex);
+            }
+        }
+
+        function prevSlide() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                showSlide(currentIndex);
+            }
+        }
+
+        function togglePlay() {
+            isPlaying = !isPlaying;
+            playBtn.textContent = isPlaying ? '⏸ 暂停' : '▶ 播放';
+
+            if (isPlaying) {
+                timer = setInterval(() => {
+                    nextSlide();
+                }, 8000);
+            } else {
+                clearInterval(timer);
+            }
+        }
+
+        // 键盘控制
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+            } else if (e.key === 'p' || e.key === 'P') {
+                togglePlay();
+            }
+        });
+
+        // 初始化
+        showSlide(0);
+    </script>
+</body>
+</html>
