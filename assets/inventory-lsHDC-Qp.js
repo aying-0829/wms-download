@@ -1,0 +1,1 @@
+import{s}from"./index-ClEN3rqV.js";const e={stock:t=>s.get("/inv/stock",{params:t}),stockDetail:t=>s.get("/inv/stock/detail",{params:t}),transactions:t=>s.get("/inv/transactions",{params:t}),locks:t=>s.get("/inv/locks",{params:t}),adjust:t=>s.post("/inv/adjust",t),lock:t=>s.post("/inv/lock",t),deduct:t=>s.post("/inv/deduct",t),release:t=>s.post("/inv/release",t)};export{e as i};
