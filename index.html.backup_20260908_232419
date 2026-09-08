@@ -1,0 +1,2418 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="EXEE4jSxL3rZtilUzzukov">
+<head data-page-node-id="eAoWhP3bDy0fvsEThHfrTd">
+<meta charset="UTF-8" data-page-node-id="yF6oH3ViEJaV4rGRBVu2zJ" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="zlXMGayZrHhi6KDEDG3Hq3" />
+<title>WMS 仓储管理系统 · 私有化部署 · 免费试用</title>
+<style>
+/* ============================================================
+   DESIGN SYSTEM — WMS v2
+   Palette: Deep Navy + Warm Cream + Cobalt Blue
+   Type: System native CJK font stack (no external CDN)
+   ============================================================ */
+
+:root {
+  /* Core palette */
+  --navy: #0A1628;
+  --navy-mid: #132238;
+  --navy-light: #1E3352;
+  --cream: #FAFAF8;
+  --cream-warm: #F5F4F0;
+  --white: #FFFFFF;
+  --cobalt: #1D4ED8;
+  --cobalt-light: #3B82F6;
+  --cobalt-dark: #1E40AF;
+  --teal: #0D9488;
+
+  /* Neutrals */
+  --ink: #0B1120;
+  --text: #1F2937;
+  --text-2: #4B5563;
+  --text-3: #9CA3AF;
+  --text-muted: #6B7280;
+  --border: #E5E7EB;
+  --border-subtle: #F3F4F6;
+
+  /* Semantic */
+  --success: #059669;
+  --success-bg: #ECFDF5;
+  --warn: #D97706;
+  --warn-bg: #FFFBEB;
+  --error: #DC2626;
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+
+  /* Typography scale */
+  --text-xs: 12px;
+  --text-sm: 13px;
+  --text-base: 15px;
+  --text-lg: 17px;
+  --text-xl: 20px;
+  --text-2xl: 24px;
+  --text-3xl: 30px;
+  --text-4xl: 38px;
+  --text-5xl: 48px;
+  --text-6xl: 60px;
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-lg: 0 12px 32px rgba(0,0,0,0.12);
+  --shadow-xl: 0 24px 60px rgba(0,0,0,0.16);
+  --shadow-navy: 0 20px 60px rgba(10,22,40,0.4);
+
+  /* Motion */
+  --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast: 200ms;
+  --duration-normal: 350ms;
+  --duration-slow: 600ms;
+}
+
+/* Reset */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body {
+  font-family: "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", "Source Han Sans SC", "Noto Sans CJK SC", "WenQuanYi Micro Hei", -apple-system, "Segoe UI", system-ui, sans-serif;
+  color: var(--text);
+  background: var(--cream);
+  line-height: 1.7;
+  font-size: var(--text-base);
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+img, svg { display: block; max-width: 100%; }
+a { text-decoration: none; color: inherit; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+ul, ol { list-style: none; }
+
+/* Typography */
+h1, h2, h3, h4 { font-weight: 800; color: var(--ink); line-height: 1.2; letter-spacing: 0; }
+/* CJK fonts cap at weight 800; no negative letter-spacing for CJK legibility */
+.text-label { font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); }
+.text-muted { color: var(--text-muted); }
+
+/* Layout */
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 var(--space-6); }
+@media (max-width: 768px) { .wrap { padding: 0 var(--space-4); } }
+
+/* Reveal animation */
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity var(--duration-slow) var(--ease-out), transform var(--duration-slow) var(--ease-out); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 100ms; }
+.reveal-delay-2 { transition-delay: 200ms; }
+.reveal-delay-3 { transition-delay: 300ms; }
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(250,250,248,0.88);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--border-subtle);
+  transition: box-shadow var(--duration-fast) ease;
+}
+.nav.scrolled { box-shadow: var(--shadow-md); }
+.nav-inner {
+  max-width: 1200px; margin: 0 auto; padding: 0 var(--space-6);
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px;
+}
+@media (max-width: 768px) { .nav-inner { padding: 0 var(--space-4); height: 56px; } }
+
+.nav-brand {
+  display: flex; align-items: center; gap: 10px;
+  font-size: var(--text-lg); font-weight: 800; color: var(--ink);
+  letter-spacing: 0;
+}
+.nav-brand-icon {
+  width: 32px; height: 32px; border-radius: var(--radius-md);
+  background: var(--cobalt);
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-size: var(--text-base); font-weight: 800;
+  box-shadow: 0 2px 8px rgba(29,78,216,0.3);
+}
+.nav-links { display: flex; align-items: center; gap: var(--space-6); }
+.nav-links a {
+  font-size: var(--text-sm); font-weight: 500; color: var(--text-2);
+  transition: color var(--duration-fast) ease;
+}
+.nav-links a:hover { color: var(--cobalt); }
+.nav-cta {
+  background: var(--cobalt); color: white !important;
+  padding: 9px 20px; border-radius: var(--radius-full);
+  font-size: var(--text-sm); font-weight: 600;
+  transition: all var(--duration-fast) var(--spring);
+  box-shadow: 0 2px 8px rgba(29,78,216,0.25);
+}
+.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(29,78,216,0.35); background: var(--cobalt-dark); }
+
+/* Mobile nav toggle */
+.nav-toggle { display: none; width: 40px; height: 40px; align-items: center; justify-content: center; border-radius: var(--radius-md); }
+.nav-toggle:hover { background: var(--border-subtle); }
+.nav-toggle svg { width: 20px; height: 20px; stroke: var(--ink); }
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-toggle { display: flex; }
+  .nav-links.open {
+    display: flex; flex-direction: column; position: absolute;
+    top: 56px; left: 0; right: 0;
+    background: rgba(250,250,248,0.97); backdrop-filter: blur(20px);
+    padding: var(--space-4) var(--space-6); gap: var(--space-4);
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow-lg);
+  }
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  background: var(--navy);
+  color: white;
+  position: relative;
+  overflow: hidden;
+  padding: var(--space-20) 0 var(--space-16);
+}
+@media (max-width: 768px) { .hero { padding: var(--space-12) 0 var(--space-10); } }
+
+/* Background mesh gradient */
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 40%, rgba(29,78,216,0.3) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 20%, rgba(13,148,136,0.2) 0%, transparent 50%),
+    radial-gradient(ellipse 40% 40% at 60% 80%, rgba(29,78,216,0.15) 0%, transparent 50%);
+  pointer-events: none;
+}
+/* Subtle grid */
+.hero::after {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+.hero-inner {
+  position: relative; z-index: 2;
+  display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-12); align-items: center;
+}
+@media (max-width: 960px) { .hero-inner { grid-template-columns: 1fr; } }
+
+.hero-content { max-width: 560px; }
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 6px 14px; border-radius: var(--radius-full);
+  font-size: var(--text-sm); font-weight: 500; color: rgba(255,255,255,0.8);
+  margin-bottom: var(--space-6);
+}
+.hero-eyebrow-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: #34D399;
+  box-shadow: 0 0 8px rgba(52,211,153,0.6);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.3); }
+}
+
+.hero h1 {
+  font-size: clamp(32px, 5vw, var(--text-6xl));
+  font-weight: 800; line-height: 1.15; letter-spacing: 0;
+  color: white; margin-bottom: var(--space-5);
+}
+.hero h1 .accent {
+  background: linear-gradient(135deg, #60A5FA, #2DD4BF);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero-sub {
+  font-size: var(--text-lg); line-height: 1.7; color: rgba(255,255,255,0.7);
+  margin-bottom: var(--space-8); max-width: 480px;
+}
+.hero-ctas { display: flex; gap: var(--space-3); flex-wrap: wrap; margin-bottom: var(--space-8); }
+.hero-trust { display: flex; gap: var(--space-6); flex-wrap: wrap; }
+.hero-trust-item {
+  display: flex; align-items: center; gap: var(--space-2);
+  font-size: var(--text-sm); color: rgba(255,255,255,0.5);
+}
+.hero-trust-item svg { width: 16px; height: 16px; stroke: #34D399; }
+
+/* Hero visual — product mockup */
+.hero-visual { position: relative; }
+.hero-mock {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-navy);
+  backdrop-filter: blur(10px);
+}
+.mock-titlebar {
+  background: rgba(0,0,0,0.3);
+  padding: 12px 16px;
+  display: flex; align-items: center; gap: 8px;
+}
+.mock-dot { width: 10px; height: 10px; border-radius: 50%; }
+.mock-dot.r { background: #FF5F57; }
+.mock-dot.y { background: #FEBC2E; }
+.mock-dot.g { background: #28C840; }
+.mock-titlebar span {
+  margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.4);
+  font-family: "SF Mono", "Fira Code", monospace;
+}
+.mock-body { padding: var(--space-4); display: grid; grid-template-columns: 56px 1fr; gap: 0; min-height: 280px; }
+@media (max-width: 480px) { .mock-body { grid-template-columns: 1fr; } }
+.mock-sidebar {
+  display: flex; flex-direction: column; gap: 6px;
+  padding: var(--space-3) 0; border-right: 1px solid rgba(255,255,255,0.06);
+}
+@media (max-width: 480px) { .mock-sidebar { display: none; } }
+.mock-sidebar-item {
+  width: 36px; height: 36px; border-radius: var(--radius-md);
+  background: rgba(255,255,255,0.06); margin: 0 auto;
+  display: flex; align-items: center; justify-content: center;
+}
+.mock-sidebar-item.active { background: var(--cobalt); }
+.mock-sidebar-item svg { width: 16px; height: 16px; stroke: rgba(255,255,255,0.5); }
+.mock-sidebar-item.active svg { stroke: white; }
+.mock-content { padding: var(--space-4); }
+.mock-kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 12px; }
+.mock-kpi {
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-md); padding: 10px;
+}
+.mock-kpi .val { font-size: 18px; font-weight: 800; color: white; letter-spacing: 0; }
+.mock-kpi .val.up { color: #34D399; }
+.mock-kpi .val.warn { color: #FBBF24; }
+.mock-kpi .lbl { font-size: 10px; color: rgba(255,255,255,0.4); margin-top: 2px; }
+.mock-chart {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06);
+  border-radius: var(--radius-md); padding: 12px;
+  display: flex; align-items: flex-end; gap: 6px; height: 80px; margin-bottom: 10px;
+}
+.mock-chart-bar {
+  flex: 1; border-radius: 3px 3px 0 0;
+  background: linear-gradient(180deg, var(--cobalt-light), var(--cobalt));
+  opacity: 0.8;
+}
+.mock-table-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 6px 0; border-top: 1px solid rgba(255,255,255,0.05);
+  font-size: 11px; color: rgba(255,255,255,0.6);
+}
+.mock-table-row .name { color: rgba(255,255,255,0.85); }
+.mock-badge {
+  padding: 2px 8px; border-radius: var(--radius-full); font-size: 10px; font-weight: 600;
+}
+.mock-badge.low { background: rgba(239,68,68,0.2); color: #FCA5A5; }
+.mock-badge.ok { background: rgba(16,185,129,0.2); color: #6EE7B7; }
+
+/* Floating card accent */
+.hero-float {
+  position: absolute; bottom: -20px; right: -20px;
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
+  backdrop-filter: blur(12px); border-radius: var(--radius-lg);
+  padding: 14px 18px; color: white;
+  box-shadow: var(--shadow-lg);
+  animation: float 4s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.hero-float .val { font-size: var(--text-2xl); font-weight: 800; letter-spacing: 0; }
+.hero-float .lbl { font-size: var(--text-xs); color: rgba(255,255,255,0.6); margin-top: 2px; }
+
+/* ============================================================
+   STATS BAR
+   ============================================================ */
+.stats {
+  background: white; border-bottom: 1px solid var(--border-subtle);
+  padding: var(--space-10) 0;
+}
+.stats-inner {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+@media (max-width: 768px) { .stats-inner { grid-template-columns: repeat(2, 1fr); } }
+.stat {
+  text-align: center; padding: var(--space-4) var(--space-6);
+  border-right: 1px solid var(--border-subtle);
+}
+.stat:last-child { border-right: none; }
+@media (max-width: 768px) { .stat { padding: var(--space-4); } .stat:nth-child(2) { border-right: none; } }
+.stat .val { font-size: clamp(28px, 4vw, var(--text-4xl)); font-weight: 800; color: var(--cobalt); letter-spacing: 0; }
+.stat .lbl { font-size: var(--text-sm); color: var(--text-muted); margin-top: var(--space-1); }
+
+/* ============================================================
+   SECTION BASE
+   ============================================================ */
+.section { padding: var(--space-20) 0; }
+.section-alt { background: white; }
+.section-header { text-align: center; margin-bottom: var(--space-12); }
+.section-label {
+  display: inline-block; font-size: var(--text-xs); font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--cobalt); background: rgba(29,78,216,0.08);
+  padding: 6px 16px; border-radius: var(--radius-full);
+  margin-bottom: var(--space-4);
+}
+.section-title {
+  font-size: clamp(24px, 3.5vw, var(--text-4xl));
+  font-weight: 800; letter-spacing: 0;
+  color: var(--ink); margin-bottom: var(--space-4); line-height: 1.3;
+}
+.section-desc {
+  font-size: var(--text-lg); color: var(--text-muted);
+  max-width: 560px; margin: 0 auto; line-height: 1.7;
+}
+
+/* ============================================================
+   FEATURES
+   ============================================================ */
+.features-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5);
+}
+@media (max-width: 960px) { .features-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .features-grid { grid-template-columns: 1fr; } }
+
+.feature-card {
+  background: white; border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: var(--space-7);
+  text-align: center;
+  transition: all var(--duration-normal) var(--ease-out);
+  position: relative; overflow: hidden;
+}
+.feature-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--cobalt), var(--teal));
+  opacity: 0; transition: opacity var(--duration-normal) ease;
+}
+.feature-card:hover {
+  border-color: rgba(29,78,216,0.2);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+}
+.feature-card:hover::before { opacity: 1; }
+.feature-icon {
+  width: 48px; height: 48px; border-radius: var(--radius-md);
+  background: linear-gradient(135deg, rgba(29,78,216,0.08), rgba(13,148,136,0.08));
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto var(--space-4);
+}
+.feature-icon svg { width: 24px; height: 24px; stroke: var(--cobalt); stroke-width: 1.8; fill: none; }
+.feature-card h3 { font-size: var(--text-xl); font-weight: 700; margin-bottom: var(--space-3); letter-spacing: 0; line-height: 1.4; }
+.feature-card p { font-size: var(--text-sm); color: var(--text-muted); line-height: 1.7; }
+
+/* ============================================================
+   SCENES / USE CASES
+   ============================================================ */
+.scenes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); }
+@media (max-width: 960px) { .scenes-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .scenes-grid { grid-template-columns: 1fr; } }
+
+.scene-card {
+  border-radius: var(--radius-xl);
+  position: relative; min-height: 320px;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: var(--space-8); color: white;
+  background: var(--navy);
+}
+.scene-card::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 30%, rgba(0,0,0,0.7) 100%);
+  z-index: 1;
+}
+.scene-card:nth-child(1) { background: linear-gradient(135deg, #0F172A 0%, #1E3A5F 100%); }
+.scene-card:nth-child(2) { background: linear-gradient(135deg, #1A2744 0%, #0D3B3E 100%); }
+.scene-card:nth-child(3) { background: linear-gradient(135deg, #1C1917 0%, #2D1B00 100%); }
+.scene-card > * { position: relative; z-index: 2; }
+.scene-card .scene-eyebrow {
+  font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: rgba(255,255,255,0.5);
+  margin-bottom: var(--space-3);
+}
+.scene-card h3 { color: white; font-size: var(--text-2xl); font-weight: 800; margin-bottom: var(--space-3); line-height: 1.35; }
+.scene-card p { font-size: var(--text-sm); color: rgba(255,255,255,0.7); margin-bottom: var(--space-5); line-height: 1.7; }
+.scene-card ul { display: flex; flex-direction: column; gap: var(--space-2); }
+.scene-card li {
+  display: flex; align-items: center; gap: var(--space-2);
+  font-size: var(--text-sm); color: rgba(255,255,255,0.85); line-height: 1.6;
+}
+.scene-card li::before {
+  content: ''; width: 5px; height: 5px; border-radius: 50%;
+  background: var(--cobalt-light); flex-shrink: 0;
+}
+
+/* ============================================================
+   PRICING
+   ============================================================ */
+.pricing-section { background: var(--cream); }
+.pricing-toggle {
+  display: flex; justify-content: center; gap: var(--space-3);
+  margin-bottom: var(--space-10);
+}
+.pricing-toggle button {
+  padding: 8px 20px; border-radius: var(--radius-full);
+  font-size: var(--text-sm); font-weight: 600;
+  color: var(--text-muted); border: 1px solid var(--border);
+  background: white; transition: all var(--duration-fast) ease;
+}
+.pricing-toggle button.active {
+  background: var(--navy); color: white; border-color: var(--navy);
+}
+.pricing-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-4); }
+@media (max-width: 1024px) { .pricing-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .pricing-grid { grid-template-columns: 1fr; } }
+
+.price-card {
+  background: white; border: 1px solid var(--border);
+  border-radius: var(--radius-xl); padding: var(--space-7) var(--space-6);
+  display: flex; flex-direction: column;
+  text-align: center;
+  transition: all var(--duration-normal) var(--ease-out);
+  position: relative;
+}
+.price-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+.price-card.featured {
+  border-color: var(--cobalt); border-width: 2px;
+  box-shadow: 0 8px 32px rgba(29,78,216,0.15);
+}
+.price-card.featured .price-badge {
+  display: inline-block;
+  background: var(--cobalt); color: white;
+  font-size: var(--text-xs); font-weight: 700; padding: 5px 16px;
+  border-radius: var(--radius-full); letter-spacing: 0.03em;
+  margin-bottom: var(--space-4);
+  white-space: nowrap;
+}
+.price-card .plan-name { font-size: var(--text-lg); font-weight: 800; color: var(--ink); letter-spacing: 0; }
+.price-card .plan-desc { font-size: var(--text-sm); color: var(--text-muted); margin-top: 4px; margin-bottom: var(--space-5); min-height: 36px; }
+.price-card .price-row { display: flex; align-items: baseline; justify-content: center; gap: 4px; margin-bottom: 4px; }
+.price-card .price-val { font-size: var(--text-4xl); font-weight: 800; color: var(--ink); letter-spacing: 0; }
+.price-card .price-unit { font-size: var(--text-sm); color: var(--text-muted); }
+.price-card .price-annual { font-size: var(--text-xs); color: var(--text-3); margin-bottom: var(--space-5); }
+.price-card ul { display: flex; flex-direction: column; gap: var(--space-2); margin-bottom: var(--space-6); flex: 1; align-items: center; }
+.price-card li {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  font-size: var(--text-sm); color: var(--text-2); line-height: 1.6;
+  text-align: left;
+}
+.price-card li svg { width: 16px; height: 16px; stroke: var(--success); flex-shrink: 0; margin-top: 2px; }
+.price-card .btn-price {
+  display: block; width: 100%; padding: 12px; text-align: center;
+  border-radius: var(--radius-md); font-size: var(--text-sm); font-weight: 600;
+  transition: all var(--duration-fast) var(--spring);
+}
+.price-card .btn-price.primary { background: var(--cobalt); color: white; }
+.price-card .btn-price.primary:hover { background: var(--cobalt-dark); transform: translateY(-1px); box-shadow: 0 6px 16px rgba(29,78,216,0.3); }
+.price-card .btn-price.ghost { background: transparent; color: var(--cobalt); border: 1.5px solid var(--cobalt); }
+.price-card .btn-price.ghost:hover { background: rgba(29,78,216,0.05); }
+
+/* ============================================================
+   COMPARISON TABLE
+   ============================================================ */
+.cmp-table-wrap {
+  overflow-x: auto; border-radius: var(--radius-xl);
+  border: 1px solid var(--border); background: white;
+  box-shadow: var(--shadow-sm);
+}
+.cmp-table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); min-width: 640px; }
+.cmp-table thead th {
+  background: var(--navy); color: white;
+  padding: 16px 20px; text-align: left; font-weight: 700;
+  font-size: var(--text-sm); white-space: nowrap;
+}
+.cmp-table thead th:first-child { border-radius: var(--radius-xl) 0 0 0; }
+.cmp-table thead th:last-child { border-radius: 0 var(--radius-xl) 0 0; }
+.cmp-table thead th.highlight { background: var(--cobalt); }
+.cmp-table tbody tr { border-bottom: 1px solid var(--border-subtle); }
+.cmp-table tbody tr:last-child { border-bottom: none; }
+.cmp-table tbody tr:nth-child(even) { background: var(--cream); }
+.cmp-table td { padding: 14px 20px; vertical-align: middle; }
+.cmp-table td:first-child { font-weight: 600; color: var(--ink); }
+.cmp-table td.check { color: var(--success); text-align: center; }
+.cmp-table td.cross { color: var(--text-3); text-align: center; }
+.cmp-table td.highlight-col { background: rgba(29,78,216,0.03); }
+
+/* ============================================================
+   MODES COMPARISON
+   ============================================================ */
+.modes-section { background: white; }
+.modes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); }
+@media (max-width: 768px) { .modes-grid { grid-template-columns: 1fr; } }
+
+.mode-card {
+  border: 1px solid var(--border); border-radius: var(--radius-xl);
+  padding: var(--space-8); position: relative; overflow: hidden;
+  transition: all var(--duration-normal) var(--ease-out);
+}
+.mode-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+.mode-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--cobalt), var(--teal));
+}
+.mode-card:nth-child(2)::before { background: linear-gradient(90deg, var(--teal), #10B981); }
+.mode-tag {
+  display: inline-block; font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; padding: 4px 12px; border-radius: var(--radius-full);
+  background: rgba(29,78,216,0.08); color: var(--cobalt); margin-bottom: var(--space-4);
+}
+.mode-card h3 { font-size: var(--text-2xl); font-weight: 800; margin-bottom: var(--space-3); line-height: 1.4; }
+.mode-card > p { font-size: var(--text-sm); color: var(--text-muted); margin-bottom: var(--space-6); line-height: 1.7; }
+.mode-list { display: flex; flex-direction: column; gap: var(--space-3); margin-bottom: var(--space-6); }
+.mode-list li {
+  display: flex; align-items: flex-start; gap: var(--space-3);
+  font-size: var(--text-sm); color: var(--text-2); line-height: 1.7;
+}
+.mode-list li svg { width: 16px; height: 16px; stroke: var(--success); flex-shrink: 0; margin-top: 3px; }
+.mode-card .btn { display: inline-block; padding: 12px 28px; border-radius: var(--radius-md); font-size: var(--text-sm); font-weight: 600; transition: all var(--duration-fast) var(--spring); }
+.mode-card .btn-primary { background: var(--cobalt); color: white; }
+.mode-card .btn-primary:hover { background: var(--cobalt-dark); transform: translateY(-1px); box-shadow: 0 6px 16px rgba(29,78,216,0.3); }
+.mode-card .btn-outline { background: transparent; color: var(--cobalt); border: 1.5px solid var(--cobalt); }
+.mode-card .btn-outline:hover { background: rgba(29,78,216,0.05); }
+
+/* ============================================================
+   MODE COMPARE TABLE
+   ============================================================ */
+.mode-compare-table {
+  margin-top: var(--space-8); border-radius: var(--radius-xl);
+  border: 1px solid var(--border); overflow: hidden; background: white;
+}
+.mode-compare-table .mct-header {
+  background: var(--navy); color: white; padding: var(--space-8) var(--space-7);
+  text-align: center;
+  border-top-left-radius: var(--radius-xl);
+  border-top-right-radius: var(--radius-xl);
+}
+.mode-compare-table .mct-header h3 { color: white; font-size: var(--text-xl); margin-bottom: var(--space-1); }
+.mode-compare-table .mct-header p { font-size: var(--text-sm); color: rgba(255,255,255,0.7); }
+.mode-compare-table table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); }
+.mode-compare-table th, .mode-compare-table td { padding: 14px var(--space-6); text-align: left; border-bottom: 1px solid var(--border-subtle); }
+.mode-compare-table th { background: var(--cream); font-weight: 700; color: var(--ink); font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.06em; white-space: nowrap; }
+.mode-compare-table td:first-child { font-weight: 600; color: var(--text-2); white-space: nowrap; width: 160px; }
+.mode-compare-table tr:last-child td { border-bottom: none; }
+.mode-compare-table tr:hover td { background: rgba(29,78,216,0.02); }
+.mode-compare-table .tip {
+  padding: var(--space-5) var(--space-7);
+  background: var(--warn-bg); border-top: 1px solid #FFE4B5;
+  font-size: var(--text-sm); color: #92400E; line-height: 1.7;
+  display: flex; align-items: flex-start; gap: var(--space-3);
+}
+.mode-compare-table .tip svg { width: 18px; height: 18px; stroke: #D97706; flex-shrink: 0; margin-top: 1px; }
+
+/* ============================================================
+   DOWNLOAD FLOW
+   ============================================================ */
+.dl-flow { margin-top: var(--space-10); }
+.dl-flow-title { text-align: center; font-size: var(--text-xl); font-weight: 700; margin-bottom: var(--space-8); color: var(--ink); }
+.dl-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-4); }
+@media (max-width: 768px) { .dl-steps { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .dl-steps { grid-template-columns: 1fr; } }
+
+.dl-step {
+  text-align: center; padding: var(--space-7) var(--space-5);
+  background: white; border: 1px solid var(--border); border-radius: var(--radius-xl);
+  position: relative; transition: all var(--duration-normal) var(--ease-out);
+  min-height: 160px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+.dl-step:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.dl-step-num {
+  position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--cobalt); color: white;
+  font-size: var(--text-xs); font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+}
+.dl-step-icon {
+  width: 52px; height: 52px; border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, rgba(29,78,216,0.08), rgba(13,148,136,0.08));
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto var(--space-4);
+}
+.dl-step-icon svg { width: 24px; height: 24px; stroke: var(--cobalt); }
+.dl-step h4 { font-size: var(--text-base); font-weight: 700; }
+.dl-step p { font-size: var(--text-sm); color: var(--text-muted); line-height: 1.6; }
+
+/* ============================================================
+   DEMO SECTION
+   ============================================================ */
+.demo-section { background: var(--navy); color: white; overflow: hidden; }
+.demo-section .section-label { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85); }
+.demo-section .section-title { color: white; }
+.demo-section .section-desc { color: rgba(255,255,255,0.7); }
+.demo-layout { display: grid; grid-template-columns: 1.6fr 1fr; gap: var(--space-8); align-items: center; }
+@media (max-width: 960px) { .demo-layout { grid-template-columns: 1fr; } }
+
+.video-demo {
+  position: relative; border-radius: var(--radius-xl); overflow: hidden;
+  background: #0f172a; aspect-ratio: 16/10;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.video-screen {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  overflow: hidden;
+}
+.demo-scene {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  opacity: 0; visibility: hidden;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+  overflow: hidden;
+}
+.demo-scene.active { opacity: 1; visibility: visible; }
+
+.scene-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 14px; flex-shrink: 0;
+  background: rgba(0,0,0,0.35);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.scene-dots { display: flex; gap: 6px; }
+.dot { width: 9px; height: 9px; border-radius: 50%; background: #475569; }
+.dot:first-child { background: #ef4444; }
+.dot:nth-child(2) { background: #eab308; }
+.dot:nth-child(3) { background: #22c55e; }
+.scene-title { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.8); }
+.scene-content {
+  flex: 1; min-height: 0; padding: 14px;
+  display: flex; flex-direction: column; overflow: hidden;
+}
+/* 工作台场景：侧边栏 + 主内容并排 */
+.demo-scene[data-scene="1"] .scene-content { flex-direction: row; gap: 12px; }
+
+/* ---- 场景 1: 工作台 ---- */
+.mock-sidebar {
+  width: 150px; flex-shrink: 0; background: rgba(15,23,42,0.8);
+  border-radius: 8px; padding: 10px;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.sidebar-item {
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 10px; border-radius: 6px;
+  font-size: 12px; color: rgba(255,255,255,0.6);
+}
+.sidebar-item.active { background: rgba(29,78,216,0.35); color: white; }
+.sidebar-icon { width: 15px; height: 15px; flex-shrink: 0; }
+.sidebar-icon svg { width: 100%; height: 100%; stroke: currentColor; }
+.scene-main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 10px; }
+.main-header {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 11px; color: rgba(255,255,255,0.5);
+}
+.user-info { display: flex; align-items: center; gap: 6px; }
+.user-avatar {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; color: white; font-weight: 600;
+}
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; flex-shrink: 0; }
+.stat-card {
+  background: rgba(30,41,59,0.85); border-radius: 8px; padding: 10px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.stat-card.warning { border-color: rgba(239,68,68,0.35); }
+.stat-value { font-size: 20px; font-weight: 700; color: white; line-height: 1.2; }
+.stat-label { font-size: 10px; color: rgba(255,255,255,0.5); margin: 3px 0; }
+.stat-change { font-size: 9px; font-weight: 600; }
+.stat-change.up { color: #22c55e; }
+.stat-change.down { color: #ef4444; }
+.chart-area {
+  flex: 1; min-height: 0; background: rgba(30,41,59,0.85); border-radius: 8px;
+  padding: 10px; border: 1px solid rgba(255,255,255,0.06);
+  display: flex; flex-direction: column;
+}
+.chart-title { font-size: 10px; color: rgba(255,255,255,0.5); margin-bottom: 6px; }
+.chart-bars { flex: 1; min-height: 0; display: flex; align-items: flex-end; gap: 6px; }
+.bar-group { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px; height: 100%; min-height: 0; }
+.bar-group .bars { flex: 1; min-height: 0; width: 100%; display: flex; align-items: flex-end; justify-content: center; gap: 2px; }
+.bar { width: 7px; border-radius: 2px 2px 0 0; }
+.bar.in { background: #3b82f6; }
+.bar.out { background: #8b5cf6; }
+.bar-group span { font-size: 8px; color: rgba(255,255,255,0.4); }
+
+/* ---- 场景 2: 扫码收货 ---- */
+.receipt-mode { flex-direction: row; gap: 12px; }
+.receipt-main {
+  flex: 2; min-width: 0; background: rgba(30,41,59,0.85); border-radius: 8px;
+  padding: 12px; border: 1px solid rgba(255,255,255,0.06);
+  display: flex; flex-direction: column; overflow: hidden;
+}
+.receipt-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.1);
+  flex-shrink: 0;
+}
+.back-btn { display: flex; align-items: center; gap: 4px; font-size: 11px; color: #60a5fa; }
+.back-btn svg { width: 14px; height: 14px; }
+.page-title { font-size: 13px; font-weight: 600; color: white; }
+.save-btn { padding: 5px 11px; background: #3b82f6; border-radius: 4px; font-size: 11px; color: white; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; flex-shrink: 0; }
+.form-field label { font-size: 9px; color: rgba(255,255,255,0.5); display: block; margin-bottom: 3px; }
+.readonly-input, .scan-input {
+  width: 100%; padding: 7px; background: rgba(15,23,42,0.9);
+  border: 1px solid rgba(255,255,255,0.12); border-radius: 4px;
+  color: white; font-size: 11px; box-sizing: border-box;
+}
+.scan-area {
+  background: rgba(59,130,246,0.1); border: 1px dashed rgba(59,130,246,0.5);
+  border-radius: 8px; padding: 10px; margin-bottom: 10px; text-align: center; flex-shrink: 0;
+}
+.scan-icon { color: #3b82f6; margin-bottom: 5px; }
+.scan-icon svg { width: 26px; height: 26px; stroke: currentColor; }
+.scan-text { font-size: 10px; color: rgba(255,255,255,0.5); margin-bottom: 7px; }
+.scan-input-wrap { display: flex; gap: 8px; }
+.scan-btn {
+  padding: 7px 14px; background: #3b82f6; border: none; border-radius: 4px;
+  color: white; font-size: 11px; cursor: pointer; white-space: nowrap;
+}
+.received-items { display: flex; flex-direction: column; gap: 5px; overflow: hidden; }
+.item-row {
+  display: grid; grid-template-columns: 55px 1fr 35px 70px; gap: 6px;
+  padding: 7px; background: rgba(15,23,42,0.6); border-radius: 4px;
+  font-size: 10px; align-items: center;
+}
+.item-row.current { background: rgba(59,130,246,0.2); border: 1px solid rgba(59,130,246,0.5); }
+.item-sku { color: #94a3b8; font-weight: 600; }
+.item-name { color: rgba(255,255,255,0.8); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.item-qty { color: white; text-align: right; }
+.item-status { font-size: 9px; font-weight: 600; }
+.item-status.success { color: #22c55e; }
+.item-status.pending { color: #eab308; animation: pulse 1.5s infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.45; } }
+.receipt-tip {
+  flex: 1; min-width: 0; background: rgba(34,197,94,0.1);
+  border: 1px solid rgba(34,197,94,0.3); border-radius: 8px; padding: 12px;
+  display: flex; flex-direction: column; gap: 8px; align-items: flex-start;
+}
+.tip-icon { color: #22c55e; }
+.tip-icon svg { width: 20px; height: 20px; stroke: currentColor; }
+.tip-title { font-size: 12px; font-weight: 700; color: white; }
+.tip-text { font-size: 10px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+
+/* ---- 场景 3: 防超卖 ---- */
+.security-mode { align-items: center; }
+.security-main { width: 100%; display: flex; flex-direction: column; gap: 10px; }
+.security-header { display: flex; justify-content: space-between; align-items: center; }
+.badge { padding: 3px 9px; border-radius: 12px; font-size: 10px; font-weight: 600; }
+.badge.security { background: rgba(34,197,94,0.2); color: #22c55e; border: 1px solid rgba(34,197,94,0.3); }
+.security-flow {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px; background: rgba(30,41,59,0.85); border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.flow-step { display: flex; flex-direction: column; align-items: center; gap: 5px; flex: 1; }
+.step-number {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: #3b82f6; color: white;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700;
+}
+.step-title { font-size: 11px; color: white; font-weight: 600; }
+.step-desc { font-size: 9px; color: rgba(255,255,255,0.5); text-align: center; max-width: 90px; line-height: 1.4; }
+.flow-arrow { color: rgba(255,255,255,0.3); font-size: 15px; padding: 0 4px; }
+.security-result { display: flex; flex-direction: column; gap: 7px; }
+.result-box {
+  display: flex; gap: 9px; padding: 10px; border-radius: 8px; align-items: center;
+  background: rgba(30,41,59,0.85); border: 1px solid rgba(255,255,255,0.06);
+}
+.result-box.success { border-color: rgba(34,197,94,0.35); }
+.result-box.warning { border-color: rgba(239,68,68,0.35); }
+.result-icon { flex-shrink: 0; }
+.result-icon svg { width: 17px; height: 17px; stroke: currentColor; }
+.result-box.success .result-icon { color: #22c55e; }
+.result-box.warning .result-icon { color: #ef4444; }
+.result-title { font-size: 11px; font-weight: 600; color: white; margin-bottom: 3px; }
+.result-detail { font-size: 10px; color: rgba(255,255,255,0.5); }
+
+/* ---- 场景 4: 批次效期 ---- */
+.batch-mode { align-items: stretch; }
+.batch-main { display: flex; flex-direction: column; gap: 10px; width: 100%; height: 100%; }
+.batch-header { display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; }
+.strategy-selector { display: flex; align-items: center; gap: 7px; }
+.strategy-label { font-size: 10px; color: rgba(255,255,255,0.5); }
+.strategy-tabs { display: flex; gap: 3px; }
+.strategy-tab {
+  padding: 3px 9px; border-radius: 4px; font-size: 10px;
+  background: rgba(30,41,59,0.9); color: rgba(255,255,255,0.5);
+}
+.strategy-tab.active { background: #3b82f6; color: white; }
+.batch-table {
+  background: rgba(30,41,59,0.85); border-radius: 8px; overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.06); flex-shrink: 0;
+}
+.table-header, .table-row {
+  display: grid; grid-template-columns: 70px 1fr 80px 45px 65px 70px; gap: 6px;
+  padding: 7px 10px; align-items: center;
+}
+.table-header { background: rgba(0,0,0,0.3); font-size: 9px; color: rgba(255,255,255,0.5); font-weight: 600; }
+.table-row { font-size: 10px; border-bottom: 1px solid rgba(255,255,255,0.05); color: rgba(255,255,255,0.7); }
+.table-row:last-child { border-bottom: none; }
+.status-badge { padding: 2px 7px; border-radius: 10px; font-size: 9px; font-weight: 600; text-align: center; }
+.status-badge.expired { background: rgba(239,68,68,0.2); color: #ef4444; }
+.status-badge.warning { background: rgba(234,179,8,0.2); color: #eab308; }
+.status-badge.safe { background: rgba(34,197,94,0.2); color: #22c55e; }
+.batch-tip {
+  display: flex; flex-direction: column; gap: 6px;
+  padding: 10px; background: rgba(30,41,59,0.85); border-radius: 8px; flex-shrink: 0;
+}
+.tip-item { display: flex; align-items: center; gap: 7px; font-size: 10px; color: rgba(255,255,255,0.6); }
+.tip-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+.tip-dot.expired { background: #ef4444; }
+.tip-dot.warning { background: #eab308; }
+.tip-dot.safe { background: #22c55e; }
+
+/* ---- 场景 5: 部署对比 ---- */
+.deploy-mode { align-items: center; }
+.deploy-compare { display: flex; gap: 12px; width: 100%; }
+.deploy-card {
+  flex: 1; min-width: 0; background: rgba(30,41,59,0.85); border-radius: 8px; padding: 14px 12px;
+  border: 1px solid rgba(255,255,255,0.06); text-align: center; position: relative;
+}
+.deploy-card.featured { border-color: rgba(96,165,250,0.5); background: rgba(59,130,246,0.12); }
+.deploy-badge {
+  position: absolute; top: -9px; left: 50%; transform: translateX(-50%);
+  padding: 2px 10px; background: #3b82f6; border-radius: 10px;
+  font-size: 9px; font-weight: 700; color: white; white-space: nowrap;
+}
+.deploy-icon { color: #60a5fa; margin: 8px 0 6px; }
+.deploy-icon svg { width: 26px; height: 26px; stroke: currentColor; }
+.deploy-name { font-size: 13px; font-weight: 700; color: white; margin-bottom: 3px; }
+.deploy-desc { font-size: 10px; color: rgba(255,255,255,0.5); margin-bottom: 9px; }
+.deploy-features { display: flex; flex-direction: column; gap: 5px; margin-bottom: 9px; }
+.deploy-features .feature { font-size: 9px; color: rgba(255,255,255,0.6); }
+.deploy-price { font-size: 15px; font-weight: 700; color: #60a5fa; }
+.deploy-note {
+  display: flex; align-items: center; gap: 8px; margin-top: 12px;
+  padding: 9px 11px; background: rgba(234,179,8,0.1);
+  border: 1px solid rgba(234,179,8,0.3); border-radius: 6px;
+  font-size: 10px; color: rgba(255,255,255,0.75); width: 100%; box-sizing: border-box;
+}
+.note-icon { color: #eab308; flex-shrink: 0; }
+.note-icon svg { width: 15px; height: 15px; stroke: currentColor; }
+
+/* ---- 场景 6: 价格展示 ---- */
+.pricing-mode { align-items: stretch; }
+.pricing-main { display: flex; flex-direction: column; gap: 10px; width: 100%; }
+.pricing-header { display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; }
+.trial-badge {
+  padding: 3px 9px; background: rgba(34,197,94,0.2);
+  border: 1px solid rgba(34,197,94,0.3); border-radius: 12px;
+  font-size: 10px; color: #22c55e; font-weight: 600;
+}
+.pricing-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; flex-shrink: 0; }
+.pricing-card {
+  background: rgba(30,41,59,0.85); border-radius: 8px; padding: 12px 10px;
+  border: 1px solid rgba(255,255,255,0.06); text-align: center; position: relative;
+}
+.pricing-card.featured { border-color: rgba(96,165,250,0.5); background: rgba(59,130,246,0.12); }
+.pricing-badge {
+  position: absolute; top: -9px; left: 50%; transform: translateX(-50%);
+  padding: 2px 9px; background: #3b82f6; border-radius: 10px;
+  font-size: 9px; font-weight: 700; color: white; white-space: nowrap;
+}
+.pricing-name { font-size: 12px; font-weight: 600; color: white; margin-bottom: 5px; }
+.pricing-price { display: flex; align-items: baseline; justify-content: center; gap: 2px; margin-bottom: 3px; }
+.price { font-size: 18px; font-weight: 800; color: #60a5fa; }
+.price-unit { font-size: 10px; color: rgba(255,255,255,0.5); }
+.pricing-sub { font-size: 9px; color: rgba(255,255,255,0.4); margin-bottom: 8px; }
+.pricing-features { display: flex; flex-direction: column; gap: 4px; margin-bottom: 9px; }
+.pricing-features .feat { font-size: 9px; color: rgba(255,255,255,0.6); }
+.pricing-cta {
+  padding: 5px 10px; background: #3b82f6; border-radius: 4px;
+  font-size: 10px; color: white; font-weight: 600;
+}
+.pricing-note {
+  display: flex; flex-direction: column; gap: 5px;
+  padding: 9px 11px; background: rgba(30,41,59,0.85); border-radius: 6px;
+}
+.note-item { display: flex; align-items: center; gap: 7px; font-size: 9px; color: rgba(255,255,255,0.55); }
+.note-dot { width: 4px; height: 4px; border-radius: 50%; background: #3b82f6; flex-shrink: 0; }
+
+/* ---- 视频控制栏 ---- */
+.video-controls {
+  position: absolute; bottom: 0; left: 0; right: 0; z-index: 5;
+  display: flex; align-items: center; gap: 11px;
+  padding: 11px 14px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.85));
+}
+.control-left, .control-right { display: flex; align-items: center; gap: 7px; flex-shrink: 0; }
+.control-center { flex: 1; min-width: 0; }
+.control-btn {
+  width: 27px; height: 27px; border-radius: 50%;
+  background: rgba(255,255,255,0.12); border: none;
+  color: white; cursor: pointer; display: flex;
+  align-items: center; justify-content: center; transition: background 0.2s;
+}
+.control-btn:hover { background: rgba(255,255,255,0.25); }
+.control-btn svg { width: 13px; height: 13px; }
+.time-display { font-size: 10px; color: rgba(255,255,255,0.65); }
+.progress-bar {
+  position: relative; height: 4px; background: rgba(255,255,255,0.22);
+  border-radius: 2px; cursor: pointer;
+}
+.progress-fill {
+  position: absolute; left: 0; top: 0; height: 100%;
+  background: #3b82f6; border-radius: 2px; width: 0;
+}
+.progress-thumb {
+  position: absolute; top: 50%; transform: translate(-50%, -50%);
+  width: 11px; height: 11px; border-radius: 50%;
+  background: white; box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  opacity: 0; transition: opacity 0.2s;
+}
+.progress-bar:hover .progress-thumb { opacity: 1; }
+
+.demo-side { padding: var(--space-2); }
+.demo-side h4 { font-size: var(--text-lg); font-weight: 700; margin-bottom: var(--space-3); color: white; }
+.demo-side p { font-size: var(--text-sm); color: rgba(255,255,255,0.7); margin-bottom: var(--space-5); line-height: 1.7; }
+.demo-side .btn { display: inline-flex; align-items: center; gap: var(--space-2); background: white; color: var(--navy); padding: 12px 24px; border-radius: var(--radius-md); font-size: var(--text-sm); font-weight: 700; transition: all var(--duration-fast) var(--spring); }
+.demo-side .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,255,255,0.2); }
+
+/* Video demo responsive */
+@media (max-width: 768px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .receipt-mode { flex-direction: column; }
+  .receipt-tip { flex-direction: column; }
+  .security-flow { flex-wrap: wrap; justify-content: center; gap: 8px; }
+  .flow-arrow { display: none; }
+  .deploy-compare { flex-direction: column; }
+  .pricing-cards { grid-template-columns: 1fr; }
+  .table-header, .table-row { grid-template-columns: 60px 1fr 70px 40px 60px 60px; }
+  .mock-sidebar { display: none; }
+  .scene-main { margin-left: 0; }
+}
+@media (max-width: 480px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .stat-value { font-size: 18px; }
+  .form-row { grid-template-columns: 1fr; }
+  .scene-content { padding: 10px; }
+  .video-controls { padding: 8px 10px; }
+}
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+.faq-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: var(--space-3); }
+.faq-item {
+  background: white; border: 1px solid var(--border);
+  border-radius: var(--radius-lg); overflow: hidden;
+  transition: border-color var(--duration-fast) ease;
+}
+.faq-item:hover { border-color: rgba(29,78,216,0.2); }
+.faq-q {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: var(--space-5) var(--space-6);
+  cursor: pointer; font-size: var(--text-base); font-weight: 600; color: var(--ink);
+  transition: color var(--duration-fast) ease;
+}
+.faq-q:hover { color: var(--cobalt); }
+.faq-q svg { width: 18px; height: 18px; stroke: var(--text-3); flex-shrink: 0; transition: transform var(--duration-fast) var(--spring); }
+.faq-item.open .faq-q svg { transform: rotate(45deg); }
+.faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height var(--duration-normal) var(--ease-in-out);
+}
+.faq-item.open .faq-a { max-height: 300px; }
+.faq-a-inner { padding: 0 var(--space-6) var(--space-5); font-size: var(--text-sm); color: var(--text-muted); line-height: 1.7; }
+
+/* ============================================================
+   CTA SECTION
+   ============================================================ */
+.cta-section {
+  background: var(--navy); position: relative; overflow: hidden;
+  padding: var(--space-20) 0;
+}
+.cta-section::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 50% 80% at 30% 50%, rgba(29,78,216,0.25) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 60% at 70% 50%, rgba(13,148,136,0.15) 0%, transparent 60%);
+}
+.cta-inner {
+  position: relative; z-index: 2; text-align: center; max-width: 640px; margin: 0 auto;
+}
+.cta-inner h2 { font-size: clamp(28px, 4vw, var(--text-4xl)); font-weight: 800; color: white; margin-bottom: var(--space-4); letter-spacing: 0; line-height: 1.15; }
+.cta-inner p { font-size: var(--text-lg); color: rgba(255,255,255,0.7); margin-bottom: var(--space-8); line-height: 1.7; }
+.cta-btns { display: flex; gap: var(--space-3); justify-content: center; flex-wrap: wrap; }
+.btn-lg { padding: 16px 36px; font-size: var(--text-base); font-weight: 700; border-radius: var(--radius-full); transition: all var(--duration-fast) var(--spring); display: inline-flex; align-items: center; gap: var(--space-2); }
+.btn-lg.primary { background: white; color: var(--navy); box-shadow: 0 4px 16px rgba(255,255,255,0.2); }
+.btn-lg.primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(255,255,255,0.3); }
+.btn-lg.ghost { background: transparent; color: white; border: 1.5px solid rgba(255,255,255,0.3); }
+.btn-lg.ghost:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.5); }
+.cta-note { margin-top: var(--space-6); font-size: var(--text-sm); color: rgba(255,255,255,0.5); }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer { background: var(--ink); color: rgba(255,255,255,0.5); padding: var(--space-10) 0; font-size: var(--text-sm); text-align: center; }
+.footer a { color: rgba(255,255,255,0.7); transition: color var(--duration-fast) ease; }
+.footer a:hover { color: white; }
+.footer-inner { display: flex; flex-direction: column; align-items: center; gap: var(--space-4); }
+.footer-brand { font-size: var(--text-base); font-weight: 800; color: rgba(255,255,255,0.8); letter-spacing: 0; }
+
+/* ============================================================
+   CHAT FAB (preserved from v1)
+   ============================================================ */
+.chat-fab {
+  position: fixed; right: 20px; bottom: 20px; z-index: 999;
+  width: 52px; height: 52px; border-radius: 50%;
+  background: var(--cobalt); color: white;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 6px 24px rgba(29,78,216,0.4);
+  transition: all var(--duration-fast) var(--spring);
+  cursor: pointer;
+}
+.chat-fab:hover { transform: scale(1.08); box-shadow: 0 8px 30px rgba(29,78,216,0.5); }
+.chat-fab svg { width: 24px; height: 24px; fill: white; }
+.chat-panel {
+  position: fixed; right: 20px; bottom: 84px; z-index: 999;
+  width: 340px; max-width: calc(100vw - 32px); height: 480px; max-height: calc(100vh - 120px);
+  background: white; border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl); display: none; flex-direction: column; overflow: hidden;
+  border: 1px solid var(--border);
+}
+.chat-panel.open { display: flex; }
+.chat-head {
+  background: var(--navy); color: white; padding: 14px 16px;
+  display: flex; align-items: center; gap: var(--space-3);
+}
+.chat-head .online-dot { width: 8px; height: 8px; border-radius: 50%; background: #34D399; box-shadow: 0 0 6px rgba(52,211,153,0.5); }
+.chat-head b { font-size: var(--text-sm); font-weight: 700; flex: 1; }
+.chat-head .close-btn { color: rgba(255,255,255,0.6); font-size: var(--text-xl); cursor: pointer; padding: 4px; transition: color var(--duration-fast); }
+.chat-head .close-btn:hover { color: white; }
+.chat-body { flex: 1; overflow-y: auto; padding: var(--space-4); background: var(--cream); }
+.chat-msg { max-width: 82%; margin-bottom: var(--space-3); padding: 10px 14px; border-radius: 12px; font-size: var(--text-sm); line-height: 1.6; white-space: pre-wrap; word-break: break-word; }
+.chat-msg.bot { background: white; border: 1px solid var(--border); color: var(--text); border-bottom-left-radius: 3px; }
+.chat-msg.user { background: var(--cobalt); color: white; margin-left: auto; border-bottom-right-radius: 3px; }
+.chat-quick { display: flex; flex-wrap: wrap; gap: var(--space-2); padding: var(--space-3) var(--space-4); background: var(--cream); border-top: 1px solid var(--border-subtle); }
+.chat-quick button {
+  background: white; border: 1px solid var(--border); color: var(--text-2);
+  border-radius: var(--radius-full); padding: 6px 14px; font-size: var(--text-xs);
+  cursor: pointer; transition: all var(--duration-fast) ease;
+}
+.chat-quick button:hover { border-color: var(--cobalt); color: var(--cobalt); background: rgba(29,78,216,0.04); }
+.chat-input-row { display: flex; gap: var(--space-2); padding: var(--space-3) var(--space-4); border-top: 1px solid var(--border); background: white; }
+.chat-input-row input {
+  flex: 1; border: 1px solid var(--border); border-radius: var(--radius-full);
+  padding: 9px 16px; font-size: var(--text-sm); outline: none;
+  transition: border-color var(--duration-fast);
+}
+.chat-input-row input:focus { border-color: var(--cobalt); }
+.chat-input-row button {
+  background: var(--cobalt); color: white; border: none;
+  border-radius: var(--radius-full); padding: 0 18px; font-size: var(--text-sm); font-weight: 600;
+  cursor: pointer; transition: background var(--duration-fast);
+}
+.chat-input-row button:hover { background: var(--cobalt-dark); }
+</style>
+</head>
+<body data-page-node-id="Xmq9aFMgAtufA8IeExxast">
+
+<!-- ============================================================
+     NAVIGATION
+     ============================================================ -->
+<nav class="nav" id="nav" data-page-node-id="0AiLt4X4Nrt5WOfE3Zhi6r">
+  <div class="nav-inner" data-page-node-id="zSuuUewus9aTZwcnXEaHFl">
+    <a href="#" class="nav-brand" data-page-node-id="Ec3RpBwzsn9jPcaoYsU0r7">
+      <img src="logo/wms-logo-2-box.svg" alt="WMS 仓储管理系统" class="nav-brand-icon" style="background:transparent;box-shadow:none;object-fit:contain;padding:2px;">
+      WMS
+    </a>
+    <div class="nav-links" id="navLinks" data-page-node-id="Ex8nGTbephVCxaKIyPjdJR">
+      <a href="#features" data-page-node-id="97OYYIK69zKMeDT6Afs0rd">核心功能</a>
+      <a href="#scenes" data-page-node-id="YXxh82AdxaoBUlFT1QEqo2">适用场景</a>
+      <a href="#pricing" data-page-node-id="VoIMCgPjCMtxcBxZdCjksB">价格</a>
+      <a href="#modes" data-page-node-id="f7vwaAWPbvfSWCG7F2Z6O8">两种模式</a>
+      <a href="#faq" data-page-node-id="pjFUTpTMW3BYcfC02RCRPU">常见问题</a>
+      <a href="#download" class="nav-cta" data-page-node-id="CG3mLwpehWUqJhT01tHXOF">免费试用</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="菜单" data-page-node-id="KOgb9WsU9DoTLc5Z1gdzkf">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" data-page-node-id="vEGDS2nAcrRAA0UmtW8GZl"><line x1="3" y1="6" x2="21" y2="6" data-page-node-id="3xWSRvhfZ9amVnqwcabnif"/><line x1="3" y1="12" x2="21" y2="12" data-page-node-id="qbH0mPaN1LjTsaxd8M4v1U"/><line x1="3" y1="18" x2="21" y2="18" data-page-node-id="1eaUUneQI1znqDzdwQGxnI"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero" data-page-node-id="VRKfARYi8pxPjOlbHMfXIR">
+  <div class="wrap hero-inner" data-page-node-id="N6EfiB7D3vsO2CkiFtG21c">
+    <div class="hero-content" data-page-node-id="5KwFBLQhj8RBkWBD59FxWb">
+      <span class="hero-eyebrow" data-page-node-id="th1FjGs1FV3YO3RaZeXFeE"><span class="hero-eyebrow-dot" data-page-node-id="c1KnZFIchnf9pLSAXDgRQe"></span> 私有化部署 · 纯内网运行 · 数据 100% 本地</span>
+      <h1 data-page-node-id="Qb52xgWh9K52RmvEGP3SW5">不用装环境，<br data-page-node-id="gjOM7OrTpHC9jb8saMp0AG"><span class="accent" data-page-node-id="oAq06BlN0CUR1CLjrKCmXy">30 分钟上线</span>的仓储管理系统</h1>
+      <p class="hero-sub" data-page-node-id="o6n3zO8NaQiJNPQ7JGbqK5">为电商仓、实体工厂、中小制造企业打造。扫码收货、防超卖、库存预警一应俱全。下载安装即享 30 天免费试用（无需联系），价格全透明，试了再决定。</p>
+      <div class="hero-ctas" data-page-node-id="WStAvYzGg4KQmTRNjS7PUX">
+        <a href="#download" class="btn-lg primary" data-page-node-id="cFJt6mY6NCBg46s3Rvzqqg">下载即享 30 天试用</a>
+        <a href="#pricing" class="btn-lg ghost" data-page-node-id="H8CadtEtv32O41q3MARVFj">查看价格</a>
+      </div>
+      <div class="hero-trust" data-page-node-id="EGKni314Z9EbNqflfUHYEm">
+        <span class="hero-trust-item" data-page-node-id="SkF4WHvvto5OcmCcZkD26P">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" data-page-node-id="PepHGdkWxg43uf1wCQ0LLT"><polyline points="20 6 9 17 4 12" data-page-node-id="xmSbFJrbM4zcSUSUD5gbHm"/></svg>
+          下载即享 30 天免费试用
+        </span>
+        <span class="hero-trust-item" data-page-node-id="Wq4NpKaVKjIHhFSXTtxqWi">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" data-page-node-id="4sCk6Gy20rRA0Mu6GUrtya"><polyline points="20 6 9 17 4 12" data-page-node-id="X1Uscj51sHFnAAWVJ1bjBc"/></svg>
+          到期转只读，数据保留
+        </span>
+        <span class="hero-trust-item" data-page-node-id="U2MYm82X2x73yuB1eFNIh2">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" data-page-node-id="DzAg4FYmnt2Fm8t95rV9NI"><polyline points="20 6 9 17 4 12" data-page-node-id="U1f3Hd49UROYCRuIB7oQ9r"/></svg>
+          无隐藏费用
+        </span>
+      </div>
+    </div>
+
+    <div class="hero-visual" data-page-node-id="g1LO46qHSmFD9x5PQq7unL">
+      <div class="hero-mock" data-page-node-id="a8aaytKXz60zSr8Xx8cBEO">
+        <div class="mock-titlebar" data-page-node-id="cbRbob0iogLo3z2vgyFjns">
+          <span class="mock-dot r" data-page-node-id="90zYyFeG1X0oGjFeqEjecs"></span>
+          <span class="mock-dot y" data-page-node-id="XP2mR3s5KhMzpJ5j8nDM3F"></span>
+          <span class="mock-dot g" data-page-node-id="MqTYf68uceAR4yHJuRyVd2"></span>
+          <span data-page-node-id="NR4IbnwL6LxQE8fvhzTZis">WMS 工作台</span>
+        </div>
+        <div class="mock-body" data-page-node-id="3n1Is6PCgOCHvvpihPt6lO">
+          <div class="mock-sidebar" data-page-node-id="ueZaGab8vewDsQDu4gHqsO">
+            <div class="mock-sidebar-item active" data-page-node-id="VtwNMOqd8LT7OX9hOhRkwd">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" data-page-node-id="uqWVEKNACn4V1CFByipCQx"><rect x="3" y="3" width="7" height="7" data-page-node-id="Mrc5pq6xM40TQCBBX6zUyK"/><rect x="14" y="3" width="7" height="7" data-page-node-id="WU94ZZZPBhN7SS6RsCsjob"/><rect x="3" y="14" width="7" height="7" data-page-node-id="XPbGUbhSQMvLvHwNLFhFa0"/><rect x="14" y="14" width="7" height="7" data-page-node-id="5Jb9cA2hxAWVY9vYsDHKvA"/></svg>
+            </div>
+            <div class="mock-sidebar-item" data-page-node-id="4LmzqwYcgFBrsY501WCuZl">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" data-page-node-id="xsByXPOYVqiBgHl87A6JUA"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" data-page-node-id="7vqh40UcdH7frJOgIkRfc9"/></svg>
+            </div>
+            <div class="mock-sidebar-item" data-page-node-id="Fud61KeAASiUQ4ydAEHEZU">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" data-page-node-id="xCnQQkaoGPSxVCew3jqeam"><circle cx="12" cy="12" r="10" data-page-node-id="clg1Ke5pyOmpybCoVpLqE8"/><path d="M12 6v6l4 2" data-page-node-id="uSpn9KA6klBI6LpqHHOYp9"/></svg>
+            </div>
+            <div class="mock-sidebar-item" data-page-node-id="NDDAcnece9zlF4AOHPJdsU">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" data-page-node-id="XbE0AaYGelBaypA2ot9s2F"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" data-page-node-id="r0mFUTHjbUzOqgdbTt7f8f"/><polyline points="14 2 14 8 20 8" data-page-node-id="19ejmfAY5Ul6Wall9pAt0e"/></svg>
+            </div>
+          </div>
+          <div class="mock-content" data-page-node-id="TF0JTH7PcGJq3LG1iWnaW0">
+            <div class="mock-kpis" data-page-node-id="PJMG1GO6Moi6WW6qsA6n6q">
+              <div class="mock-kpi" data-page-node-id="u2HKzJilzNtR84DXRAfRX5"><div class="val" data-page-node-id="k0eLn3kBkGDFe2rcBKMY3f">1,284</div><div class="lbl" data-page-node-id="gpyimAAhJv0PASZbAFfDZC">在库 SKU</div></div>
+              <div class="mock-kpi" data-page-node-id="zZWFb8oG2t7tpzqjy34uXw"><div class="val up" data-page-node-id="eX6x7BDbB8UXcgToMVR3B8">+326</div><div class="lbl" data-page-node-id="88egDnvEwWmiBuEfuHF6XI">今日入库</div></div>
+              <div class="mock-kpi" data-page-node-id="GMvYx5Wa9EMTUBXKSS135Y"><div class="val warn" data-page-node-id="mjIfh3tkPaZBSA6q1Wh5lS">3</div><div class="lbl" data-page-node-id="jLuoMTHKscoJSY8N5VUY47">库存预警</div></div>
+            </div>
+            <div class="mock-chart" data-page-node-id="wkexUQjmwSxjDKZzRluYU6">
+              <div class="mock-chart-bar" style="height:45%" data-page-node-id="XxD6455ugx3YCqWl7QpZYZ"></div>
+              <div class="mock-chart-bar" style="height:72%" data-page-node-id="DXo9wmt7ylfT0I4RZYPdYF"></div>
+              <div class="mock-chart-bar" style="height:58%" data-page-node-id="QI6pHnfLBDKIM52Mql6t6M"></div>
+              <div class="mock-chart-bar" style="height:88%" data-page-node-id="aqzlz2HoOi9AsGthhL05bE"></div>
+              <div class="mock-chart-bar" style="height:65%" data-page-node-id="aPWbZWGU5q2DwX2buLyVzo"></div>
+              <div class="mock-chart-bar" style="height:95%" data-page-node-id="OiD9vAZXioir8YKb3gFFNy"></div>
+              <div class="mock-chart-bar" style="height:78%" data-page-node-id="n0XbiFOJveZD25FegFvv6o"></div>
+            </div>
+            <div class="mock-table-row" data-page-node-id="yJBcKtQBKYoRj5MA4Tw0FX"><span class="name" data-page-node-id="pVbfJQB0a1vZOpqjzmVxUV">A4 复印纸 70g</span><span data-page-node-id="Uh4WcqxlFljudiifbPfHMe">余 12</span><span class="mock-badge low" data-page-node-id="mXprFMNEKMyELqLCXmSMkX">偏低</span></div>
+            <div class="mock-table-row" data-page-node-id="cyUGhCFCHn16oCWcSN5aoG"><span class="name" data-page-node-id="DPsEGMhxmEr2EDgeAN0qhd">缠绕膜 50cm</span><span data-page-node-id="Uo205osAtFzvYCsNxFYEea">余 240</span><span class="mock-badge ok" data-page-node-id="QxSTC8ESwpxRODDGjYZ6bg">充足</span></div>
+            <div class="mock-table-row" data-page-node-id="qKmFU6SpmWJA6EAEnluFIc"><span class="name" data-page-node-id="K4QI5s8RL3YJbdCRhzu524">封箱胶带 6cm</span><span data-page-node-id="k1mrfe5y7Hz24yQ2LujhJu">余 8</span><span class="mock-badge low" data-page-node-id="V6XgtjDVvqWtl58QH754mO">偏低</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-float" data-page-node-id="Q0lYCVraL9jqBupQYsYUxV">
+        <div class="val" data-page-node-id="77TWFZjKEmCCCbSf3MqSvR">99.8%</div>
+        <div class="lbl" data-page-node-id="FOUv1NhhTTZorzakAtBUxT">库存准确率</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section demo-section" id="demo" data-page-node-id="wyAuO9XZ4zVgPPOfd8HgIL">
+  <div class="wrap" data-page-node-id="SbkOM38X96nIcxChvApV2c">
+    <div class="section-header reveal" data-page-node-id="1s8S26ed9h2mcwiSv1GU50">
+      <span class="section-label" data-page-node-id="YHKjSGXiX5L2FGt7rCmvT4">产品演示</span>
+      <h2 class="section-title" data-page-node-id="KnDfehSRdgXckNJzcGWCc3">真实场景，一屏看清</h2>
+      <p class="section-desc" data-page-node-id="ltm1Z1QGdjsirpxKYowi3y">扫码收货、防超卖、批次效期、两种部署模式，自动播放演示</p>
+    </div>
+    <div class="demo-layout reveal" data-page-node-id="R8WudfiLXlIcYJOS4rNjco">
+      <!-- 视频播放器容器 -->
+      <div class="video-demo" id="videoDemo" data-page-node-id="Pstb7z75On2OOE62F8Rj33">
+        <!-- 视频画面区域 -->
+        <div class="video-screen" id="videoScreen">
+          <!-- 场景 1: 首页工作台 -->
+          <div class="demo-scene active" data-scene="1">
+            <div class="scene-header">
+              <div class="scene-dots">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+              </div>
+              <div class="scene-title">仓储管理系统</div>
+            </div>
+            <div class="scene-content">
+              <div class="mock-sidebar">
+                <div class="sidebar-item active">
+                  <span class="sidebar-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                  </span>
+                  <span>工作台</span>
+                </div>
+                <div class="sidebar-item"><span class="sidebar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span><span>入库管理</span></div>
+                <div class="sidebar-item"><span class="sidebar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12V5H7l-3 3 3 3v9a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2z"/></svg></span><span>出库管理</span></div>
+                <div class="sidebar-item"><span class="sidebar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><span>库存预警</span></div>
+              </div>
+              <div class="scene-main">
+                <div class="main-header">
+                  <div class="date-display">2026-09-05 周五</div>
+                  <div class="user-info">
+                    <span class="user-avatar">管</span>
+                    <span>管理员</span>
+                  </div>
+                </div>
+                <div class="stats-grid">
+                  <div class="stat-card">
+                    <div class="stat-value" data-target="38">0</div>
+                    <div class="stat-label">今日入库</div>
+                    <div class="stat-change up">↑ 12%</div>
+                  </div>
+                  <div class="stat-card">
+                    <div class="stat-value" data-target="52">0</div>
+                    <div class="stat-label">今日出库</div>
+                    <div class="stat-change up">↑ 8%</div>
+                  </div>
+                  <div class="stat-card warning">
+                    <div class="stat-value" data-target="3">0</div>
+                    <div class="stat-label">库存预警</div>
+                    <div class="stat-change down">需补货</div>
+                  </div>
+                  <div class="stat-card">
+                    <div class="stat-value" data-target="99.8">0</div>
+                    <div class="stat-label">准确率</div>
+                    <div class="stat-change up">稳定</div>
+                  </div>
+                </div>
+                <div class="chart-area">
+                  <div class="chart-title">近 7 天出入库趋势</div>
+                  <div class="chart-bars">
+                    <div class="bar-group"><div class="bars"><div class="bar in" style="height:60%"></div><div class="bar out" style="height:45%"></div></div><span>周一</span></div>
+                    <div class="bar-group"><div class="bars"><div class="bar in" style="height:75%"></div><div class="bar out" style="height:60%"></div></div><span>周二</span></div>
+                    <div class="bar-group"><div class="bars"><div class="bar in" style="height:55%"></div><div class="bar out" style="height:70%"></div></div><span>周三</span></div>
+                    <div class="bar-group"><div class="bars"><div class="bar in" style="height:85%"></div><div class="bar out" style="height:65%"></div></div><span>周四</span></div>
+                    <div class="bar-group"><div class="bars"><div class="bar in" style="height:65%"></div><div class="bar out" style="height:80%"></div></div><span>周五</span></div>
+                    <div class="bar-group"><div class="bars"><div class="bar in" style="height:90%"></div><div class="bar out" style="height:85%"></div></div><span>周六</span></div>
+                    <div class="bar-group"><div class="bars"><div class="bar in" style="height:70%"></div><div class="bar out" style="height:55%"></div></div><span>周日</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 场景 2: 扫码收货 -->
+          <div class="demo-scene" data-scene="2">
+            <div class="scene-header">
+              <div class="scene-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+              <div class="scene-title">扫码收货</div>
+            </div>
+            <div class="scene-content receipt-mode">
+              <div class="receipt-main">
+                <div class="receipt-header">
+                  <div class="back-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                    <span>返回</span>
+                  </div>
+                  <div class="page-title">新增入库单</div>
+                  <div class="save-btn">保存</div>
+                </div>
+                <div class="receipt-form">
+                  <div class="form-row">
+                    <div class="form-field">
+                      <label>采购单号</label>
+                      <input type="text" value="PO20260905001" readonly class="readonly-input"/>
+                    </div>
+                    <div class="form-field">
+                      <label>供应商</label>
+                      <input type="text" value="杭州供应商A" readonly class="readonly-input"/>
+                    </div>
+                  </div>
+                  <div class="scan-area">
+                    <div class="scan-icon">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 9h5M7 13h8M12 9v4"/></svg>
+                    </div>
+                    <div class="scan-text">扫码枪扫描条码，或手动输入</div>
+                    <div class="scan-input-wrap">
+                      <input type="text" placeholder="条码号..." class="scan-input"/>
+                      <button class="scan-btn">扫描</button>
+                    </div>
+                  </div>
+                  <div class="received-items">
+                    <div class="item-row">
+                      <span class="item-sku">SKU-001</span>
+                      <span class="item-name">A型螺丝 M8×20</span>
+                      <span class="item-qty">100</span>
+                      <span class="item-status success">✓ 已入库</span>
+                    </div>
+                    <div class="item-row">
+                      <span class="item-sku">SKU-002</span>
+                      <span class="item-name">B型螺母 M8</span>
+                      <span class="item-qty">200</span>
+                      <span class="item-status success">✓ 已入库</span>
+                    </div>
+                    <div class="item-row current">
+                      <span class="item-sku">SKU-003</span>
+                      <span class="item-name">C型垫片 10mm</span>
+                      <span class="item-qty">--</span>
+                      <span class="item-status pending">扫描中...</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="receipt-tip">
+                <div class="tip-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                </div>
+                <div class="tip-content">
+                  <div class="tip-title">快速上手</div>
+                  <div class="tip-text">扫码枪插上即用，无需额外配置。新人培训 5 分钟即可独立操作。</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 场景 3: 防超卖 -->
+          <div class="demo-scene" data-scene="3">
+            <div class="scene-header">
+              <div class="scene-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+              <div class="scene-title">防超卖机制</div>
+            </div>
+            <div class="scene-content security-mode">
+              <div class="security-main">
+                <div class="security-header">
+                  <div class="page-title">库存锁定验证</div>
+                  <div class="badge security">安全模式</div>
+                </div>
+                <div class="security-flow">
+                  <div class="flow-step active">
+                    <div class="step-number">1</div>
+                    <div class="step-title">订单创建</div>
+                    <div class="step-desc">用户下单 100 件 SKU-001</div>
+                  </div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-step active">
+                    <div class="step-number">2</div>
+                    <div class="step-title">行锁锁定</div>
+                    <div class="step-desc">数据库 FOR UPDATE 锁定库存行</div>
+                  </div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-step active">
+                    <div class="step-number">3</div>
+                    <div class="step-title">乐观锁验证</div>
+                    <div class="step-desc">version 检查防止并发冲突</div>
+                  </div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-step active">
+                    <div class="step-number">4</div>
+                    <div class="step-title">CHECK 约束</div>
+                    <div class="step-desc">数据库级兜底校验</div>
+                  </div>
+                </div>
+                <div class="security-result">
+                  <div class="result-box success">
+                    <div class="result-icon">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <div class="result-text">
+                      <div class="result-title">库存充足，订单锁定成功</div>
+                      <div class="result-detail">可用库存：500 件 | 锁定：100 件 | 剩余可卖：400 件</div>
+                    </div>
+                  </div>
+                  <div class="result-box warning">
+                    <div class="result-icon">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </div>
+                    <div class="result-text">
+                      <div class="result-title">并发拦截演示</div>
+                      <div class="result-detail">若同时请求超库存，系统自动拦截并提示"库存不足"</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 场景 4: 批次效期 -->
+          <div class="demo-scene" data-scene="4">
+            <div class="scene-header">
+              <div class="scene-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+              <div class="scene-title">批次效期管理</div>
+            </div>
+            <div class="scene-content batch-mode">
+              <div class="batch-main">
+                <div class="batch-header">
+                  <div class="page-title">库存批次列表</div>
+                  <div class="strategy-selector">
+                    <span class="strategy-label">出库策略：</span>
+                    <div class="strategy-tabs">
+                      <div class="strategy-tab active">FIFO</div>
+                      <div class="strategy-tab">FEFO</div>
+                      <div class="strategy-tab">LIFO</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="batch-table">
+                  <div class="table-header">
+                    <span>批次号</span>
+                    <span>入库日期</span>
+                    <span>有效期至</span>
+                    <span>数量</span>
+                    <span>库位</span>
+                    <span>状态</span>
+                  </div>
+                  <div class="table-row expired">
+                    <span class="batch-no">B20250801</span>
+                    <span>2025-08-01</span>
+                    <span>2026-02-01</span>
+                    <span>50</span>
+                    <span>A-01-03</span>
+                    <span class="status-badge expired">已过期</span>
+                  </div>
+                  <div class="table-row warning">
+                    <span class="batch-no">B20260301</span>
+                    <span>2026-03-01</span>
+                    <span>2026-12-01</span>
+                    <span>200</span>
+                    <span>A-02-01</span>
+                    <span class="status-badge warning">临期预警</span>
+                  </div>
+                  <div class="table-row safe">
+                    <span class="batch-no">B20260501</span>
+                    <span>2026-05-01</span>
+                    <span>2027-05-01</span>
+                    <span>300</span>
+                    <span>B-01-02</span>
+                    <span class="status-badge safe">正常</span>
+                  </div>
+                </div>
+                <div class="batch-tip">
+                  <div class="tip-item">
+                    <div class="tip-dot expired"></div>
+                    <span>过期批次自动锁定，禁止出库</span>
+                  </div>
+                  <div class="tip-item">
+                    <div class="tip-dot warning"></div>
+                    <span>临期 30 天自动预警，提醒优先出库</span>
+                  </div>
+                  <div class="tip-item">
+                    <div class="tip-dot safe"></div>
+                    <span>FIFO 优先出库最早批次，减少损耗</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 场景 5: 两种部署 -->
+          <div class="demo-scene" data-scene="5">
+            <div class="scene-header">
+              <div class="scene-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+              <div class="scene-title">部署模式对比</div>
+            </div>
+            <div class="scene-content deploy-mode">
+              <div class="deploy-compare">
+                <div class="deploy-card">
+                  <div class="deploy-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="21" x2="12" y2="17"/></svg>
+                  </div>
+                  <div class="deploy-name">服务端版</div>
+                  <div class="deploy-desc">浏览器直接打开，无需安装</div>
+                  <div class="deploy-features">
+                    <div class="feature">✓ 支持手机/平板访问</div>
+                    <div class="feature">✓ 员工电脑免装</div>
+                    <div class="feature">✓ 换机器即用</div>
+                  </div>
+                  <div class="deploy-price">¥980/年起</div>
+                </div>
+                <div class="deploy-card featured">
+                  <div class="deploy-badge">推荐</div>
+                  <div class="deploy-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="21" x2="12" y2="17"/></svg>
+                  </div>
+                  <div class="deploy-name">桌面客户端</div>
+                  <div class="deploy-desc">局域网连接服务器，双击即用</div>
+                  <div class="deploy-features">
+                    <div class="feature">✓ 独立窗口体验</div>
+                    <div class="feature">✓ 托盘运行，后台静默</div>
+                    <div class="feature">✓ 自动更新，无需手动</div>
+                  </div>
+                  <div class="deploy-price">¥9,800 起买断</div>
+                </div>
+              </div>
+              <div class="deploy-note">
+                <div class="note-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                </div>
+                <div class="note-text">两种模式均可私有化部署，数据完全本地，断网也能用</div>
+              </div>
+            </div>
+          </div>
+          <!-- 场景 6: 价格与试用 -->
+          <div class="demo-scene" data-scene="6">
+            <div class="scene-header">
+              <div class="scene-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+              <div class="scene-title">透明价格，自由试用</div>
+            </div>
+            <div class="scene-content pricing-mode">
+              <div class="pricing-main">
+                <div class="pricing-header">
+                  <div class="page-title">选择您的方案</div>
+                  <div class="trial-badge">30 天全功能试用</div>
+                </div>
+                <div class="pricing-cards">
+                  <div class="pricing-card">
+                    <div class="pricing-name">基础版</div>
+                    <div class="pricing-price">
+                      <span class="price">¥9,800</span>
+                      <span class="price-unit">买断</span>
+                    </div>
+                    <div class="pricing-sub">或 ¥980/年订阅</div>
+                    <div class="pricing-features">
+                      <div class="feat">✓ 入库/出库/盘点</div>
+                      <div class="feat">✓ 基础库存管理</div>
+                      <div class="feat">✓ 单仓库支持</div>
+                    </div>
+                    <div class="pricing-cta">立即下载试用</div>
+                  </div>
+                  <div class="pricing-card featured">
+                    <div class="pricing-badge">最受欢迎</div>
+                    <div class="pricing-name">电商版</div>
+                    <div class="pricing-price">
+                      <span class="price">¥19,800</span>
+                      <span class="price-unit">买断</span>
+                    </div>
+                    <div class="pricing-sub">或 ¥1,980/年订阅</div>
+                    <div class="pricing-features">
+                      <div class="feat">✓ 基础版全部功能</div>
+                      <div class="feat">✓ 多平台订单对接</div>
+                      <div class="feat">✓ 批量打印标签</div>
+                    </div>
+                    <div class="pricing-cta">立即下载试用</div>
+                  </div>
+                  <div class="pricing-card">
+                    <div class="pricing-name">工贸版</div>
+                    <div class="pricing-price">
+                      <span class="price">¥36,800</span>
+                      <span class="price-unit">买断</span>
+                    </div>
+                    <div class="pricing-sub">或 ¥3,680/年订阅</div>
+                    <div class="pricing-features">
+                      <div class="feat">✓ 电商版全部功能</div>
+                      <div class="feat">✓ 生产工序管理</div>
+                      <div class="feat">✓ 成本核算</div>
+                    </div>
+                    <div class="pricing-cta">立即下载试用</div>
+                  </div>
+                </div>
+                <div class="pricing-note">
+                  <div class="note-item">
+                    <span class="note-dot"></span>
+                    <span>下载安装即享 30 天免费试用（无需联系）</span>
+                  </div>
+                  <div class="note-item">
+                    <span class="note-dot"></span>
+                    <span>到期不付费自动转只读模式，数据完整保留</span>
+                  </div>
+                  <div class="note-item">
+                    <span class="note-dot"></span>
+                    <span>续费即可恢复全部功能</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 视频控制栏 -->
+        <div class="video-controls" data-page-node-id="iRsIBhJeGBYGDlxIGquqQ3">
+          <div class="control-left">
+            <button class="control-btn" id="playPauseBtn" aria-label="播放/暂停">
+              <svg id="playIcon" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              <svg id="pauseIcon" viewBox="0 0 24 24" fill="currentColor" style="display:none;"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+            </button>
+            <span class="time-display"><span id="currentTime">00:00</span> / <span id="totalTime">01:30</span></span>
+          </div>
+          <div class="control-center">
+            <div class="progress-bar" id="progressBar">
+              <div class="progress-fill" id="progressFill"></div>
+              <div class="progress-thumb" id="progressThumb"></div>
+            </div>
+          </div>
+          <div class="control-right">
+            <button class="control-btn" id="fullscreenBtn" aria-label="全屏">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- 右侧说明 -->
+      <div class="demo-side" data-page-node-id="ngYFYc2UD7BbhFmuspLuy9">
+        <h4 data-page-node-id="HGYdu4iLQ2aMrvey4j1Tom">产品手册与报价单</h4>
+        <p data-page-node-id="LRKXXoiTwnQfmybDbSgcNy">完整功能清单 + 透明报价，可直接下载发给决策人。</p>
+        <a href="产品手册与报价单.pdf" download class="btn" data-page-node-id="g0JFNAwgTRmgaAbjbwZuXH">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:16px;height:16px;" data-page-node-id="CP1mat4HW65xsqKcv1OEGI"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" data-page-node-id="HnmCmD6zqWsGACq5vHEZk4"/><polyline points="7 10 12 15 17 10" data-page-node-id="vYd9Q1CJiQ1Kq9CJO1tPMB"/><line x1="12" y1="15" x2="12" y2="3" data-page-node-id="fGIWWAN9eZYwr0hK4RXGEI"/></svg>
+          下载 PDF 报价单
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     STATS BAR
+     ============================================================ -->
+<section class="stats" data-page-node-id="MwaoADco3DGBpzMqzZ6fhP">
+  <div class="wrap stats-inner" data-page-node-id="FBlLbiPRoabTNDJZXQn8EV">
+    <div class="stat reveal" data-page-node-id="yMMXUNnMuKRCGu7yctbCgA"><div class="val" data-page-node-id="ukUvzJHPUBVO8SnxcP4DVV">30 分钟</div><div class="lbl" data-page-node-id="EzIRpgG2knQ9kNW9PvPR4o">平均上线时间</div></div>
+    <div class="stat reveal reveal-delay-1" data-page-node-id="ZGEmHu5RAX2SHov4OQCAnf"><div class="val" data-page-node-id="0bXIfSNn5cL1Zm8FMhHeEU">100%</div><div class="lbl" data-page-node-id="CCZt8QXmSoRHM6WSBysBRS">数据本地私有</div></div>
+    <div class="stat reveal reveal-delay-2" data-page-node-id="1DW0EnrY2sx7Gs3fDv0XyT"><div class="val" data-page-node-id="WA0x1C4OCTi5wS6GKtSeC5">30 天</div><div class="lbl" data-page-node-id="byDC76kw4OBR0xvmyFB7oD">免费全功能试用</div></div>
+    <div class="stat reveal reveal-delay-3" data-page-node-id="YIws3gQMbuESosnz7LKOuJ"><div class="val" data-page-node-id="brN9L2giG2vdwGmgRiBDfk">0 元</div><div class="lbl" data-page-node-id="AKs0tRMLBrDW7nEEpTNVJ6">隐藏费用</div></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FEATURES
+     ============================================================ -->
+<section class="section" id="features" data-page-node-id="hCrGdrSyA9frmGBNJFVXzL">
+  <div class="wrap" data-page-node-id="fJEQcBMuwmMHe27bnOPk5w">
+    <div class="section-header reveal" data-page-node-id="R6o4s97DFuBo3QvX4OExLB">
+      <span class="section-label" data-page-node-id="bSSOHx9xXrZJMsBGlDQC0B">核心功能</span>
+      <h2 class="section-title" data-page-node-id="ttGXrNvbEnPjnIR8x25Njc">为中小型仓储与工厂量身打造</h2>
+      <p class="section-desc" data-page-node-id="fTQU36moE28IiwtUIRK08K">少请人、少出错、账实永远对得上——一套系统搞定出入库、盘点、预警、追溯</p>
+    </div>
+    <div class="features-grid" data-page-node-id="offWOYUuDf8VqwGv8BjmIf">
+      <div class="feature-card reveal" data-page-node-id="RRg65xC9MsxDFlUwhtEouF">
+        <div class="feature-icon" data-page-node-id="JizDTyI0QHMjoRA8hCYWtk">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="BDHmy3o1vcmKYax40ntP5W"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" data-page-node-id="NavPX0EovGTiwjwbLn91fQ"/><polyline points="9 22 9 12 15 12 15 22" data-page-node-id="lWiTdvLecojBeDv88nwph9"/></svg>
+        </div>
+        <h3 data-page-node-id="jWeWKxRKlUuG7OKZqSs58b">私有化 · 纯内网</h3>
+        <p data-page-node-id="L4MpLZMSTlWgkjhMDMbI4T">系统装在您自己机房，数据不出门，断网也能用，无需担心数据安全。</p>
+      </div>
+      <div class="feature-card reveal reveal-delay-1" data-page-node-id="e11bm14WrAfJJIMHbmEYhe">
+        <div class="feature-icon" data-page-node-id="CQPNzj7Hbfq5OMdzwJWyon">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="J4VPDmLakBkxE90qYmDDew"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" data-page-node-id="61FhFktYAKvWsnSVFfDY83"/></svg>
+        </div>
+        <h3 data-page-node-id="GON3B3AfhJvXXBAipZZRS8">30 分钟上线</h3>
+        <p data-page-node-id="MkFRGPDkMZDFXHIGPpGeV4">免装环境，一键部署，扫码枪插上即用，无需专职 IT。</p>
+      </div>
+      <div class="feature-card reveal reveal-delay-2" data-page-node-id="5C22vZCnN6zC6vEWXG1q24">
+        <div class="feature-icon" data-page-node-id="5bapxtI8Is4DVeODJHfzFv">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="ZGlET9yCnUiYTj1EXRAjkO"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" data-page-node-id="sVKgMaPbTHlQxx7ibqKQrg"/></svg>
+        </div>
+        <h3 data-page-node-id="mg4yrJv3HiIweqxjgAMCpl">防超卖 · 防错账</h3>
+        <p data-page-node-id="ICQg2vOL09dsP2YD5ZvjZV">三重防线防超卖，库存变动全程留痕，账实永远对得上。</p>
+      </div>
+      <div class="feature-card reveal" data-page-node-id="y6ljJM11qpMAWXN8nwEyq2">
+        <div class="feature-icon" data-page-node-id="DhRzq9WPQr8agMjy8m9Rcx">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="uhxPBRvv1DBD98wJ5zzHfD"><rect x="2" y="3" width="20" height="14" rx="2" ry="2" data-page-node-id="qoII6oDmIPkNao6X7CTjvr"/><line x1="8" y1="21" x2="16" y2="21" data-page-node-id="l29FFU6huDnPNHO5IuDBd6"/><line x1="12" y1="21" x2="12" y2="17" data-page-node-id="hTUFCeHckmEPlxAANs1E1B"/></svg>
+        </div>
+        <h3 data-page-node-id="5IBEpwdCHG49pG0VXnPLkS">扫码作业</h3>
+        <p data-page-node-id="jP5P50zjA47nQ7zVKSe7rC">收货、拣货、盘点支持扫码枪，效率翻倍，少出错。</p>
+      </div>
+      <div class="feature-card reveal reveal-delay-1" data-page-node-id="ODe30DNIbaKHoUVGvqPfL4">
+        <div class="feature-icon" data-page-node-id="iymxgIOkhDqcayaAYpaxnT">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="ZSrFSHpnvzk4DxsGsX2ewE"><line x1="18" y1="20" x2="18" y2="10" data-page-node-id="psLDMup4BUMe3cdndo28r8"/><line x1="12" y1="20" x2="12" y2="4" data-page-node-id="kgqiSOTmZXsEjVrvOltQpB"/><line x1="6" y1="20" x2="6" y2="14" data-page-node-id="a6ekHi8SwWKSHPnDkgOsBh"/></svg>
+        </div>
+        <h3 data-page-node-id="H2ASOBmAtm2kvdSKWzZSBr">库存预警</h3>
+        <p data-page-node-id="uYIK4feiunMSDfALplNsuh">低于安全库存自动标红提醒，缺货前就补，不耽误发货。</p>
+      </div>
+      <div class="feature-card reveal reveal-delay-2" data-page-node-id="2OLx5lx8o73rXD1VJ1PwUQ">
+        <div class="feature-icon" data-page-node-id="cqbMy6vgWZOsNwB5jhIN9e">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="QMghJdK7KY7E5r8AeGBhYj"><circle cx="12" cy="12" r="10" data-page-node-id="fRqoG8FoCQy1PTWCy3gAfh"/><polyline points="12 6 12 12 16 14" data-page-node-id="p5OxU46t79uSc4V1MmzcLy"/></svg>
+        </div>
+        <h3 data-page-node-id="HSZ3lZdaDpmGeBqBQniewR">批次与效期</h3>
+        <p data-page-node-id="7ZdNBkM6PIoW5aNcgADqE4">FIFO / FEFO 策略，批次追溯、效期预警，食品医药也合规。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SCENES
+     ============================================================ -->
+<section class="section section-alt" id="scenes" data-page-node-id="pmQxlfG0WE9EfQ2LusFL9c">
+  <div class="wrap" data-page-node-id="gK6Iqgo2Tb2uDBJZijHsJ6">
+    <div class="section-header reveal" data-page-node-id="MDWz5nF3Ftj2M8Gp4BL3M7">
+      <span class="section-label" data-page-node-id="JjbPsfcJhmgMEPWKMrA1iH">适用场景</span>
+      <h2 class="section-title" data-page-node-id="MD3HAEZJbseiC2rQXm8Ekz">三类典型客户，一套系统搞定</h2>
+      <p class="section-desc" data-page-node-id="038CFLb3O04XKYxW7fcjph">无论你是电商仓、实体工厂还是工贸企业，都能找到匹配的功能组合</p>
+    </div>
+    <div class="scenes-grid" data-page-node-id="dl039byAWOy78UJptbSyIU">
+      <div class="scene-card reveal" data-page-node-id="iTybd0cAGDvb4jNWBObBNM">
+        <span class="scene-eyebrow" data-page-node-id="5NTDI9j3kN3PHP4rzggL1d">电商仓</span>
+        <h3 data-page-node-id="DaFNRjbK5CDmTdefW9DTk2">大促不爆仓、不超卖</h3>
+        <p data-page-node-id="9bFykexmb8LCf97RFobu2u">多仓调拨、波次拣货、批次效期，应对大促峰值从容不迫。</p>
+        <ul data-page-node-id="kSALczmEXg1ewGwZ8Gk7JJ">
+          <li data-page-node-id="FMeIUsrfzxvZfLAkw78wGI">多仓 / 调拨</li>
+          <li data-page-node-id="YBvG7kP37IufTn3QcSdaZ2">波次拣货提效</li>
+          <li data-page-node-id="kpVVkpDs074CHpbla6Z2rz">批次效期管理</li>
+        </ul>
+      </div>
+      <div class="scene-card reveal reveal-delay-1" data-page-node-id="10H6AriBqEl9UoE7509X85">
+        <span class="scene-eyebrow" data-page-node-id="MdDYLr2Q378itnqA8edSuv">实体工厂</span>
+        <h3 data-page-node-id="FkEnbLRWFF9UTH45DKhf2n">原料成品一本账</h3>
+        <p data-page-node-id="yPJkIf9mFrwRCq6H4SVvxp">生产领料、退料、半成品入库，全链路可追溯。</p>
+        <ul data-page-node-id="m7hjoyzTPHCOMSFGxdDjH4">
+          <li data-page-node-id="zmqrFKEpqREGaff9pToZqo">生产领料 / 退料</li>
+          <li data-page-node-id="a0TPOG5CErCMOZxh0jwatU">半成品入库</li>
+          <li data-page-node-id="Scv6h8qDFkO1JwbD64PxeH">报废与盘点</li>
+        </ul>
+      </div>
+      <div class="scene-card reveal reveal-delay-2" data-page-node-id="jhgVCvwFoeMhgiAkT47dFw">
+        <span class="scene-eyebrow" data-page-node-id="PuB34yB3j9DbWABitW4WZU">工贸企业</span>
+        <h3 data-page-node-id="QlFHfDqSJqYTfA0paQUYVA">采购到销售全链路</h3>
+        <p data-page-node-id="EFzKCsrMu1IizGIFOgkHjG">从采购入库到销售出库，一张表贯穿全流程。</p>
+        <ul data-page-node-id="THGL7sSiD41x4ae7Yqjtra">
+          <li data-page-node-id="dM8A3IPWe4jbf7eSkmGbFE">采购入库 / 质检</li>
+          <li data-page-node-id="o00LYV9lbYJpK4CsCO8rr1">销售出库 / 退货</li>
+          <li data-page-node-id="D9Lv0bULdkN4EX9bhXXkt9">客户 / 供应商台账</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PRICING
+     ============================================================ -->
+<section class="section pricing-section" id="pricing" data-page-node-id="NoJ52DNXvMrq78kjcBdbjS">
+  <div class="wrap" data-page-node-id="CFMGjDF74CgA9lZcWFCZtc">
+    <div class="section-header reveal" data-page-node-id="L4D1Se1n4zTx3aG0C1xy8l">
+      <span class="section-label" data-page-node-id="Xs292KYOF6jWkub7xKKDIG">透明价格</span>
+      <h2 class="section-title" data-page-node-id="rMi1BBD6AxJrnExJdCLVI4">两种交付模式，价格一目了然</h2>
+      <p class="section-desc" data-page-node-id="VVJDyNesZlsgprSWQI1al3">无隐藏费用，试了再决定</p>
+    </div>
+
+    <div class="pricing-toggle reveal" data-page-node-id="D0iBbl8u5iwDdxiZiqqBxq">
+      <button class="active" data-mode="subscribe" data-page-node-id="UyzAEzBVVexf1QnhrLcqR5">订阅版（按月/年）</button>
+      <button data-mode="buyout" data-page-node-id="2lCbA1AsBugNZQxZnF7zV9">私有化买断（一次性）</button>
+    </div>
+
+    <!-- 订阅版 -->
+    <div class="pricing-grid reveal" id="pricingSubscribe" data-page-node-id="G6nr7FBP8kDk9qk3Z7S2RT">
+      <div class="price-card" data-page-node-id="lfbWUY6M4GwsXghikblwfT">
+        <div class="plan-name" data-page-node-id="WAEHC6uDZqf9x7lhaAWte8">基础版</div>
+        <div class="plan-desc" data-page-node-id="J0I0T6TpaTVFAK1KP0qGPT">单仓 · 基础出入库 / 盘点</div>
+        <div class="price-row" data-page-node-id="WrvZiIpRl7REzxeANq6WOJ"><span class="price-val" data-page-node-id="KXHWeXRDdj8D9WkoONVoQK">980</span><span class="price-unit" data-page-node-id="6VlJhx9A9lMLxAeN9GJFwH">元/年</span></div>
+        <div class="price-annual" data-page-node-id="Z4U4JHdxGwcFwlHHzUEGtj">¥98/月，付10用12</div>
+        <ul data-page-node-id="l2giNGr5iYemxae0I8EFF5">
+          <li data-page-node-id="FUwo9ObcsjB9uxFBanR6nV"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="knlgWfewjapO7TtNaPlBLq"><polyline points="20 6 9 17 4 12" data-page-node-id="omEJm6adw8p7UZhsEymFRp"/></svg>采购入库 / 销售出库</li>
+          <li data-page-node-id="ZAa9ZTb6JVhDX2AsDkGbkX"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="j5ULxHLDhBBhXDuNctxprY"><polyline points="20 6 9 17 4 12" data-page-node-id="aa61cBzxN86KLkO7wlRWLj"/></svg>库存台账 / 流水</li>
+          <li data-page-node-id="SvYovLU3eLzbGJDBIlviro"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="xD2zy6Ggs1rGsGBCgfiAxc"><polyline points="20 6 9 17 4 12" data-page-node-id="OxYJS0FVzdAneImJdZwYtN"/></svg>盘点</li>
+          <li data-page-node-id="AxOWj9UHUB7ZatBcEoGhRB"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="QtDGDFTEzdm1w4F7qpSdzZ"><polyline points="20 6 9 17 4 12" data-page-node-id="ekmnPd3blAZqK1BAtGimqg"/></svg>库存预警</li>
+        </ul>
+        <a href="#download" class="btn-price ghost" data-page-node-id="n4LUgl6HvS8MC3Jv0AORGC">免费试用</a>
+      </div>
+      <div class="price-card featured" data-page-node-id="cEeeWCQ8GVjqb9nu0To7Hw">
+        <span class="price-badge" data-page-node-id="qPgxAvEjGorqMU4Ct7TypR">最受欢迎</span>
+        <div class="plan-name" data-page-node-id="Hr2i0zd9XYQBmj6pn9towO">电商版</div>
+        <div class="plan-desc" data-page-node-id="qFI26ydl1UJaNeyy0pKxw0">多仓 · 波次 · 批次效期</div>
+        <div class="price-row" data-page-node-id="GBYPTfXcDF9R1HnXDBTkId"><span class="price-val" data-page-node-id="56j5PMyANg1Gx5eGGA8SKe">1,980</span><span class="price-unit" data-page-node-id="8BHvRkcHFrp7oGvPHQnRBC">元/年</span></div>
+        <div class="price-annual" data-page-node-id="wtHaDgb0BcqkzBeSLUAYfK">¥198/月，付10用12</div>
+        <ul data-page-node-id="yNUxxi2BR3hz8JTT0FITOr">
+          <li data-page-node-id="ITJYEetGeU8B5CqSP2Wb26"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="Zv9kxIG2av5doFUkCWoyDh"><polyline points="20 6 9 17 4 12" data-page-node-id="7Zoon2kdBB5nyYmtCXm0o8"/></svg>基础版全部功能</li>
+          <li data-page-node-id="5gjWBb7TdRlTHHQ8rh3ApD"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="fTHA9x52acMm1R845oHIX0"><polyline points="20 6 9 17 4 12" data-page-node-id="Q1ZWG6oumn1N5ih14BGSDQ"/></svg>多仓 / 调拨</li>
+          <li data-page-node-id="raBdh3R6vPltOnUFhFGlZs"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="rFFQQ7o0ijuP9IIV6bic40"><polyline points="20 6 9 17 4 12" data-page-node-id="l75dDfyal00TlfzlJpyadt"/></svg>波次拣货</li>
+          <li data-page-node-id="z04wUC25Ja7OEdIuqat6oF"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="v4GRvBKLx0RiYvZuI6rhY4"><polyline points="20 6 9 17 4 12" data-page-node-id="FGylmByLHFE5Tj57UHOXBU"/></svg>批次与效期</li>
+        </ul>
+        <a href="#download" class="btn-price primary" data-page-node-id="2rrJ8A2zcQFVBBL0w67L7A">免费试用</a>
+      </div>
+      <div class="price-card" data-page-node-id="wpuZwpKNDNF9ekbYmHArO2">
+        <div class="plan-name" data-page-node-id="iOlDlriGvswPBKiu7X4IJz">工贸版</div>
+        <div class="plan-desc" data-page-node-id="GOpI2M0lFlnTNxQYWBSw8t">调拨 · 生产领料 · 质检</div>
+        <div class="price-row" data-page-node-id="pCpYy5mmHfehzaB2rLgFJi"><span class="price-val" data-page-node-id="zRCBRp2i6mIQx4B8QSeZcM">3,680</span><span class="price-unit" data-page-node-id="gwjQ14yF5CBeWxDEvZgHEw">元/年</span></div>
+        <div class="price-annual" data-page-node-id="xFSO378KVGUEAhBXlHB8jp">¥368/月，付10用12</div>
+        <ul data-page-node-id="es7ZKX4QRFfxen7cIP7iec">
+          <li data-page-node-id="lP1i4BNpZyRZH4BpnrcRc0"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="CHX8lmBThUH7Lr7UgRKJkk"><polyline points="20 6 9 17 4 12" data-page-node-id="iiwSOd75IulOaLzMBO7Mpz"/></svg>电商版全部功能</li>
+          <li data-page-node-id="Yk0iGDiKdgahfWAL4Vt3Jm"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="4ckJVxkYOxbsnyCzSh1jDU"><polyline points="20 6 9 17 4 12" data-page-node-id="kqIhXMgviTOlIM017waUrt"/></svg>生产领料</li>
+          <li data-page-node-id="9MDVjiBL6NzlY0NOpLn5jg"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="f00dks5FBB1JYpTOO3IBdY"><polyline points="20 6 9 17 4 12" data-page-node-id="LxfCln2K55dyDhbGQGtIRC"/></svg>退货质检</li>
+          <li data-page-node-id="5n2l9QphtEs8jO8EFCJvnU"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="m76QIN3BfyyOh0yEw9I44m"><polyline points="20 6 9 17 4 12" data-page-node-id="pyhLwEr5BSRKmhWzBciESo"/></svg>报废管理</li>
+        </ul>
+        <a href="#download" class="btn-price ghost" data-page-node-id="c08DSIBXGGAs5jws1ZED4e">免费试用</a>
+      </div>
+      <div class="price-card" data-page-node-id="jaUS04nEjFctSg6y8q0eUa">
+        <div class="plan-name" data-page-node-id="H6UH3tGBfiSCe6Qu82q0Dh">企业版</div>
+        <div class="plan-desc" data-page-node-id="q82KY3ZLKUyr0Dzr4DFA81">全功能 · 批次追溯 · 优先支持</div>
+        <div class="price-row" data-page-node-id="WiRiy5MavoE3JSEhUyGGxh"><span class="price-val" data-page-node-id="VHzQBHyFOKGpg19iQ7BHuu">6,800</span><span class="price-unit" data-page-node-id="SpW8iPisqdnF7zMiuGLtbK">元/年</span></div>
+        <div class="price-annual" data-page-node-id="RxX0Jll6LhRjpNcoRBzaZt">¥680/月，付10用12</div>
+        <ul data-page-node-id="ZxKT0VuSvO8LFXZQGtzIQP">
+          <li data-page-node-id="oIPMJJk7BmgNqkFhTQmnYI"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="ClHWWZA6TozjSuDbv3kV9D"><polyline points="20 6 9 17 4 12" data-page-node-id="CD8XV3TnTyCq98vryhZylb"/></svg>工贸版全部功能</li>
+          <li data-page-node-id="1uwGGQCUST1eLqxuHTOvvN"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="6MDTi7rcSqXRTduQ0diwGm"><polyline points="20 6 9 17 4 12" data-page-node-id="U2OEF4VNCjrV0SRpPQGgoO"/></svg>批次追溯</li>
+          <li data-page-node-id="FahBnM1IjxGLI6SYpvN38B"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="Rd7rdHLBfmxdt49k6cDAsm"><polyline points="20 6 9 17 4 12" data-page-node-id="8QNB0vnUJJcD0aDkb9qGzC"/></svg>数据权限细化</li>
+          <li data-page-node-id="GUfRd9S0PIp6YgiGlMsmGb"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="BHIgyJrue0ZfkOpndCBXSl"><polyline points="20 6 9 17 4 12" data-page-node-id="ArSQbdS7vk2pKlJ1bMWcD3"/></svg>优先技术支持</li>
+        </ul>
+        <a href="#download" class="btn-price ghost" data-page-node-id="3coAoKQcnAc42ySRX7KX9d">免费试用</a>
+      </div>
+    </div>
+
+    <!-- 买断版（默认隐藏） -->
+    <div class="pricing-grid reveal" id="pricingBuyout" style="display:none;" data-page-node-id="MjqQtRn1xIFA0iq7ndvnAZ">
+      <div class="price-card" data-page-node-id="y1LXAbjD8b568FBTRhuJa4">
+        <div class="plan-name" data-page-node-id="vK1Agtz9TBwsnNGL233d12">基础版</div>
+        <div class="plan-desc" data-page-node-id="VMtX8B3B6QokB4HtepJjbL">单仓 · 基础出入库 / 盘点</div>
+        <div class="price-row" data-page-node-id="Kk7l2X6Ak12qwcTYs8KcFj"><span class="price-val" data-page-node-id="0zWYBNCtOEeqEEE0EMnrFT">9,800</span><span class="price-unit" data-page-node-id="55R3ug5qoo1wJ0veEAwyVQ">元/套</span></div>
+        <div class="price-annual" data-page-node-id="GMCOHJyjAO0WYLSV1RIgj4">含首年更新，之后可选维护 ¥980/年</div>
+        <ul data-page-node-id="Tiu0YeB1pRDlBQ9Zu2g12E">
+          <li data-page-node-id="QEpdF0zzNz5zMn9Lbkif1V"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="Q5p0cXepAjVOAuEQfAF1YL"><polyline points="20 6 9 17 4 12" data-page-node-id="ZMNlJS0v9yFTTBXp5SnTmN"/></svg>永久使用权</li>
+          <li data-page-node-id="FCCw3lPXGTdVDC9VFVoH2A"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="CWbyL6S2Hdi3vZMFpiBocT"><polyline points="20 6 9 17 4 12" data-page-node-id="R5uKjutlN0AvPkO80WLSm7"/></svg>数据完全本地</li>
+          <li data-page-node-id="EeKUgTZMapitB7F2oNfCHz"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="pmPqDPXcl2kLtOB8OIJAK9"><polyline points="20 6 9 17 4 12" data-page-node-id="Z091s9hp9PGhV0tIxppPgV"/></svg>可选维护（不强制）</li>
+        </ul>
+        <a href="#download" class="btn-price ghost" data-page-node-id="l9bN4qwcljxxYIxcX3kOUs">预约演示</a>
+      </div>
+      <div class="price-card" data-page-node-id="miV38q47DGMqX4XJjBeSkX">
+        <div class="plan-name" data-page-node-id="dJ1Amebs4DW0xlOfFDdd8d">电商版</div>
+        <div class="plan-desc" data-page-node-id="kM7e3zh5DnW3zwE94kJAXd">多仓 · 波次 · 批次效期</div>
+        <div class="price-row" data-page-node-id="OURFFBn4HctoytgOObMUUH"><span class="price-val" data-page-node-id="65A8Pc2UkFwySjfFdyZ6cH">19,800</span><span class="price-unit" data-page-node-id="oXIOFs59RqlBwCkbJ6FIgU">元/套</span></div>
+        <div class="price-annual" data-page-node-id="AyoN4YTp43nO7BQD2s9GPn">含首年更新，之后可选维护 ¥1,980/年</div>
+        <ul data-page-node-id="e1MjpDMox6rrZtxDGzGzd2">
+          <li data-page-node-id="1DqV1s1EEf0MrdzL4h3Rc8"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="zmB2Vgnaepsc7lBMCAGnmy"><polyline points="20 6 9 17 4 12" data-page-node-id="4UO0GjvCSePH87ElmB4fbu"/></svg>永久使用权</li>
+          <li data-page-node-id="66wJQ7CbcRvCv1BBDEce2g"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="spMsMInSuL88vaokzeXL25"><polyline points="20 6 9 17 4 12" data-page-node-id="UjwX4gwaTeyNn16bb0Udhg"/></svg>数据完全本地</li>
+          <li data-page-node-id="5uxaAKuYbLctlCmDxQNukO"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="As76OKnFA2yacWz5HVwqWW"><polyline points="20 6 9 17 4 12" data-page-node-id="Vr1BbOdpeDSfRzyUWnQCwJ"/></svg>可选维护（不强制）</li>
+        </ul>
+        <a href="#download" class="btn-price ghost" data-page-node-id="GIiosn7qaMO4RVavwLk7XH">预约演示</a>
+      </div>
+      <div class="price-card" data-page-node-id="7HKQmsoCWBzqiI3QSCjSdj">
+        <div class="plan-name" data-page-node-id="zfS2Y27jkhqHFMZpis0t8r">工贸版</div>
+        <div class="plan-desc" data-page-node-id="H2jyiyRmqKWTMDr1HpOQiD">调拨 · 生产领料 · 质检</div>
+        <div class="price-row" data-page-node-id="VSZg1S8xFUqyjknpYoaSqX"><span class="price-val" data-page-node-id="MDnLXgtP9eudX9qAqUwHGJ">36,800</span><span class="price-unit" data-page-node-id="1fnwzNVLMPkp1YJ672sGwi">元/套</span></div>
+        <div class="price-annual" data-page-node-id="DKFroeD4LTJOGsDQupm1cV">含首年更新，之后可选维护 ¥3,680/年</div>
+        <ul data-page-node-id="w3wAtQp4lBKNPuBwCIaHjM">
+          <li data-page-node-id="yb2mEud3R4fnZq1BDBhvLF"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="4gK9Fpv4BThDZtLkFzo5XR"><polyline points="20 6 9 17 4 12" data-page-node-id="RFW8VrXo23dhIb6YXNEUzP"/></svg>永久使用权</li>
+          <li data-page-node-id="12COsg02kMw50dyQiuw40s"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="mADPbcLn5Kuddd4uKACFdE"><polyline points="20 6 9 17 4 12" data-page-node-id="w1y7COXWGFtKTMSMRg4ieC"/></svg>数据完全本地</li>
+          <li data-page-node-id="N7RHudDl3bN0xl93DEqcf6"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="VYuvZEHqJmzr2Yd1Jmuquc"><polyline points="20 6 9 17 4 12" data-page-node-id="dQaUfPLhLiFd7bgbS1OHT7"/></svg>可选维护（不强制）</li>
+        </ul>
+        <a href="#download" class="btn-price ghost" data-page-node-id="jykDeOzSyFb767vPm4ZhLx">预约演示</a>
+      </div>
+      <div class="price-card" data-page-node-id="6zr9wi7c7bOnSOLvUYPX2Q">
+        <div class="plan-name" data-page-node-id="7bpari2I6aLmEzc4DpHxiu">企业版</div>
+        <div class="plan-desc" data-page-node-id="DnvphIr1cK10o0dpcoiD89">全功能 · 批次追溯 · 优先支持</div>
+        <div class="price-row" data-page-node-id="GSjvDoDKDAyGRDBXD4BFrX"><span class="price-val" data-page-node-id="ZNkUKEk6gmBL2KWOD8eytG">68,000</span><span class="price-unit" data-page-node-id="dWlR9bVGPmnn40Dj3PNK7U">元/套</span></div>
+        <div class="price-annual" data-page-node-id="vHDvjaerQHU8hgUJUvUYzv">含首年更新，之后可选维护 ¥6,800/年</div>
+        <ul data-page-node-id="hpf0tH8Mlr6Jf1Ow03BDTa">
+          <li data-page-node-id="CqCWFhDGuguvHIHcZhCYW6"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="DoJDHfD8s8zWyrQUzM9MFs"><polyline points="20 6 9 17 4 12" data-page-node-id="SqK4eqAs2LTiuNPpbx4dWC"/></svg>永久使用权</li>
+          <li data-page-node-id="rNmKc6jJJrrnZIFMN27DSy"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="Q3ErE9RfgwbmuMDryeXcc8"><polyline points="20 6 9 17 4 12" data-page-node-id="vlwPORBpW7H1k5ONLMUNih"/></svg>数据完全本地</li>
+          <li data-page-node-id="dpfo5LzTkxcna8HLeWzAnr"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="LMEvqgKk4sQUGdurLCu4UR"><polyline points="20 6 9 17 4 12" data-page-node-id="dV36She2ginY0YJKDP1iFB"/></svg>优先技术支持</li>
+        </ul>
+        <a href="#download" class="btn-price ghost" data-page-node-id="NxPmSyGJuz2LEYmPmTzhkR">预约演示</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     MODES — 两种模式对比
+     ============================================================ -->
+<section class="section modes-section" id="modes" data-page-node-id="pe0u8CbgKwDizoRkAFA24T">
+  <div class="wrap" data-page-node-id="xHdz6TyteznamKjfMp8bnM">
+    <div class="section-header reveal" data-page-node-id="C3TPEYdbHcnHOw08ugM8e3">
+      <span class="section-label" data-page-node-id="pOPO6MuNHClUo6aGgzncS0">两种模式</span>
+      <h2 class="section-title" data-page-node-id="iDbBfdqIBDoxQtmyWprxKA">两种模式，数据与功能完全一样</h2>
+      <p class="section-desc" data-page-node-id="OFGcKEyHEJairXzI89FLDc">区别只在「怎么用」——选最适合你们团队工作方式的那一种</p>
+    </div>
+
+    <div class="modes-grid" data-page-node-id="CO9sKVBopLos29TCTU4DBI">
+      <div class="mode-card reveal" data-page-node-id="aZpvzWHFJnkLk7wJZ1AZI5">
+        <span class="mode-tag" data-page-node-id="8UMiWmTJffjOMnuMJS22YH">模式一 · 推荐首选</span>
+        <h3 data-page-node-id="fjiIjunGKTfBLTAlXvWl0K">服务端版</h3>
+        <p data-page-node-id="gF6ncFvHQHRVysCimIB1PR">装 1 台服务端，全公司用浏览器访问，同事电脑免装任何东西，手机平板也能开。</p>
+        <ul class="mode-list" data-page-node-id="xoGOkDpM85S3p8QKePEnzk">
+          <li data-page-node-id="2TfaVAk64CuAGkse1Qzesb"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="KAOwvSdJEoKNy0vlNuRnHb"><polyline points="20 6 9 17 4 12" data-page-node-id="2eJ4RS7dsIGEhRcwXsbCM9"/></svg>装 1 台就够，同事浏览器打开地址即用</li>
+          <li data-page-node-id="pvjOnpt5LNAB8nJaQwp7Ok"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="K7Ksm1RdqLXC3FoiqhHsWU"><polyline points="20 6 9 17 4 12" data-page-node-id="kOG5FES3rfnffF8mRcG3Z8"/></svg>支持 Windows 10/11、Server 2016+</li>
+          <li data-page-node-id="6iA69a8szhyk5dgmaq8JFE"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="qCNvhIz9wCrufvI4j0tGWp"><polyline points="20 6 9 17 4 12" data-page-node-id="XpUCfrjs7J8Rk7DRAx5LO5"/></svg>任何能开浏览器的设备：电脑 / 平板 / 手机</li>
+          <li data-page-node-id="ZVPnt6liG2tUjXcjWMQS3d"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="MImrDtvF87yMyefon0ABuj"><polyline points="20 6 9 17 4 12" data-page-node-id="0CAg9zfonNZzeTCnEWwPdQ"/></svg>临时换台电脑，打开浏览器就能用</li>
+        </ul>
+        <a href="#download" class="btn btn-primary" data-page-node-id="EOFhQU9HzKBvL1vr7osG76">下载服务端版</a>
+      </div>
+      <div class="mode-card reveal reveal-delay-1" data-page-node-id="muJBlIhpYt898NhzJY90Dr">
+        <span class="mode-tag" style="background:rgba(13,148,136,0.08);color:var(--teal);" data-page-node-id="ueUirLGhlD2wKXCCR1ylUw">模式二 · 进阶选择</span>
+        <h3 data-page-node-id="vKmJMOAb1O9Hu0EdX8P12u">桌面客户端版</h3>
+        <p data-page-node-id="3FbEbYN1RT6wyiJgEHE7jZ">装在每台电脑上，双击图标弹出独立窗口，托盘常驻，适合需要本地硬件直连的场景。</p>
+        <ul class="mode-list" data-page-node-id="XJdsb23FPM5krMiQbRY8ZV">
+          <li data-page-node-id="vq7gfFSDbXkumKdpSoSxgM"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="OfZ3tsDOD7OrnTnHcGNBOG"><polyline points="20 6 9 17 4 12" data-page-node-id="VvNjrEiabRvyW1Y8U8yB9W"/></svg>独立窗口，不依赖浏览器</li>
+          <li data-page-node-id="mIvUEYyVK5j2pZPkuN9L3d"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="jjyMXM7xY8BdgJRDR86Qlk"><polyline points="20 6 9 17 4 12" data-page-node-id="TnGGMHOEEGPLpE556cWoYS"/></svg>托盘常驻、静默打印、电子秤直连</li>
+          <li data-page-node-id="z12RKZBafmZJE6baE8q98q"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="R807JqMCCyjQPnGLKLHF2t"><polyline points="20 6 9 17 4 12" data-page-node-id="vRGQC0uoyVcDSQ94IxZGaj"/></svg>更稳，独立进程，长时间开着不卡</li>
+          <li data-page-node-id="R3VXa6xfNgWNc36r8JyHQD"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="8vjzmYxc0XtrOlU2VWhZX7"><polyline points="20 6 9 17 4 12" data-page-node-id="MhrIQM4TA8J53cAeXONylT"/></svg>需搭配服务端版使用（不能单独运行）</li>
+        </ul>
+        <a href="#download" class="btn btn-outline" data-page-node-id="qUhsqrWUaglvHS9TdvI0JL">下载客户端版</a>
+      </div>
+    </div>
+
+    <!-- 对比表格 -->
+    <div class="mode-compare-table reveal" data-page-node-id="GdMZlQQt200uf8d24GQbFR">
+      <div class="mct-header" data-page-node-id="DJUAd3dE6JPPPNrnldGb2X">
+        <h3 data-page-node-id="U9GwNP15X5yKGAbnU2zYlv">两种模式怎么选？</h3>
+        <p data-page-node-id="qXObtDR5F1rjGXwG7Ir9bA">数据与功能完全一样，区别只在「怎么用」</p>
+      </div>
+      <table data-page-node-id="xnHGhNdK0hs6LaqcIMocVY">
+        <thead data-page-node-id="Won8nc90mKc9isZ2E576Yv">
+          <tr data-page-node-id="h9xAW2kgNbPrF7XAh2CxQc">
+            <th data-page-node-id="9A479ANRMAcJvFfIvPaKRZ">对比项</th>
+            <th class="highlight-col" data-page-node-id="zaHusL1uGuRkUC005PzSx6">模式一 · 服务端版</th>
+            <th data-page-node-id="0FuGbeYvEFTiIr3X6EEZge">模式二 · 桌面客户端版</th>
+          </tr>
+        </thead>
+        <tbody data-page-node-id="J0gJBBqSeS0XyQOxPPKnYY">
+          <tr data-page-node-id="k8eGQ4ibONDtxyxQGiuzZp"><td data-page-node-id="0BHAHEfNcecjapEWu5q17O">需要安装吗</td><td class="highlight-col" data-page-node-id="aHxo4kGFa2oYuiV2GincpG">只装 1 台（服务端），同事免装</td><td data-page-node-id="BgCgsmqjTo8uF1fn3y69iW">服务端装 1 台 + 每台电脑再装客户端</td></tr>
+          <tr data-page-node-id="dSqDJkx9BGDAk1RaLG7W9a"><td data-page-node-id="FFX2PY6XVBvkO2s8XCw1ls">能在哪用</td><td class="highlight-col" data-page-node-id="7JLGH6KF6RnX5API5pFyJj">任何设备（电脑 / 平板 / 手机）+ 浏览器</td><td data-page-node-id="J4PNaQIkqDFKFnwEasASQA">Windows 电脑（需先装客户端）</td></tr>
+          <tr data-page-node-id="FL3VWWU16ndF8YXsIk6IIF"><td data-page-node-id="39zyko1Mdp7RriXKLrCF2K">运行环境</td><td class="highlight-col" data-page-node-id="9fMU4PD7LiMhwe1a17pzd3">浏览器（Chrome / Edge / 360 等）</td><td data-page-node-id="f0PSWhcpM3k0FWCtu02jsg">独立窗口，自带内核，不依赖浏览器</td></tr>
+          <tr data-page-node-id="M77GwVAIUeJa3tBct61qGx"><td data-page-node-id="omTydLDvZBJegxuCHtSxnw">数据存在哪</td><td class="highlight-col" data-page-node-id="yNVd6XhOH0AynDXA5mGXk7">服务端那台机器，100% 本地</td><td data-page-node-id="1IZ1tGGeXCEGgp02LO5Owe">同样在服务端（客户端不存数据）</td></tr>
+          <tr data-page-node-id="TX5sZjMdJ5prTq5aCJ8HAg"><td data-page-node-id="TMJWBt85rXzrfM9sdDVLX8">性能表现</td><td class="highlight-col" data-page-node-id="UB7DqiIFBNvKDdnRhIO3x5">日常够用，受浏览器标签页影响</td><td data-page-node-id="nHVnagtEisqsh4RwiTnIhH">更稳，独立进程，长时间开着不卡</td></tr>
+          <tr data-page-node-id="8oyomjRBbhyyI9dqBVRZff"><td data-page-node-id="FchJcseOSUXy2zZqntMt52">特色能力</td><td class="highlight-col" data-page-node-id="SY0HGXXe2NBCrF8HWYMGqJ">免维护、随时换机、手机也能用</td><td data-page-node-id="2DO88C6VIatlBB2CJjYtbS">托盘常驻、静默打印、电子秤直连</td></tr>
+          <tr data-page-node-id="XLiOt6TcoSaG3jJgnFVftk"><td data-page-node-id="d6a6o1FUTx2rFevqI2UAXT">适合谁</td><td class="highlight-col" data-page-node-id="FEJNUscbd9ZnwVC7L9Obmx">工位不固定、想省事、不想装软件</td><td data-page-node-id="H7Xs4bXEF91jeey6OrH3eK">固定工位、要打印 / 称重、想像正经软件</td></tr>
+        </tbody>
+      </table>
+      <div class="tip" data-page-node-id="Vmf25k4H246lsjVUFxN6Pb">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" data-page-node-id="28VJEWa6eimvTf9EYyZkSP"><circle cx="12" cy="12" r="10" data-page-node-id="Od7LEsMYeRi1Md4JfIHQDp"/><line x1="12" y1="8" x2="12" y2="12" data-page-node-id="sZmrNM0JiPjsxEamtE1Cl8"/><line x1="12" y1="16" x2="12.01" y2="16" data-page-node-id="OXPrCeVx1nvMCxLXs02WGP"/></svg>
+        <span data-page-node-id="pfGlIkBplF6rsf75JDb5YJ"><b data-page-node-id="RBl2XZeJKvLRzCAIrnDng5">请注意：</b>模式二（桌面客户端）必须搭配模式一（服务端版）使用，它本身不带数据库，<b data-page-node-id="uvzlxAkoal9ZqE20LtTntI">不能单独运行</b>。简单记：<b data-page-node-id="EyNwpP02WIXQFzjlLyb1RT">服务端必装一次，客户端想装几台装几台。</b></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     DOWNLOAD
+     ============================================================ -->
+<section class="section" id="download" style="background: var(--cream);" data-page-node-id="qFiiiGb1zZGpROhG9NYFxC">
+  <div class="wrap" data-page-node-id="4ZiHBOzS7oBnm6AxNiBMrm">
+    <div class="section-header reveal" data-page-node-id="PfFE94vHo9ZwBDsqxTbXmB">
+      <span class="section-label" data-page-node-id="c8163EgZY5zgwlKBqVXOqR">下载安装</span>
+      <h2 class="section-title" data-page-node-id="UmRB8jmK1w3HgPZSW07Cff">下载安装即享 30 天免费试用，30 分钟上线</h2>
+      <p class="section-desc" data-page-node-id="wbQlZ7fDx7mesXXWaHN3wQ">下载安装即享 30 天免费试用，无需联系；正式版授权码粘贴即激活，立即开通全功能；到期不付费自动转只读，数据完整保留</p>
+    </div>
+
+    <div class="modes-grid reveal" data-page-node-id="30JMUmFVKtzz0CYlj4ytIj">
+      <div class="mode-card" data-page-node-id="Jd8u2Eg2zUiH59A0TIaIhT">
+        <span class="mode-tag" data-page-node-id="wnCJ7dVxLI2qK6HuKpqvNX">模式一 · 服务端版</span>
+        <h3 data-page-node-id="j0llPZM3CzONTdUcW2Zhal">下载安装</h3>
+        <ul class="mode-list" data-page-node-id="3Jr9DBfEwiPecekn2dpTM6">
+          <li data-page-node-id="D9sFvRCYae0NnbWPJyzfD8"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="0efKrnbLJMKva45ps93QML"><polyline points="20 6 9 17 4 12" data-page-node-id="SNeZnuTypplwPCRO4dyiY3"/></svg>约 26MB，Windows 10/11、Server 2016+</li>
+          <li data-page-node-id="zkdAwfyHOtYrQyy5s3lBTp"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="gGX9bzzrpTQPda4SIn6Z2g"><polyline points="20 6 9 17 4 12" data-page-node-id="eqbwq4tobLBDcj1OZSgAJl"/></svg>双击安装，自动注册服务，打开浏览器登录页</li>
+          <li data-page-node-id="Ugt7oTCjSLD7aZ7hef72uV"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="wDLLiwFGghSGTzOeQUJByJ"><polyline points="20 6 9 17 4 12" data-page-node-id="nV6h9u8Xe4SMxcW7ywhuDq"/></svg>内置数据库与运行环境，无需额外安装</li>
+        </ul>
+        <div id="dl-buttons" data-page-node-id="lW34o6ERFm5AT3AKVwWszr"></div>
+        <p class="dl-note" id="dl-note" style="font-size:var(--text-sm);color:var(--text-3);margin-top:14px;line-height:1.7;" data-page-node-id="vS0HxXDWKk2I5LwoZQG5qE"></p>
+      </div>
+      <div class="mode-card" data-page-node-id="kLzJ7hNHS8Yx0X7rwt3QoS">
+        <span class="mode-tag" style="background:rgba(13,148,136,0.08);color:var(--teal);" data-page-node-id="1SC1PWCFzTndPgEQQsl0ML">模式二 · 桌面客户端版</span>
+        <div style="margin:8px 0 12px;"><img src="logo/wms-logo-2-box.svg" alt="WMS 桌面客户端图标" style="width:72px;height:72px;border-radius:16px;box-shadow:0 4px 16px rgba(0,0,0,0.12);"></div>
+        <h3 data-page-node-id="phcelNVb1CPrRZ9tiXEBL3">下载安装</h3>
+        <ul class="mode-list" data-page-node-id="94N4qum3E8Bck9fMdtmeH6">
+          <li data-page-node-id="63kjps9eqkqEWZup8SD8f4"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="PcoNmnXJadjDL6AuOl7G04"><polyline points="20 6 9 17 4 12" data-page-node-id="3a3AiT1KY4JtLAieBSoQbj"/></svg>约 75MB，Windows 10/11 64 位</li>
+          <li data-page-node-id="MvxIH9An0hvxXeXH6tFd0G"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="TsTDTuNVaHTx2yFJupfxoq"><polyline points="20 6 9 17 4 12" data-page-node-id="pQNMk2KLoNwjP3IuBsx0rF"/></svg>双击安装，首次启动填服务端地址</li>
+          <li data-page-node-id="ijdjLcO5U8WGzgDpCBygUX"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" data-page-node-id="nOlfc6mHhqX9x2fP9LunAI"><polyline points="20 6 9 17 4 12" data-page-node-id="AERbJ6EylCiPgI8f9Upfal"/></svg>托盘常驻、自动更新、独立窗口</li>
+        </ul>
+        <div id="dl-buttons-2" data-page-node-id="wfGEnDtzYYg37OxfCjpPkF"></div>
+        <p class="dl-note" id="dl-note-2" style="font-size:var(--text-sm);color:var(--text-3);margin-top:14px;line-height:1.7;" data-page-node-id="zZAKctAeBSLOfD4HHImK0X"></p>
+      </div>
+    </div>
+
+    <!-- 三步上线流程 -->
+    <div class="dl-flow reveal" data-page-node-id="23Ca3z7socGrLh9iYblKdf">
+      <h3 class="dl-flow-title" data-page-node-id="ao96ntUTFsRwdAUs6u8xw8">三步上线</h3>
+      <div class="dl-steps" data-page-node-id="qjTYDT1REetEW1nxOwkGLr">
+        <div class="dl-step" data-page-node-id="0T4spIbdHq8JfTOvY25pvk">
+          <span class="dl-step-num" data-page-node-id="CE6gnmYqRqP61DvcA3jmBA">1</span>
+          <div class="dl-step-icon" data-page-node-id="M4176g6S5xRo6xKOUgYaho">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" data-page-node-id="ZlgI66IuuwmCs0HNW3IW7e"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" data-page-node-id="f61DIDjE2M7jEm1fNyijHf"/><polyline points="7 10 12 15 17 10" data-page-node-id="8eeihMzxeLnRuGHOKTNBDE"/><line x1="12" y1="15" x2="12" y2="3" data-page-node-id="zpCOXEjqq3C3gNrJcORkk8"/></svg>
+          </div>
+          <h4>下载安装</h4>
+        </div>
+        <div class="dl-step" data-page-node-id="PeH9nRn9RbcSG1JA6fn1Sz">
+          <span class="dl-step-num" data-page-node-id="lQOBvlzGeFi33Ql0mk9kzd">2</span>
+          <div class="dl-step-icon" data-page-node-id="Rtn3QCofGe8JhJFCMn3E5G">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" data-page-node-id="dnFx60L7naV8Usp63K4H0M"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" data-page-node-id="F5rpE4Hb7EPQztozFDKEQH"/><circle cx="12" cy="7" r="4" data-page-node-id="cQJVuf4e2O3Bt1q3LlwFI5"/></svg>
+          </div>
+          <h4>领取授权</h4>
+        </div>
+        <div class="dl-step" data-page-node-id="eTBLGFgVROMpZ2QrqepuvU">
+          <span class="dl-step-num" data-page-node-id="IXKKTof282GnRRuCDFbm4i">3</span>
+          <div class="dl-step-icon" data-page-node-id="yNOgyYvycfkZXQdIVp6u5b">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" data-page-node-id="KeipqiCRRezbMpuTvN00Kg"><polyline points="20 6 9 17 4 12" data-page-node-id="QDtknldGI8H9pC48dTsZfl"/></svg>
+          </div>
+          <h4>开始试用</h4>
+        </div>
+        <div class="dl-step" data-page-node-id="KuRZX3ANUYCACu0Ng3EOXD">
+          <span class="dl-step-num" data-page-node-id="Rng8hJ7kjAV5qCc5FhD9m5">4</span>
+          <div class="dl-step-icon" data-page-node-id="PjjQWfx4Lh7RYENvfAeIWy">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" data-page-node-id="tUAnY3K8yWGJlWs1Yl2K78"><rect x="1" y="4" width="22" height="16" rx="2" ry="2" data-page-node-id="A7hi7mJCuOFhzeioh6YMEZ"/><line x1="1" y1="10" x2="23" y2="10" data-page-node-id="LQXH0qP4PsSUyIZWNPvY8j"/></svg>
+          </div>
+          <h4>付费激活</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     DEMO
+     ============================================================ -->
+
+<!-- ============================================================
+     FAQ
+     ============================================================ -->
+<section class="section section-alt" id="faq" data-page-node-id="YLSc0zrCnduWZE43HO7R3V">
+  <div class="wrap" data-page-node-id="eUlzoCksmNz35KRh4j6wQK">
+    <div class="section-header reveal" data-page-node-id="jCRfJceemu4o84OXi8V3dJ">
+      <span class="section-label" data-page-node-id="RMvQzzA89YJqfxGE8wB9NO">常见问题</span>
+      <h2 class="section-title" data-page-node-id="J7gFTRCG5AihKh8zXi1NDA">还有疑问？</h2>
+    </div>
+    <div class="faq-list reveal" data-page-node-id="01NiBxTgGaQBOS54tChzmH">
+      <div class="faq-item" data-page-node-id="ZZL2SqzB7HhU8a3z63Gd16">
+        <div class="faq-q" data-page-node-id="ZzWns9Zc7zN7mKT5uKM3Ir">怎么开始免费试用？<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" data-page-node-id="7HuhbodepRKlyepqbx6RSz"><line x1="12" y1="5" x2="12" y2="19" data-page-node-id="gOaEUsYWPepk73A1SMSmzu"/><line x1="5" y1="12" x2="19" y2="12" data-page-node-id="DQsPlvzVClMea5S0OVWs5F"/></svg></div>
+        <div class="faq-a" data-page-node-id="YgvESIYB8Vk3SIHiTsSEHx"><div class="faq-a-inner" data-page-node-id="SEAM26nAXz2ZAEnxXnCIrI">从官网「下载安装」区任选一种模式：服务端版（装 1 台，全公司浏览器用，同事免装）或桌面客户端版（装在每台电脑，独立窗口，需搭配服务端版）。双击按提示安装，<b data-page-node-id="SEAM26nAXz2ZAEnxXnCIrI">下载安装即享 30 天免费试用，正式版授权码粘贴即激活</b>，立即开通全功能试用。到期不付费自动转只读，数据完整保留，续费即恢复。</div></div>
+      </div>
+      <div class="faq-item" data-page-node-id="shcFYHZazneGMbcLw1rFaP2">
+        <div class="faq-q" data-page-node-id="0BPhaupx4O0gybEiS2Hfiv2">车间电脑不能上网，注册不了怎么办？<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" data-page-node-id="WSFjjkcsnNNrX8RNjHxbJL2"><line x1="12" y1="5" x2="12" y2="19" data-page-node-id="9UAoiV7jNea3AKK1YJ8sOI2"/><line x1="5" y1="12" x2="19" y2="12" data-page-node-id="YjVmhTZcxVOsnArJ6rFaLj2"/></svg></div>
+        <div class="faq-a" data-page-node-id="iQFXBwRtM9buRSUV6vebEO2"><div class="faq-a-inner" data-page-node-id="jNCaH0ZBNiLmgXEZ92pFDq2">车间不上网也能激活：联系我们（微信 / 邮箱）获取离线授权，把软件生成的「申请码」发我们，我们返回「激活码」粘回软件即可，全程 3-5 分钟，试用权益完全一致。激活后软件依旧纯内网运行，不联网也能用。</div></div>
+      </div>
+      <div class="faq-item" data-page-node-id="shcFYHZazneGMbcLw1rFaP">
+        <div class="faq-q" data-page-node-id="0BPhaupx4O0gybEiS2Hfiv">两种模式该选哪个？<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" data-page-node-id="WSFjjkcsnNNrX8RNjHxbJL"><line x1="12" y1="5" x2="12" y2="19" data-page-node-id="9UAoiV7jNea3AKK1YJ8sOI"/><line x1="5" y1="12" x2="19" y2="12" data-page-node-id="YjVmhTZcxVOsnArJ6rFaLj"/></svg></div>
+        <div class="faq-a" data-page-node-id="iQFXBwRtM9buRSUV6vebEO"><div class="faq-a-inner" data-page-node-id="jNCaH0ZBNiLmgXEZ92pFDq">想省事、工位不固定、不想给每台电脑装东西 → 选<b data-page-node-id="TFvDZwiZnee1tI0TOgoG0L">模式一 服务端版</b>（装 1 台就够，同事打开浏览器就能用，手机平板也能开）。想要独立窗口、托盘常驻、静默打印、电子秤直连 → 在服务端版基础上再装<b data-page-node-id="k846Mqjqq60rEzck8Dmst0">模式二 桌面客户端</b>。两者数据完全一样，也可以先用模式一，以后想用了再补装客户端。</div></div>
+      </div>
+      <div class="faq-item" data-page-node-id="PQReOZCctLiyJrnBs4MPVk">
+        <div class="faq-q" data-page-node-id="Cc9bf8yxS0lmQQHs7b6Fs2">试用到期后怎么升级？<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" data-page-node-id="ondTuwNT5IAqp4jGyX0Smy"><line x1="12" y1="5" x2="12" y2="19" data-page-node-id="SBqHJ0JREX6gVpBlscohKe"/><line x1="5" y1="12" x2="19" y2="12" data-page-node-id="DL00INUnw9PXtocsOnvNJt"/></svg></div>
+        <div class="faq-a" data-page-node-id="fTNT4MIP0hc3g5bcKn2XwC"><div class="faq-a-inner" data-page-node-id="G1C7Hf6wxmW7iCxtaFFxu4">联系我们购买：选好版本和周期（月付 / 季付 / 年付 / 买断），付款后我们即时发送授权码，在软件「系统 → 授权」里粘贴即激活，<b data-page-node-id="G1C7Hf6wxmW7iCxtaFFxu4">秒级开通、无需重启、数据不丢</b>。大额订单可走对公转账、签合同、开发票。</div></div>
+      </div>
+      <div class="faq-item" data-page-node-id="r3S6B8j9OiIih4tuKx0yaY">
+        <div class="faq-q" data-page-node-id="4nBYD1UzacPlGM1mpDq6jd">订阅版和私有化版有什么区别？<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" data-page-node-id="65G2JbRsmRWAValYXa1TY4"><line x1="12" y1="5" x2="12" y2="19" data-page-node-id="GkSBg0CTYUTVrDSZhVv2y9"/><line x1="5" y1="12" x2="19" y2="12" data-page-node-id="iuxAtoAnFeTmB6IFNH4xii"/></svg></div>
+        <div class="faq-a" data-page-node-id="wUdlzYlJvOXLVpfpRNWoKq"><div class="faq-a-inner" data-page-node-id="GOT4CSolMEN6cKqvNlSviV">订阅版按月/年付费、由我方按客户独立开通，适合想低门槛先用的客户；私有化版一次性买断、装在您自己机房，适合要买断和数据强私有化的客户。功能完全一样。</div></div>
+      </div>
+      <div class="faq-item" data-page-node-id="9VHbBTTLp08ujBqCAc48sf">
+        <div class="faq-q" data-page-node-id="oGjrKEzuEaKEZSEuktEmVU">数据安全吗？<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" data-page-node-id="C6WE2yiJ1vWLAXVAkkvVFA"><line x1="12" y1="5" x2="12" y2="19" data-page-node-id="wwEaBjdnbYzZMBBYhutCzH"/><line x1="5" y1="12" x2="19" y2="12" data-page-node-id="gV5X8PwcigMfuR6HyvTPhq"/></svg></div>
+        <div class="faq-a" data-page-node-id="97FLEm72kt7EvGbtgCGC6f"><div class="faq-a-inner" data-page-node-id="jFobpRAhV4RFXHQgK3153N">私有化部署、纯内网运行，数据 100% 在您本地机房，不经过任何第三方，断网也能用。授权通过我们发送的授权码在本地激活，无需联网；您随时可在系统设置里管理授权。</div></div>
+      </div>
+      <div class="faq-item" data-page-node-id="v0MN5R0fduSy0XfYqy4B87">
+        <div class="faq-q" data-page-node-id="b2oCrmvepKuF6sPirJnu1k">需要自己买服务器吗？<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" data-page-node-id="41Wg8hiKRtTX5LifLeuNpc"><line x1="12" y1="5" x2="12" y2="19" data-page-node-id="bwmNiqnEnETMtIXQcuzOMU"/><line x1="5" y1="12" x2="19" y2="12" data-page-node-id="rJ2OPjAjvYnPQMEbEfI8BH"/></svg></div>
+        <div class="faq-a" data-page-node-id="IaU4cSGmgXRm5uRtLEI8Xe"><div class="faq-a-inner" data-page-node-id="wmp0ZFLDrZIMqTRCw6aj0w">私有化版需要一台普通电脑/服务器（内网即可）；安装包已内置数据库与运行环境，无需额外配置。订阅版由我方托管，零操心。</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CTA
+     ============================================================ -->
+<section class="cta-section" data-page-node-id="NCoECfGRXRiCD1bkZGtLUe">
+  <div class="wrap" data-page-node-id="cyEA0BBpqWV2yow664x4pD">
+    <div class="cta-inner reveal" data-page-node-id="LsKPvF4fMZCivsaLqrXyiX">
+      <h2 data-page-node-id="thn78Bc2IZu66GnygjHqmR">下载安装即享 30 天免费试用，<br data-page-node-id="kQZuya5rRXoCaXn5B1tByT">30 分钟上线</h2>
+      <p data-page-node-id="ZoEkBuv1inOrOhVuyOeFy7">下载安装即享 30 天免费试用；正式版联系我们领取授权码粘贴即激活；到期不付费自动转只读，数据完整保留</p>
+      <div class="cta-btns" data-page-node-id="2Na9dZZRpzqdXDz9FfJFkf">
+        <a href="#download" class="btn-lg primary" data-page-node-id="iIxrsZMNqAu8RsynvS2wDe">免费下载安装包</a>
+        <a href="#pricing" class="btn-lg ghost" data-page-node-id="XxntHRzqRXaGKbtZ0K0t8M">查看价格</a>
+      </div>
+      <p class="cta-note" data-page-node-id="pfYYahoAQsAnv9htqpGZIV">到期不付费自动转只读，数据完整保留 · 续费即恢复全部功能</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer" data-page-node-id="5b7e4OjHm9aHfqibrrxhFR">
+  <div class="wrap" data-page-node-id="hVhhIIEDhJwHxvAAFhTsQS">
+    <div class="footer-inner" data-page-node-id="cBzL0sD3y2ImnV0A01pBCj">
+      <div class="footer-brand" data-page-node-id="8hHCJUOSLkMKCTS1Y7U5zT">WMS 仓储管理系统</div>
+      <div data-page-node-id="fh73lJJ8mRM0ouz53S9NYx">私有化部署 · 纯内网运行 · 价格透明 · 下载即享 30 天免费试用</div>
+      <div data-page-node-id="hOcg0PbdeEI7u2KsUmjrBY">联系：<a href="mailto:hangzhoukaiwei@163.com" data-page-node-id="WGaetDG3FcYERBNyGbcLpn">hangzhoukaiwei@163.com</a> · 微信 <a href="#" data-page-node-id="dT01NzMdUKeOQ9qkHCGbtB">Cy_refuel</a></div>
+      <div style="color:rgba(255,255,255,0.25);margin-top:8px;" data-page-node-id="xRhDkgTRHCStuW6Xu0dDdw">© 2026 WMS 仓储管理系统 · 杭州凯微</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     CHAT FAB
+     ============================================================ -->
+<button class="chat-fab" id="chatFab" aria-label="在线客服" data-page-node-id="GrEX1tZvoaA0FavoTQkd4m">
+  <svg viewBox="0 0 24 24" data-page-node-id="M6yn5BZmnMM0zRuBSSIuex"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" data-page-node-id="Rt7n6sH1VnqBzJuJ8p1mBU"/></svg>
+</button>
+<div class="chat-panel" id="chatPanel" data-page-node-id="QHvAfRCQALe1Yianrl3Mny">
+  <div class="chat-head" data-page-node-id="IghhUd4lHHal1LaLUbhpZr">
+    <span class="online-dot" data-page-node-id="79NZrVtxf4ui6gvOnJLi7T"></span>
+    <b data-page-node-id="Y1CzW7DEvy7GbgbuXtFj9C">在线客服（自动回复）</b>
+    <span class="close-btn" id="chatClose" data-page-node-id="KDfuo2OchlI7zZsrmdkrBI">&times;</span>
+  </div>
+  <div class="chat-body" id="chatBody" data-page-node-id="WHuQeLJbOdWZZzGfDClE9S"></div>
+  <div class="chat-quick" id="chatQuick" data-page-node-id="MkgjyDEUTFlTcXB4KXjzAD">
+    <button data-q="怎么下载试用？" data-page-node-id="5ocDlgqZvBSmG4iKtZOxJj">怎么下载试用？</button>
+    <button data-q="价格多少？" data-page-node-id="ybMjQ5NnZ4JKMs6XBBrVJI">价格多少？</button>
+    <button data-q="数据安全吗？" data-page-node-id="lU6iJvKWEIHlRUqdoPIrVK">数据安全吗？</button>
+    <button data-q="怎么购买？" data-page-node-id="RKX0A6iNB0JEUC6WPdGOOy">怎么购买？</button>
+  </div>
+  <div class="chat-input-row" data-page-node-id="Ec5Tw0cciUvPcDnDjIdW0D">
+    <input id="chatInput" placeholder="输入问题…" data-page-node-id="DN0SmezPi24XT37up8DLCI" />
+    <button id="chatSend" data-page-node-id="XwGEb6Mv4pQOyIBird08Zv">发送</button>
+  </div>
+</div>
+
+<!-- ============================================================
+     SCRIPTS
+     ============================================================ -->
+<script>
+// --- Download links config ---
+var DOWNLOAD_LINKS = [
+  { label: '下载 服务端版（exe · 约 26MB）', url: 'https://aying-0829.github.io/wms-download/WMS-Setup.exe', primary: true }
+];
+var DOWNLOAD_LINKS_2 = [
+  { label: '下载 桌面客户端版（exe · 约 75MB）', url: 'https://aying-0829.github.io/wms-download/WMS-Client-Setup.exe', primary: true }
+];
+var CONTACT = { wechat: 'Cy_refuel', email: 'hangzhoukaiwei@163.com' };
+
+(function renderDownloads() {
+  function render(links, boxId, noteId, noteHtml) {
+    var box = document.getElementById(boxId);
+    var note = document.getElementById(noteId);
+    if (!box) return;
+    var html = '<div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">';
+    links.forEach(function(d) {
+      var cls = d.primary ? 'btn btn-primary' : 'btn btn-outline';
+      html += '<a href="' + d.url + '" class="' + cls + '" download>' + d.label + '</a>';
+    });
+    html += '</div>';
+    box.innerHTML = html;
+    if (note && noteHtml) note.innerHTML = noteHtml;
+  }
+  render(DOWNLOAD_LINKS, 'dl-buttons', 'dl-note',
+    '服务端版约 26MB，双击后按提示选路径安装，装完自动打开浏览器。<b>下载安装即享 30 天免费试用，无需联系；正式版授权码粘贴即激活</b>，立即开通全功能。下载慢可加微信 <b>' + CONTACT.wechat + '</b> 直接获取。');
+  render(DOWNLOAD_LINKS_2, 'dl-buttons-2', 'dl-note-2',
+    '客户端版约 75MB，装在要用的电脑上；<b>必须先有一台装好「服务端版」的机器</b>，首次启动填它的地址（如 <code>http://192.168.1.100:8000</code>）即可。同样下载安装即享 30 天免费试用，正式版授权码粘贴激活即可开通。');
+})();
+
+// --- Pricing toggle ---
+(function() {
+  var btns = document.querySelectorAll('.pricing-toggle button');
+  var sub = document.getElementById('pricingSubscribe');
+  var buy = document.getElementById('pricingBuyout');
+  btns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      btns.forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      var mode = btn.getAttribute('data-mode');
+      if (mode === 'subscribe') { sub.style.display = 'grid'; buy.style.display = 'none'; }
+      else { sub.style.display = 'none'; buy.style.display = 'grid'; }
+    });
+  });
+})();
+
+// --- FAQ accordion ---
+(function() {
+  document.querySelectorAll('.faq-q').forEach(function(q) {
+    q.addEventListener('click', function() {
+      var item = q.parentElement;
+      var wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+})();
+
+// --- Video demo player ---
+(function() {
+  var scenes = document.querySelectorAll('.demo-scene');
+  var playPauseBtn = document.getElementById('playPauseBtn');
+  var playIcon = document.getElementById('playIcon');
+  var pauseIcon = document.getElementById('pauseIcon');
+  var progressBar = document.getElementById('progressBar');
+  var progressFill = document.getElementById('progressFill');
+  var currentTimeEl = document.getElementById('currentTime');
+  var totalSeconds = 90; // 1:30 total duration
+  var currentSeconds = 0;
+  var interval = null;
+  var playing = true;
+  var currentScene = 0;
+  var sceneDuration = 15; // seconds per scene
+
+  function showScene(idx) {
+    scenes.forEach(function(s, i) {
+      s.classList.toggle('active', i === idx);
+    });
+  }
+
+  function formatTime(seconds) {
+    var m = Math.floor(seconds / 60);
+    var s = seconds % 60;
+    return (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+  }
+
+  function updateProgress() {
+    var pct = (currentSeconds / totalSeconds) * 100;
+    progressFill.style.width = pct + '%';
+    currentTimeEl.textContent = formatTime(currentSeconds);
+  }
+
+  function tick() {
+    if (!playing) return;
+    currentSeconds++;
+    if (currentSeconds >= totalSeconds) {
+      currentSeconds = 0;
+    }
+    // Advance scene every sceneDuration seconds
+    var newScene = Math.floor(currentSeconds / sceneDuration);
+    if (newScene !== currentScene && newScene < scenes.length) {
+      currentScene = newScene;
+      showScene(currentScene);
+    }
+    updateProgress();
+  }
+
+  function start() {
+    if (interval) clearInterval(interval);
+    interval = setInterval(tick, 1000);
+    playIcon.style.display = 'none';
+    pauseIcon.style.display = 'block';
+    playing = true;
+  }
+
+  function stop() {
+    if (interval) clearInterval(interval);
+    interval = null;
+    playIcon.style.display = 'block';
+    pauseIcon.style.display = 'none';
+    playing = false;
+  }
+
+  playPauseBtn.addEventListener('click', function() {
+    if (playing) stop();
+    else start();
+  });
+
+  // Click on progress bar to seek
+  progressBar.addEventListener('click', function(e) {
+    var rect = progressBar.getBoundingClientRect();
+    var pct = (e.clientX - rect.left) / rect.width;
+    currentSeconds = Math.floor(pct * totalSeconds);
+    currentScene = Math.min(Math.floor(currentSeconds / sceneDuration), scenes.length - 1);
+    showScene(currentScene);
+    updateProgress();
+  });
+
+  // Start automatically
+  start();
+})();
+
+// --- Nav scroll effect ---
+(function() {
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function() {
+    nav.classList.toggle('scrolled', window.scrollY > 10);
+  }, { passive: true });
+})();
+
+// --- Mobile nav toggle ---
+(function() {
+  var toggle = document.getElementById('navToggle');
+  var links = document.getElementById('navLinks');
+  toggle.addEventListener('click', function() {
+    links.classList.toggle('open');
+  });
+  links.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() { links.classList.remove('open'); });
+  });
+})();
+
+// --- Scroll reveal ---
+(function() {
+  var reveals = document.querySelectorAll('.reveal');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(function(r) { observer.observe(r); });
+  // 兜底：1.5 秒后仍不可见的强制显示（防止 headless/无 IO 环境一直空白）
+  setTimeout(function() {
+    document.querySelectorAll('.reveal:not(.visible)').forEach(function(r) {
+      r.classList.add('visible');
+    });
+  }, 1500);
+  reveals.forEach(function(el) { observer.observe(el); });
+})();
+
+// --- Chat ---
+(function() {
+  var CONTACT = '微信 Cy_refuel ／ 邮箱 hangzhoukaiwei@163.com';
+  var QA = [
+    { k: ['下载', '安装', '试用', '注册', 'install', '部署'], a: '官网「下载安装」区有两种模式：①服务端版（装 1 台，全公司用浏览器访问，同事免装）；②桌面客户端版（装在每台电脑，需搭配服务端版）。装好后下载安装即享 30 天免费试用，正式版授权码粘贴即激活，立即开通全功能。' },
+    { k: ['客户端', '桌面', 'exe', '独立窗口', '模式二'], a: '模式二需搭配模式一服务端版使用，不能单独运行。用法：先装服务端版，再在每台电脑装客户端，首次启动填 http://服务端IP:8000 即可。好处是独立窗口、托盘常驻、静默打印。' },
+    { k: ['价格', '多少钱', '费用', '报价', '收费'], a: '订阅版 ¥98/月起、¥980/年起（付10用12），也支持季付；私有化买断 ¥9,800 起（之后可选年服务保障费）。价格全透明，详见官网「价格」区。' },
+    { k: ['订阅', '买断', '区别', '私有化', '按月', '季付'], a: '订阅支持月付 / 季付 / 年付，按月或年付费；私有化版一次性买断、装在您自己机房，软件永久可用，服务保障费单独可选。功能完全一样，详见官网「两种模式」对比表。' },
+    { k: ['到期', '续费', '升级', '激活', '只读', '恢复', '付款', '支付'], a: '试用 30 天到期自动转只读、数据保留。联系我们购买：选好版本和周期，付款后我们即时发授权码，在软件「系统→授权」粘贴即激活，秒级开通、不用重启、数据不丢。也可选对公转账。' },
+    { k: ['数据', '安全', '内网', '隐私', '断网'], a: '私有化部署、纯内网运行，数据 100% 在您本地机房，不经过任何第三方。断网也能正常用——授权通过我们发送的授权码在本地激活，无需联网；您随时可在系统设置里管理授权。' },
+    { k: ['扫码枪', '打印机', '电子秤', '标签'], a: '支持扫码枪即插即用、标签/A4 打印机，电子秤可扩展。' },
+    { k: ['服务器', '电脑', '硬件', '配置'], a: '私有化版只需一台普通电脑/服务器（内网即可），安装包已内置数据库与运行环境。' },
+    { k: ['购买', '付款', '联系', '微信', '邮箱', '客服'], a: '购买或需要人工服务，请加 ' + CONTACT + '。付款后我们即时发送授权码，在软件里粘贴即激活；大额订单可走对公转账、签合同、开发票。' },
+    { k: ['发票', '开票', '专票', '税号'], a: '可以开票，支持电子普通发票和增值税专用发票。付款后联系我们填开票信息即可，3 个工作日内开出。' },
+    { k: ['退款', '退货', '不想要'], a: '订阅版 7 天内无理由全额退款，超过 7 天按未使用天数折算退款，具体联系我们。' },
+    { k: ['不能上网', '离线', '没网', '内网激活'], a: '车间不上网也能激活：联系我们（微信 / 邮箱）获取离线授权，把软件生成的「申请码」发我们，我们返回「激活码」粘回软件即可，3-5 分钟完成，权益完全一样。' }
+  ];
+  function answer(q) {
+    for (var i = 0; i < QA.length; i++) {
+      for (var j = 0; j < QA[i].k.length; j++) {
+        if (q.indexOf(QA[i].k[j]) >= 0) return QA[i].a;
+      }
+    }
+    return '这个问题我暂时答不上，建议直接联系人工客服：' + CONTACT;
+  }
+  var fab = document.getElementById('chatFab');
+  var panel = document.getElementById('chatPanel');
+  var body = document.getElementById('chatBody');
+  var input = document.getElementById('chatInput');
+  var opened = false;
+
+  function addMsg(text, who) {
+    var m = document.createElement('div');
+    m.className = 'chat-msg ' + who;
+    m.textContent = text;
+    body.appendChild(m);
+    body.scrollTop = body.scrollHeight;
+  }
+  function welcome() { addMsg('您好，我是智能客服，可以回答下载试用、价格、数据安全等常见问题。您也可以直接输入问题～', 'bot'); }
+  function send(q) {
+    q = (q || '').trim();
+    if (!q) return;
+    addMsg(q, 'user');
+    setTimeout(function() { addMsg(answer(q), 'bot'); }, 300);
+    input.value = '';
+  }
+  fab.addEventListener('click', function() {
+    opened = !opened;
+    panel.classList.toggle('open', opened);
+    if (opened && !body.children.length) welcome();
+  });
+  document.getElementById('chatClose').addEventListener('click', function() { opened = false; panel.classList.remove('open'); });
+  document.getElementById('chatSend').addEventListener('click', function() { send(input.value); });
+  input.addEventListener('keydown', function(e) { if (e.key === 'Enter') send(input.value); });
+  document.querySelectorAll('#chatQuick button').forEach(function(b) {
+    b.addEventListener('click', function() { send(b.getAttribute('data-q')); });
+  });
+})();
+</script>
+</body>
+</html>
